@@ -26,6 +26,28 @@ class BookRepository extends EntityRepository
 
 
 
+
+
+	// select les livre en fonction du titre du livre
+	public function selectBooksByTitle($title)
+	{
+
+		$query = $this->getEntityManager()->createQueryBuilder()
+			->select('b')
+			->from('BdlocAppBundle:Book', 'b')
+			->andWhere('b.title = :title')
+			->setParameter('title', $title)
+			->getQuery();
+
+		$books = $query->getResult();
+
+		return $books;
+	}
+
+
+
+
+
 	// select les livre en fonction de la série
 	public function selectBooksBySerie($serie)
 	{
@@ -45,21 +67,56 @@ class BookRepository extends EntityRepository
 
 
 
-	// select les livre en fonction de la série
-	public function selectBooksBySerie($serie)
+	// select les livre en fonction de l'auteur
+	public function selectBooksByAuthor($author)
 	{
-
-		$query = $this->getEntityManager()->createQueryBuilder()
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		$query = $qb
 			->select('b')
 			->from('BdlocAppBundle:Book', 'b')
-			->join('b.serie', 's')
-			->andWhere('s.title = :serie')
-			->setParameter('serie', $serie)
+			->join("b.illustrator", "i")
+			->join("b.scenarist", "s")
+			->join("b.colorist", "c")
+			->andWhere(
+				$qb->expr()->orX
+				(
+					'i.lastName = :author',
+					's.lastName = :author',
+					'c.lastName = :author'
+				)
+			)
+			->setParameter('author', $author)
 			->getQuery();
 
 		$books = $query->getResult();
 
 		return $books;
 	}
+
+
+
+
+
+	// pagination avec select and co
+
+	// select les livre en fonction de titre
+	public function selectBookOrderTitle($date)
+	{
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		$query = $qb
+			->select('b')
+			->from('BdlocAppBundle:Book', 'b')
+			->setParameter('date', $date)
+			->orderBy('b.title', 'ASC')
+			->getQuery();
+
+		$books = $query->getResult();
+
+		return $books;
+	}
+
+
+
+
 
 }
