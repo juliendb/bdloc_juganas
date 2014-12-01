@@ -15,7 +15,7 @@ class DefaultController extends Controller
     	$params = array();
 
 
-    	$repository = $this->getDoctrine()
+/*    	$repository = $this->getDoctrine()
     		->getRepository('BdlocAppBundle:Book');
 
 		$query = $repository->createQueryBuilder('b')
@@ -23,10 +23,7 @@ class DefaultController extends Controller
 			->setMaxResults(10)
             ->getQuery();
 
-        $books = $query->getResult();
-        print_r($books);
-        die();
-
+        $books = $query->getResult();*/
 
 
         return $this->render("default/home.html.twig", $params);
