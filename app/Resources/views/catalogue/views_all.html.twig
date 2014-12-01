@@ -1,0 +1,16 @@
+{% extends ':layouts:base.html.twig' %}
+
+{% block title %}Bdloc | Accueil {% endblock %}
+
+{% block main_content %}
+    
+
+	{% for book in books %}
+		<div>
+			{{ book.title }}
+		</div>
+	{% endfor %}
+
+
+
+{% endblock %}
