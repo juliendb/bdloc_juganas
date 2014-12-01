@@ -3,3 +3,10 @@ bdloc_app:
     type:     annotation
     prefix:   /
 
+
+bdloc_app_subscribe:
+    resource: "@BdlocAppBundle/Controller/SubscribeController.php"
+    type:     annotation
+    prefix:   /subscribe/
+
+

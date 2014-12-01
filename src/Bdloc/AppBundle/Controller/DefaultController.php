@@ -17,9 +17,5 @@ class DefaultController extends Controller
     public function homeAction()
     {
     	$params = array();
-
-
-
-        return $this->render("default/home.html.twig", $params);
-    }
+  }
 }
