@@ -11,6 +11,7 @@ class Serie
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Entity(repositoryClass="Bdloc\AppBundle\Entity\SerieRepository")
      */
     private $id;
 

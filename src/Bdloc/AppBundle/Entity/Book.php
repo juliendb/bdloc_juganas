@@ -11,6 +11,7 @@ class Book
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Entity(repositoryClass="Bdloc\AppBundle\Entity\BookRepository")
      */
     private $id;
 

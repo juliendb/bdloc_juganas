@@ -12,6 +12,23 @@ class DefaultController extends Controller
      */
     public function homeAction()
     {
-        return $this->render("default/home.html.twig");
+    	$params = array();
+
+
+    	$repository = $this->getDoctrine()
+    		->getRepository('BdlocAppBundle:Book');
+
+		$query = $repository->createQueryBuilder('b')
+			->select('b')
+			->setMaxResults(10)
+            ->getQuery();
+
+        $books = $query->getResult();
+        print_r($books);
+        die();
+
+
+
+        return $this->render("default/home.html.twig", $params);
     }
 }
