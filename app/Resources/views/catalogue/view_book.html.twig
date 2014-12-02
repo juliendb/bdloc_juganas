@@ -1,0 +1,26 @@
+{% extends ':layouts:base.html.twig' %}
+
+{% block title %}Bdloc | Accueil {% endblock %}
+
+{% block main_content %}
+	
+	<div>
+		<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" />
+
+		<p> {{ book.title }} </p>
+
+		{% if book.illustrator %}
+			<p>illustrateur(s) : {{ book.illustrator.lastName }} </p>
+		{% endif %}
+		
+		{% if book.scenarist %}
+			<p>scénariste(s) : {{ book.scenarist.lastName }} </p>
+		{% endif %}
+
+		{% if book.colorist %}
+			<p>coloriste(s) : {{ book.colorist.lastName }} </p>
+		{% endif %}
+
+	</div>
+
+{% endblock %}
