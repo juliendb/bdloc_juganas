@@ -2,15 +2,22 @@
 
 namespace Bdloc\AppBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
+
+    // NE PAS OUBLIER CETTE LIGNE
+    use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
- * @ORM\Table()
+ * @UniqueEntity("username", message="Ce pseudo est déjà utilisé !", groups={"registration"})
+ * @UniqueEntity("email", message="Vous avez déjà un compte ici !", groups={"registration"})
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Bdloc\AppBundle\Entity\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -131,7 +138,7 @@ class User
      */
     public function setFirstname($firstname)
     {
-        $this->firstname = $firstname;
+        $this->firstname = strip_tags($firstname);
 
         return $this;
     }
@@ -154,7 +161,7 @@ class User
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = strip_tags($name);
 
         return $this;
     }
@@ -170,6 +177,17 @@ class User
     }
 
     /**
+     * Get username
+     *
+     * @return string 
+     */
+    public function getUsername()
+    {
+        return $this->name;
+    }
+
+
+    /**
      * Set email
      *
      * @param string $email
@@ -177,7 +195,7 @@ class User
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = strip_tags($email);
 
         return $this;
     }
@@ -200,7 +218,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = strip_tags($password);
 
         return $this;
     }
@@ -269,7 +287,7 @@ class User
      */
     public function setAdress($adress)
     {
-        $this->adress = $adress;
+        $this->adress = strip_tags($adress);
 
         return $this;
     }
@@ -292,7 +310,7 @@ class User
      */
     public function setPostalCode($postalCode)
     {
-        $this->postalCode = $postalCode;
+        $this->postalCode = strip_tags($postalCode);
 
         return $this;
     }
@@ -315,7 +333,7 @@ class User
      */
     public function setCity($city)
     {
-        $this->city = $city;
+        $this->city = strip_tags($city);
 
         return $this;
     }
@@ -338,7 +356,7 @@ class User
      */
     public function setTel($tel)
     {
-        $this->tel = $tel;
+        $this->tel = strip_tags($tel);
 
         return $this;
     }
@@ -421,4 +439,40 @@ class User
     {
         return $this->dateModified;
     }
+
+    /**
+     * Get roles
+     *
+     * @return array 
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * Requis pour la UserInterface, pour éviter les fatal error de l'implements
+     */
+    public function eraseCredentials()
+    {
+        $this->password = null;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function beforeInsert()
+    {
+        $this->setDateCreated = new \DateTime();
+        $this->setDateModified = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function beforeEdit()
+    {
+        $this->setDateModified = new \DateTime();
+    }
+
 }

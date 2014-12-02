@@ -45,21 +45,4 @@ class BookRepository extends EntityRepository
 
 
 
-	// select les livre en fonction de la série
-	public function selectBooksBySerie($serie)
-	{
-
-		$query = $this->getEntityManager()->createQueryBuilder()
-			->select('b')
-			->from('BdlocAppBundle:Book', 'b')
-			->join('b.serie', 's')
-			->andWhere('s.title = :serie')
-			->setParameter('serie', $serie)
-			->getQuery();
-
-		$books = $query->getResult();
-
-		return $books;
-	}
-
 }
