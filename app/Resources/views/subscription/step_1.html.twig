@@ -9,10 +9,15 @@
 {% block main_content %}
     <h1>S'abonner</h1>
     
-	<h2>Infos personnelles - Etape 1</h2>
+    <ul class="stepsRegister">
+    	<li>1. Infos personnelles > </li>
+    	<li class="disable">2. Points relais > </li>
+    	<li class="disable">3. Paiement </li>
+    </ul>
 
+<div class="clearfix"></div>
 {{ form( registerForm ) }}
-    
+
 {% endblock %}
 
 

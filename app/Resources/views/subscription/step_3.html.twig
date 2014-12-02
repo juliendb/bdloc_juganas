@@ -1,13 +1,19 @@
-{% extends "base.html.twig" %}
+{% extends "layouts/base.html.twig" %}
+
 
 {# titre de la page dans head #}
 {% block title %} Abonnement | Bdloc {% endblock %}   
-{# contenu du body #}
-{% block body %}
 
-    <h1>S'abonner</h1>
+{% block main_content %}
 
-	<h2>Paiement - Etape 3/h2>
+    <ul class="stepsRegister">
+    	<li><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a> > </li>
+    	<li><a href="{{ path("bdloc_app_subscribe_deliverystep2")}}">2. Points relais ></a> > </li>
+    	<li class="">3. Paiement </li>
+    </ul>
+
+<div class="clearfix"></div>
+
 
 {% endblock %}
 

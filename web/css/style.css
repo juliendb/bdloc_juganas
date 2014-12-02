@@ -51,7 +51,28 @@ table {
 /****** fin du reset ********/
 /*****************************/
 
+ul.stepsRegister{
+	margin: 30px auto;
+	text-align: center;
+}
+ul li{
+	list-style: none;
+	display: inline-block;
+	margin: 0 10px;
 
+}
+
+.stepsRegister .disable{
+	color: rgb(189, 187, 187);
+}
+
+.stepsRegister li a{
+	color: #fff;
+	text-decoration: none;
+}
+.stepsRegister li a:hover{
+	text-decoration: underline;
+}
 
 /* page */
 body{
@@ -59,6 +80,7 @@ body{
 	margin: 0;
 	padding: 0;
 	background-color: #6C7A89;
+	color: #fff;
 }
 
 h1{
@@ -171,20 +193,6 @@ table td{
 }
 /********************form **********************/
 
-#guili_appbundle_ticket div{
-	text-align: center;
-}
-#guili_appbundle_ticket div span{
-	width:100px;
-	text-align: right;
-	margin-right: 20px;
-	display: inline-block;
-}
-#guili_appbundle_ticket div input{
-	width:400px;
-	height: 50px;
-	font-size: 15px;
-}
 
 input[type="submit"]{
 	width:415px;
@@ -229,3 +237,14 @@ input[type="submit"]:hover{
 	font-size: 0.8em;
 	display: block;
 }
+
+
+
+
+/*******************************************************/
+/*******************************************************/
+/************************ ABONNEMENT *******************/
+/*******************************************************/
+/*******************************************************/
+
+

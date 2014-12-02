@@ -38,12 +38,15 @@ class RegisterType extends AbstractType
             ->add('postalCode', 'number', array(                
                 "label" => "Votre code postal *"
             ))
+/*            ->add('city', 'text', array(             
+                'options' => array('disabled' => true)
+            ))  */          
             ->add('tel', 'number', array(                
                 "label" => "Votre téléphone"
             ))
 
             ->add('submit','submit', array(                
-                "label" => "Envoyer ma demande",
+                "label" => "Suivant",
                 "attr" => array(
                     "class" => "btn"
                 )
