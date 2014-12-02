@@ -16,26 +16,27 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('firstname', 'text', array(
-                "label" => "Votre prénom"
+                "label" => "Votre prénom",
+                "required" => false
             ))
             ->add('name', 'text', array(
-                "label" => "Votre nom"
+                "label" => "Votre nom *"
             ))
             ->add('email', 'email', array(                
-                "label" => "Votre email"
+                "label" => "Votre email *"
             ))
             ->add('password', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'Les mots de passe doivent correspondre',
                 'options' => array('required' => true),
-                'first_options'  => array('label' => 'Mot de passe'),
-                'second_options' => array('label' => 'Mot de passe (validation)'),
+                'first_options'  => array('label' => 'Mot de passe *'),
+                'second_options' => array('label' => 'Mot de passe (validation) *'),
             ))
             ->add('adress', 'text', array(                
-                "label" => "Votre adresse"
+                "label" => "Votre adresse *"
             ))
             ->add('postalCode', 'number', array(                
-                "label" => "Votre code postal"
+                "label" => "Votre code postal *"
             ))
             ->add('tel', 'number', array(                
                 "label" => "Votre téléphone"
