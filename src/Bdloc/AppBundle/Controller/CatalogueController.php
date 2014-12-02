@@ -26,7 +26,7 @@ class CatalogueController extends Controller
 
 
     	$repoBook = $this->getDoctrine()->getRepository("BdlocAppBundle:Book");
-    	$books = $repoBook->selectBooksBySerie("Juan Solo");
+    	$books = $repoBook->selectBooksByAuthor("Jodorowsky");
 
 
     	$params["books"] = $books;
