@@ -3,8 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Bdloc !{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset("css/bootstrap.css" )}}" type="text/css">
+            <link rel="stylesheet" href="{{ asset("css/style.css" )}}" type="text/css">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" type="text/css">
+
     </head>
     <header>
          {% include ':layouts:nav.html.twig' %}
