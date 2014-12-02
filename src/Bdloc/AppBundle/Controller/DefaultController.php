@@ -15,17 +15,7 @@ class DefaultController extends Controller
     	$params = array();
 
 
-    	$repository = $this->getDoctrine()
-    		->getRepository('BdlocAppBundle:Book');
-
-		$query = $repository->createQueryBuilder('b')
-			->select('b')
-			->setMaxResults(10)
-            ->getQuery();
-
-        $books = $query->getResult();
-        print_r($books);
-        die();
+    
 
 
 
