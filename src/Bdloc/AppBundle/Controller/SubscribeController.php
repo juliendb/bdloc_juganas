@@ -2,20 +2,20 @@
 
 namespace Bdloc\AppBundle\Controller;
 
-    use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Component\Security\Core\SecurityContextInterface;
-    use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\HttpFoundation\Response;
 
-    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-    use Bdloc\AppBundle\Entity\User;
-    use Bdloc\AppBundle\Util\StringHelper;
-    use Bdloc\AppBundle\Form\RegisterType;
-    
-    use Symfony\Component\EventDispatcher\EventDispatcher;
-    use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-    use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
+use Bdloc\AppBundle\Entity\User;
+use Bdloc\AppBundle\Util\StringHelper;
+use Bdloc\AppBundle\Form\RegisterType;
+
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class SubscribeController extends Controller
 {
@@ -39,6 +39,7 @@ class SubscribeController extends Controller
             //on termine l'hydratation de notre objet User
             //avant enregistrement
 
+            $user->setCity("paris");
             $user->setDateCreated(new \DateTime());
             $user->setDateModified(new \DateTime());
 
@@ -71,11 +72,11 @@ class SubscribeController extends Controller
             $this->get("security.context")->setToken($token);
 
             //déclenche l'evenement de login
-            $event = new InteractiveLoginEvent($request, $token);
-            $this->get("event_dispatcher")->dispatch("security.interactive_login",$event);
+           // $event = new InteractiveLoginEvent($request, $token);
+          //  $this->get("event_dispatcher")->dispatch("security.interactive_login",$event);
 
             //redirige vers l'accueil
-            return $this->redirect( $this->generateUrl("bdloc_app_default_home"));
+            return $this->redirect( $this->generateUrl("bdloc_app_subscribe_deliverystep2"));
         }
 
 

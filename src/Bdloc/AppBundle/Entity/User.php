@@ -5,8 +5,8 @@ namespace Bdloc\AppBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
-    // NE PAS OUBLIER CETTE LIGNE
-    use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+// NE PAS OUBLIER CETTE LIGNE
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
@@ -101,7 +101,7 @@ class User implements UserInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPaypal", type="smallint")
+     * @ORM\Column(name="idPaypal", type="smallint", nullable = true)
      */
     private $idPaypal;
 
