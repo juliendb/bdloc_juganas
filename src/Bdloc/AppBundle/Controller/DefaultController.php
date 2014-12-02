@@ -2,8 +2,12 @@
 
 namespace Bdloc\AppBundle\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+
+
 
 class DefaultController extends Controller
 {
@@ -15,10 +19,10 @@ class DefaultController extends Controller
     	$params = array();
 
 
+
     
-
-
 
         return $this->render("default/home.html.twig", $params);
     }
 }
+

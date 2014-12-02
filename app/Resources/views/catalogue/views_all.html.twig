@@ -1,0 +1,19 @@
+{% extends ':layouts:base.html.twig' %}
+
+{% block title %}Bdloc | Accueil {% endblock %}
+
+{% block main_content %}
+    
+
+	{% for book in books %}
+		<div>
+			{{ book.title }}
+			<p>illustrator {{ book.illustrator.lastName }}</p>
+			<p>colorist {{ book.colorist.lastName }}</p>
+			<p>scenarist {{ book.scenarist.lastName }}</p>
+		</div>
+	{% endfor %}
+
+
+
+{% endblock %}
