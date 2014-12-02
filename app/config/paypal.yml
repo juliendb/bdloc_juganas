@@ -1,0 +1,16 @@
+
+kmj_pay_pal_bridge:
+    environment: sandbox/production                      //The environment to make the calls to
+    sandbox:
+        clientId:                                           //Client Id provided from developer.paypal.com
+        secret:                                             //Client Secret provided from developer.paypal.com
+    production:
+        clientId:                                           //Client Id provided from developer.paypal.com
+        secret:                                             //Client Secret provided from developer.paypal.com
+    logs:
+        enabled: true                                   //Should logs be used
+        filename: %kernel.root_dir%/logs/paypal.log     //the location for the log file
+        level: fine                                     //level of log reporting
+    http:
+        timeout: 30                                     //The http timeout before an error is generated
+        retry: true      

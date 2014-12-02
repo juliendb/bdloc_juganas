@@ -68,6 +68,7 @@ class BookRepository extends EntityRepository
 
 
 
+
 	// select les livre en fonction de la série
 	public function selectBooksBySerie($serie)
 	{
@@ -186,6 +187,7 @@ class BookRepository extends EntityRepository
 
 		return new Paginator($query);
 	}
+
 
 
 
