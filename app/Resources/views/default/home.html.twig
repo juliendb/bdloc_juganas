@@ -2,6 +2,11 @@
 
 {% block title %}Accueil | Bdloc {% endblock %}
 
+{% block login %}{{ render(controller('BdlocAppBundle:User:login')) }}{% endblock %}
+
+
 {% block main_content %}
     <h1>Bdloc !</h1>
+	<a class="btn btn-primary btn-lg" href="{{ path('bdloc_app_subscribe_registerstep1')}}">S'abonner à BdLoc</a>
+     
 {% endblock %}

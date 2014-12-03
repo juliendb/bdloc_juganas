@@ -24,6 +24,7 @@ class SubscribeController extends Controller
      */
     public function registerStep1Action()
     {
+
         $params = array();
 
         $user = new User();

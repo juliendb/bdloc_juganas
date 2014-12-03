@@ -8,15 +8,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Bdloc\AppBundle\Form\RegisterType;
+use Bdloc\AppBundle\Entity\User;
 
 
-/**
-	*@Route("/connexion")
-	*/
-	public function loginAction()
-    {/*
+class UserController extends Controller{
+
+    /**
+    * @Route("/connexion")
+    */
+	public function loginAction(Request $request)
+    {
+
+    	$params = array();
+        $user = new User();
+
+        $registerForm = $this->createForm(new RegisterType(), $user);
+
+        //gère la soumission du form
         $request = $this->getRequest();
         $session = $request->getSession();
+
+
+
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
             $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
@@ -28,6 +42,9 @@ use Symfony\Component\Security\Core\SecurityContext;
             // last username entered by the user
             'last_username' => $session->get(SecurityContext::LAST_USERNAME),
             'error'         => $error,
-        ));*/
+        ));
+
+
+      
     }
 }

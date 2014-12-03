@@ -6,10 +6,8 @@ app = {
 	init: function() {
 		// Autocompletion d'adresse
 		this.adresses()
-//console.log($("bdloc_appbundle_user"));
-		$("bdloc_appbundle_user").on("submit", function(){
-			return false;
-		})
+
+		$("#bdloc_appbundle_user").parent().on("submit", this.dataSave)
 	},
 
 
@@ -24,10 +22,6 @@ app = {
 
 		var componentForm = {
 		  bdloc_appbundle_user_adress: 'long_name',
-		 // route: 'long_name',
-		 // locality: 'long_name',
-		  //administrative_area_level_1: 'short_name',
-		  //country: 'long_name',
 		  bdloc_appbundle_user_postalCode: 'short_name'
 		};
 
@@ -38,7 +32,6 @@ app = {
 				country: 'fr'
 			}
 		}
-
 
 		// On ajoute l'autocomplete
 		var autocomplete = new google.maps.places.Autocomplete(adress, options)
@@ -52,9 +45,29 @@ app = {
 			var val = place.address_components[6].short_name
 			$("#bdloc_appbundle_user_postalCode").val(val)
 
-
 		})
 
+	  	if (navigator.geolocation) {
+	    	navigator.geolocation.getCurrentPosition(function(position) {
+	      	var geolocation = new google.maps.LatLng(
+	          position.coords.latitude, position.coords.longitude);
+	      	autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+	          geolocation));
+	    });
+
+
+	},
+
+	dataSave: function(){
+		//console.log("toto")
+		var formData = JSON.stringify(jQuery($(this)).serializeArray())
+		console.log(sessionStorage.getItem("dataAboStep1"))
+		sessionStorage.setItem("dataAboStep1", formData)
+		console.log("toto")
+
+
+
+		//return false
 	}
 
 

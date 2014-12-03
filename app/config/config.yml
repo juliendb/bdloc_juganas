@@ -18,7 +18,7 @@ framework:
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
+    trusted_proxies: ['127.0.0.1']
     session:
         # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
@@ -30,7 +30,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form:
-        resources: ['bootstrap_3_layout.html.twig'
+        resources: ['bootstrap_3_layout.html.twig']
 
 # Assetic Configuration
 assetic:
@@ -74,3 +74,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
 
+bazinga_geocoder: 
+    providers:
+        google_maps:
+            locale:               ~
+            region:               ~
+            use_ssl:              false

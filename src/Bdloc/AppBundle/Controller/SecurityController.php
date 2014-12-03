@@ -9,10 +9,8 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 
 class SecurityController extends Controller {
 
-    /**
-    * @Route("/login")
-    */
-    public function loginAction(Request $request)
+    
+   /* public function loginAction()
         {
             $session = $request->getSession();
 
@@ -39,7 +37,7 @@ class SecurityController extends Controller {
                     'error'         => $error,
                 )
             );
-        }
+        }*/
 
 
 }

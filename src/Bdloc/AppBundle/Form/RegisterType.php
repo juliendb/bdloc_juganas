@@ -16,8 +16,8 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('firstname', 'text', array(
-                "label" => "Votre prénom",
-                "required" => false
+                "label" => "Votre prénom *"
+                //"required" => false
             ))
             ->add('name', 'text', array(
                 "label" => "Votre nom *"

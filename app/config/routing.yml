@@ -9,4 +9,6 @@ bdloc_app_subscribe:
     type:     annotation
     prefix:   /subscribe/
 
+login_check:
+    pattern:   /login_check
 
