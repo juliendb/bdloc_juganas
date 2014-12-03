@@ -1,4 +1,5 @@
 {
+
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
     "type": "project",
@@ -8,7 +9,7 @@
     },
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony": "2.5.*",
+        "symfony/symfony": "2.6.*",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
@@ -19,7 +20,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "paypal/rest-api-sdk-php": "dev-master",
-        "kmj/paypalbridgebundle": "dev-master"
+        "kmj/paypalbridgebundle": "dev-master",
+        "willdurand/geocoder-bundle": "@stable"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
@@ -59,4 +61,6 @@
             "dev-master": "2.5-dev"
         }
     }
+
+
 }

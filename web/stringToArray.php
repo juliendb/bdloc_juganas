@@ -66,12 +66,12 @@ $allDropPoints = array();
 
 foreach($dropPoints as $dropPoint)
 {
-	// j'explode parreil et comme tout est séparé par " - "
+	// j'explode pareil et comme tout est séparé par " - "
 	$expl = explode(" - ", $dropPoint);
 
 	
 	// bam badaboum j'injecte a chaque boucle dans allDropPoints
-	// ps tu change les noms array associatif si tu veux
+	// ps tu changes les noms array associatif si tu veux
 	$allDropPoints[] = array(
 		"name"			=> $expl[0],
 		"address"		=> $expl[1],
@@ -84,7 +84,7 @@ foreach($dropPoints as $dropPoint)
 // ben j'affiche quoi
 print_r($allDropPoints);
 
-// si tu veux on verra ensemble quelle est le mieux pour injecter dans la table ensuite non ?
+// si tu veux on verra ensemble quel est le mieux pour injecter dans la table ensuite non ?
 
 
 
