@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Bdloc !{% endblock %}</title>
-        
+
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset("css/bootstrap.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/style.css" )}}" type="text/css">
@@ -17,7 +17,10 @@
          {% include ':layouts:login.html.twig' %}
     </header>
     <body>
-        {% block main_content %}{% endblock %}
+
+        {% block main_content %}
+           
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
