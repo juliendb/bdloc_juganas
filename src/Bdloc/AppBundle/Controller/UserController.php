@@ -8,21 +8,28 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Bdloc\AppBundle\Form\RegisterType;
+use Bdloc\AppBundle\Entity\User;
 
 
-/**
-	*@Route("/connexion")
-	*/
-	public function loginAction(Resquest $request)
+class UserController extends Controller{
+
+    /**
+    * @Route("/connexion")
+    */
+	public function loginAction(Request $request)
     {
 
     	$params = array();
+        $user = new User();
 
         $registerForm = $this->createForm(new RegisterType(), $user);
 
         //gère la soumission du form
         $request = $this->getRequest();
         $session = $request->getSession();
+
+
 
         // get the login error if there is one
         if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
@@ -38,25 +45,6 @@ use Symfony\Component\Security\Core\SecurityContext;
         ));
 
 
-        //sauvegarde en bdd avec l'entity manager
-        $em = $this->getDoctrine()->getManager();
-        //elle la sauvegarde en bdd en persistant
-        $em->persist($user);
-        //on excute toutes nos données
-        $em->flush();
-
-		
-        //CONNEXION AUTOMATIQUE : src : http://stackoverflow.com/questions/9550079/how-to-programmatically-login-authenticate-a-user
-        //secured_area est le nom du firewall défini dans security.yml
-        $token = new UsernamePasswordToken($user, $user->getPassword(), "secured_area", $user->getRoles());
-        $this->get("security.context")->setToken($token);
-
-        //déclenche l'evenement de login
-       // $event = new InteractiveLoginEvent($request, $token);
-      //  $this->get("event_dispatcher")->dispatch("security.interactive_login",$event);
-
-        //redirige vers l'accueil
-        return $this->redirect( $this->generateUrl("bdloc_app_subscribe_deliverystep2"));
-
+      
     }
 }

@@ -1,0 +1,61 @@
+{% extends ':layouts:base.html.twig' %}
+
+{% block title %}Bdloc | Accueil {% endblock %}
+
+{% block main_content %}
+    
+
+
+<nav>
+	{% if pagination.page > 1 %}
+		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page-1) }) }} ">page précédente</a>
+	{% endif %}
+	
+	{% if pagination.page < pagination.total %}
+		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page+1) }) }} ">page suivante</a>
+	{% endif %}
+
+	
+	{# affiche ex 11 / 18 à voir demain #}
+	<p># {{ (pagination.page-1)*pagination.limit +1 }} à </p>
+
+	{% if pagination.page < pagination.total %}
+		<p>{{ (pagination.page*pagination.limit) }}</p>
+	{% endif %}
+
+	
+
+	<p>sur {{ pagination.pages }} BD</p>
+</nav>
+
+
+{% for book in books %}
+
+	<div>
+		<a href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }} ">
+			<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" />
+		</a>
+		
+		<p> {{ book.title }} </p>
+
+		{% if book.illustrator %}
+			<p>illustrateur(s) : {{ book.illustrator.lastName }} </p>
+		{% endif %}
+		
+		{% if book.scenarist %}
+			<p>scénariste(s) : {{ book.scenarist.lastName }} </p>
+		{% endif %}
+
+		{% if book.colorist %}
+			<p>coloriste(s) : {{ book.colorist.lastName }} </p>
+		{% endif %}
+		
+
+		<a href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+		<a href="">ajouter au panier</a>
+	</div>
+{% endfor %}
+
+
+
+{% endblock %}

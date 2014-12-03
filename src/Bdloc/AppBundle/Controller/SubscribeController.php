@@ -71,10 +71,6 @@ class SubscribeController extends Controller
             $token = new UsernamePasswordToken($user, $user->getPassword(), "secured_area", $user->getRoles());
             $this->get("security.context")->setToken($token);
 
-            //déclenche l'evenement de login
-           // $event = new InteractiveLoginEvent($request, $token);
-          //  $this->get("event_dispatcher")->dispatch("security.interactive_login",$event);
-
             //redirige vers l'accueil
             return $this->redirect( $this->generateUrl("bdloc_app_subscribe_deliverystep2"));
         }
