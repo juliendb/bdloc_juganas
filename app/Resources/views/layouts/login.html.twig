@@ -1,13 +1,17 @@
-	<form action="{#{ path('login_check') }#}" method="post">
+	<form action="{{ path('login_check') }}" method="post">
 	    <label for="username">Login :</label>
-	    <input type="text" id="username" name="_username" value="{#{ last_username }#}" />
+	    <input type="text" id="username" name="_username" value="{{ last_username }}" />
 		<br/>
 	    <label for="password">Mot de passe :</label>
 	    <input type="password" id="password" name="_password" />
-		
-	   
+
+	    <input type="hidden" name="_target_path" value="/catalogue" />
+			   
 		<br/>
 	    <button type="submit">login</button>
 		<br/>
 	    <a href="{#{ path('bdloc_app_security_login') }#}" title="Mot de passe oublié">Mot de passe oublié</a>
+		{% if error %}
+	    {{ error.message }}
+		{% endif %}
 	</form>
