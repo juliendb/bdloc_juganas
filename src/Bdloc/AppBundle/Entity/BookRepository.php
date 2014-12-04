@@ -142,8 +142,8 @@ class BookRepository extends EntityRepository
 	// pagination
 	public function selectBooksByPagination($params)
 	{
-		if ( !is_numeric($params["page"]) ) die("error");
-		if ( !is_numeric($params["limit"]) ) die("error");
+		if ( !is_numeric($params["page"]) ) die("je suis une erreur");
+		if ( !is_numeric($params["limit"]) ) die("je suis un raté");
 
 		$results = ($params["page"]-1)* $params["limit"];
 
@@ -155,14 +155,13 @@ class BookRepository extends EntityRepository
 
 
 		// auteur
-		if (!empty($params['author']))
+		if ( !empty($params['author']) )
 		{
 			$query
 				->join("b.illustrator", "il")
 				->join("b.scenarist", "sc")
 				->join("b.colorist", "co")
-				->andWhere
-				(
+				->andWhere(
 					$query->expr()->orX
 					(
 						'il.lastName = :author',
@@ -170,6 +169,7 @@ class BookRepository extends EntityRepository
 						'co.lastName = :author'
 					)
 				)
+
 				->setParameter('author', $params['author']);
 		}
 

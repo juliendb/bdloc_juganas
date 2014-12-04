@@ -11,21 +11,26 @@
 		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page-1) }) }} ">page précédente</a>
 	{% endif %}
 	
-	{% if pagination.page < pagination.total %}
+	{% if pagination.page < pagination.pages %}
 		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page+1) }) }} ">page suivante</a>
 	{% endif %}
+	
 
+
+	{# affiche page 1 et dernière page #}
+	<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': 1 }) }} ">page 1</a>
+	<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': pagination.pages }) }} ">page {{ pagination.pages }}</a>
 	
 	{# affiche ex 11 / 18 à voir demain #}
 	<p># {{ (pagination.page-1)*pagination.limit +1 }} à </p>
 
-	{% if pagination.page < pagination.total %}
+	{% if pagination.page == pagination.pages %}
+		<p>{{ pagination.total }}</p>
+	{% else %}
 		<p>{{ (pagination.page*pagination.limit) }}</p>
 	{% endif %}
 
-	
-
-	<p>sur {{ pagination.pages }} BD</p>
+	<p>sur {{ pagination.total }} BD</p>
 </nav>
 
 
@@ -33,22 +38,24 @@
 
 	<div>
 		<a href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }} ">
-			<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" />
+			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 		</a>
 		
 		<p> {{ book.title }} </p>
+		
+		{# vérifie si il y a auteur a chaque fois #}
+		{% if book.scenarist %}
+			<p>scénario : {{ book.scenarist.lastName }} </p>
+		{% endif %}
 
 		{% if book.illustrator %}
-			<p>illustrateur(s) : {{ book.illustrator.lastName }} </p>
-		{% endif %}
-		
-		{% if book.scenarist %}
-			<p>scénariste(s) : {{ book.scenarist.lastName }} </p>
+			<p>dessin : {{ book.illustrator.lastName }} </p>
 		{% endif %}
 
 		{% if book.colorist %}
-			<p>coloriste(s) : {{ book.colorist.lastName }} </p>
+			<p>couleurs : {{ book.colorist.lastName }} </p>
 		{% endif %}
+
 		
 
 		<a href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>

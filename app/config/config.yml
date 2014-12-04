@@ -80,3 +80,7 @@ bazinga_geocoder:
             locale:               ~
             region:               ~
             use_ssl:              false
+
+services:
+    bd.slugger:
+        class: Bdloc\AppBundle\Service\Slugger

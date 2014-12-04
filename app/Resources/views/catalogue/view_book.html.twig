@@ -7,20 +7,29 @@
 	<div>
 		<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" />
 
-		<p> {{ book.title }} </p>
+		<p>série : {{ book.serie.title }} </p>
+		<p>genre : {{ book.serie.style }}</p>
+
+		<p>titre : {{ book.title }} </p>
+		<p>tome : {{ book.num }} </p>
+		
+		{# vérifie si il y a auteur a chaque fois #}
+		{% if book.scenarist %}
+			<p>scénario : {{ book.scenarist.lastName }} </p>
+		{% endif %}
 
 		{% if book.illustrator %}
-			<p>illustrateur(s) : {{ book.illustrator.lastName }} </p>
-		{% endif %}
-		
-		{% if book.scenarist %}
-			<p>scénariste(s) : {{ book.scenarist.lastName }} </p>
+			<p>dessin : {{ book.illustrator.lastName }} </p>
 		{% endif %}
 
 		{% if book.colorist %}
-			<p>coloriste(s) : {{ book.colorist.lastName }} </p>
+			<p>couleurs : {{ book.colorist.lastName }} </p>
 		{% endif %}
 
+		<p>editeur : {{ book.publisher }}</p>
+		<p>isbn : {{ book.isbn }}</p>
+		<p>planches : {{ book.pages }}</p>
+		
 	</div>
 
 {% endblock %}
