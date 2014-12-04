@@ -40,10 +40,16 @@ class RegisterType extends AbstractType
             ))
 /*            ->add('city', 'text', array(             
                 'options' => array('disabled' => true)
-            ))  */          
+            ))  */    
+
+            ->add('longitude', 'number', array())
+            ->add('latitude', 'number', array())
+                  
             ->add('tel', 'number', array(                
                 "label" => "Votre téléphone"
             ))
+
+
 
             ->add('submit','submit', array(                
                 "label" => "Suivant",
