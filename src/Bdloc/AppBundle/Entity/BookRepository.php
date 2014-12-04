@@ -117,6 +117,25 @@ class BookRepository extends EntityRepository
 
 
 
+	// catégories
+	public function selectCategories()
+	{
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		$query = $qb
+			->select('s')
+			->from('BdlocAppBundle:Serie', 's')
+			->groupBy('s.style')
+			->getQuery();
+
+		$books = $query->getResult();
+
+		return $books;
+	}
+
+
+
+
+
 
 	// pagination avec select and co
 
@@ -184,7 +203,6 @@ class BookRepository extends EntityRepository
 		if ($params["order"] === "ASC") $query->orderBy('b.title', 'ASC');
 		if ($params["order"] === "DESC") $query->orderBy('b.title', 'DESC');
 		
-
 		return new Paginator($query);
 	}
 

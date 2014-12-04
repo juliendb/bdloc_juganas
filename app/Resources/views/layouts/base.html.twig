@@ -20,18 +20,19 @@
 
     </header>
     <body>
-
-
+        
         {% block main_content %}
            
         {% endblock %}
 
-        {% block javascripts %}
+        {% block utils_javascripts %}
             <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
             <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        {% endblock %}
 
-            <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+        {% block javascripts %}
         {% endblock %}
 
     </body>

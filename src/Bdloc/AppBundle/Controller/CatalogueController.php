@@ -19,6 +19,9 @@ use Bdloc\AppBundle\Entity\Author;
 
 class CatalogueController extends Controller
 {
+
+
+    
     /**
      * @Route("/catalogue/{page}/{limit}/{order}", defaults={"page"=1,"limit"=20, "order"="ASC"})
      */
@@ -39,6 +42,7 @@ class CatalogueController extends Controller
         //$pagination['author'] = "Rosinski";
         
         $books = $repoBook->selectBooksByPagination($pagination);
+        $categories = $repoBook->selectCategories();
 
         // total nombre bd
         $pagination['total'] = $books->count();
@@ -47,6 +51,7 @@ class CatalogueController extends Controller
 
     	$params["books"] = $books;
         $params["pagination"] = $pagination;
+        $params["categories"] = $categories;
 
 
         return $this->render("catalogue/catalogue.html.twig", $params);
