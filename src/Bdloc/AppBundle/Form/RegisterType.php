@@ -42,9 +42,9 @@ class RegisterType extends AbstractType
                 'options' => array('disabled' => true)
             ))  */    
 
-            ->add('longitude', 'number', array())
-            ->add('latitude', 'number', array())
-                  
+            ->add('longitude', 'hidden', array())
+            ->add('latitude', 'hidden', array())
+
             ->add('tel', 'number', array(                
                 "label" => "Votre téléphone"
             ))

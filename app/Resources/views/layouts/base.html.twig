@@ -8,6 +8,7 @@
             <link rel="stylesheet" href="{{ asset("css/bootstrap.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/bootstrap-theme.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/style.css" )}}" type="text/css">
+            <link rel="stylesheet" href="{{ asset("fonts/glyphicons-halflings-regular.woff" )}}" type="text/css">
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" type="text/css">
@@ -21,17 +22,16 @@
     </header>
     <body>
 
-
         {% block main_content %}
            
         {% endblock %}
 
         {% block javascripts %}
+            <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>        
             <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
-            <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-            <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('js/address.js') }}"></script>
         {% endblock %}
 
     </body>
