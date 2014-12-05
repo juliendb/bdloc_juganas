@@ -20,34 +20,8 @@ catalogue =
 		$(".link_detail_book").off().on("click", _this.getDetailBook)
 		$("#filter_pages").off().on("click", "a", _this.rechargeCatalogue)
 
-		$("#form_filter_cats").off().on("submit", _this.rechargePostCatalogue)
-		$("#form_filter_pages").off().on("submit", _this.rechargePostCatalogue)
-	},
-
-
-
-	getDetailBook:function()
-	{
-		var _this = catalogue
-		var link = $(this).attr("href")
-		var isbn = "/"+$(this).attr("id")
-
-
-		$.ajax
-		({
-			url: link,
-			dataType: "html",
-			success: function(html)
-			{
-				var content = $(html).filter("#detail_book")
-
-
-				_this.affiche(content)
-			}
-		})
-
-
-		return false;
+		//$("#form_filter_cats").off().on("submit", _this.rechargePostCatalogue)
+		//$("#form_filter_pages").off().on("submit", _this.rechargePostCatalogue)
 	},
 
 
@@ -78,6 +52,31 @@ catalogue =
 
 
 
+	getDetailBook:function()
+	{
+		var _this = catalogue
+		var link = $(this).attr("href")
+
+
+		$.ajax
+		({
+			url: link,
+			dataType: "html",
+			success: function(html)
+			{
+				var content = $(html).find("#detail_book")
+
+
+				_this.affiche(content)
+			}
+		})
+
+
+		return false;
+	},
+
+
+
 	rechargeCatalogue:function()
 	{
 		var _this = catalogue
@@ -92,7 +91,7 @@ catalogue =
 			{
 				var content = ""
 				
-				content = $(html).filter("#catalogue")
+				content = $(html).find("#catalogue")
 				_this.changeContenu($("#catalogue"), content)
 
 				content = $(html).find("#filter_pages")
@@ -132,7 +131,8 @@ catalogue =
 		overlay.fadeOut(0).appendTo("#popup")
 
 		var close = $("<div>", {id:"close"})
-		close.css({
+		close.css
+		({
 			display:"block",
 			width:"40px",
 			height:"40px"

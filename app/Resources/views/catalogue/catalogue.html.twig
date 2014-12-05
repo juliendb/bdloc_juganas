@@ -89,7 +89,7 @@
 	
 
 	<div>
-		<a id="{{ book.isbn }}" class="link_detail_book" title="{{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }} ">
+		<a class="link_detail_book" title="{{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }} ">
 			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 		</a>
 		

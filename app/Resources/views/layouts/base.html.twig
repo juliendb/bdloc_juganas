@@ -5,36 +5,72 @@
         <title>{% block title %}Bdloc !{% endblock %}</title>
 
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset("css/reset.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/bootstrap.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/bootstrap-theme.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/style.css" )}}" type="text/css">
+
+            <link href='http://fonts.googleapis.com/css?family=Oswald:700,300|Open+Sans' rel='stylesheet' type='text/css'>
+
+            <link rel="stylesheet" href="{{ asset("fonts/glyphicons-halflings-regular.woff" )}}" type="text/css">
+
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" type="text/css">
 
     </head>
-    <header>
-         {% include ':layouts:nav.html.twig' %}
-         
-        {% block login %}{% endblock %}
-
-    </header>
+   
     <body>
         
+        <header id="header">
+            <div class="row">
+                <div class="col-xs-1"></div>   
+                
+                <div class="col-xs-3">
+                     <div id="logo">
+                         <img src="{{ asset('img/Logo_grd.png') }}" alt="logo Bdloc">
+                     </div>
+                </div>  
+
+                <div class="col-xs-4">
+                    {% include ':layouts:nav.html.twig' %} 
+                </div>   
+
+
+                <div class="col-xs-3">
+                    <a id="connexion" href="{{ path('bdloc_app_user_login')}}">Se connecter</a>
+                </div>   
+              
+
+            
+                 <div class="col-xs-1"></div>
+            </div>
+        </header>
+
+
         <main>
         {% block main_content %}
            
         {% endblock %}
         </main>
 
-        {% block utils_javascripts %}
-            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+
+        <footer>
+            {% include ':layouts:navfooter.html.twig' %}
+        </footer>
+
+
+
+        {% block common_javascripts %}
+
 
             <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
         {% endblock %}
 
-
         {% block javascripts %}
+
+            
         {% endblock %}
 
     </body>
