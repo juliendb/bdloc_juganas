@@ -17,6 +17,12 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
+use Ivory\GoogleMap\Map;
+use Ivory\GoogleMap\MapTypeId;
+use Ivory\GoogleMap\Overlays\Animation;
+use Ivory\GoogleMap\Overlays\Marker;
+
+
 class SubscribeController extends Controller
 {
     /**
@@ -87,7 +93,81 @@ class SubscribeController extends Controller
      */
     public function deliveryStep2Action()
     {
-        $params = array();
+        $params = array(
+
+        );
+
+
+        //affichage de la google map
+        $map = $this->get('ivory_google_map.map');
+
+        $map = new Map();
+
+        $map->setPrefixJavascriptVariable('map_');
+        $map->setHtmlContainerId('map_canvas');
+
+        $map->setAsync(false);
+        $map->setAutoZoom(false);
+
+        $map->setCenter(0, 0, true);
+        $map->setMapOption('zoom', 3);
+
+        $map->setBound(-2.1, -3.9, 2.6, 1.4, true, true);
+
+        $map->setMapOption('mapTypeId', MapTypeId::HYBRID);
+        $map->setMapOption('mapTypeId', 'hybrid');
+
+        $map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
+        $map->setMapOption('mapTypeId', 'roadmap');
+
+        $map->setMapOption('mapTypeId', MapTypeId::SATELLITE);
+        $map->setMapOption('mapTypeId', 'satellite');
+
+        $map->setMapOption('mapTypeId', MapTypeId::TERRAIN);
+        $map->setMapOption('mapTypeId', 'terrain');
+
+
+
+        $map->setMapOption('disableDefaultUI', true);
+        $map->setMapOption('disableDoubleClickZoom', true);
+        $map->setMapOptions(array(
+            'disableDefaultUI'       => true,
+            'disableDoubleClickZoom' => true,
+        ));
+
+        $map->setStylesheetOption('width', '300px');
+        $map->setStylesheetOption('height', '300px');
+        $map->setStylesheetOptions(array(
+            'width'  => '300px',
+            'height' => '300px',
+        ));
+
+        $map->setLanguage('fr');
+
+
+
+        //print_r($map) ;
+
+        //recuperer les coordonnées
+
+
+        //les afficher sur la map (marker)
+        $marker = new Marker();
+
+        // Configure your marker options
+        $marker->setPrefixJavascriptVariable('marker_');
+        $marker->setPosition(0, 0, true);
+        $marker->setAnimation(Animation::DROP);
+
+        $marker->setOption('clickable', false);
+        $marker->setOption('flat', true);
+        $marker->setOptions(array(
+            'clickable' => false,
+            'flat'      => true,
+        ));
+
+        //zoomer par rapport à l'adress user
+
 
 
         return $this->render("subscription/step_2.html.twig", $params);

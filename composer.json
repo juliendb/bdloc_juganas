@@ -21,7 +21,10 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "paypal/rest-api-sdk-php": "dev-master",
         "kmj/paypalbridgebundle": "dev-master",
-        "willdurand/geocoder-bundle": "@stable"
+        "willdurand/geocoder-bundle": "@stable",    
+        "egeloen/google-map-bundle": "~2.2",    
+        "widop/http-adapter-bundle": "~1.2"
+               
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",

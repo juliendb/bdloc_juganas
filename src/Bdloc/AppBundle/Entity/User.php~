@@ -92,6 +92,20 @@ class User implements UserInterface
     private $city;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=255, nullable = true)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=255, nullable = true)
+     */
+    private $latitude;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="tel", type="smallint")
@@ -455,7 +469,7 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        $this->password = null;
+        //$this->password = null;
     }
 
     /**
@@ -475,4 +489,50 @@ class User implements UserInterface
         $this->setDateModified = new \DateTime();
     }
 
+
+    /**
+     * Set longitude
+     *
+     * @param integer $longitude
+     * @return User
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return integer 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param integer $latitude
+     * @return User
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return integer 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
 }

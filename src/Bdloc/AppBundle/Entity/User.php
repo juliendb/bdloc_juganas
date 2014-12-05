@@ -94,14 +94,14 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="longitude", type="smallint")
+     * @ORM\Column(name="longitude", type="string", length=255, nullable = true)
      */
     private $longitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="smallint")
+     * @ORM\Column(name="latitude", type="string", length=255, nullable = true)
      */
     private $latitude;
 
@@ -469,7 +469,7 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
-        $this->password = null;
+        //$this->password = null;
     }
 
     /**

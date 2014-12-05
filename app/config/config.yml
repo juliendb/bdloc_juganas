@@ -84,3 +84,5 @@ bazinga_geocoder:
 services:
     bd.slugger:
         class: Bdloc\AppBundle\Service\Slugger
+
+

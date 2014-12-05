@@ -9,7 +9,11 @@
             <link rel="stylesheet" href="{{ asset("css/bootstrap.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/bootstrap-theme.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/style.css" )}}" type="text/css">
+
             <link href='http://fonts.googleapis.com/css?family=Oswald:700,300|Open+Sans' rel='stylesheet' type='text/css'>
+
+            <link rel="stylesheet" href="{{ asset("fonts/glyphicons-halflings-regular.woff" )}}" type="text/css">
+
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" type="text/css">
@@ -17,7 +21,7 @@
     </head>
    
     <body>
-<<<<<<< HEAD
+
         <header id="header">
             <div class="row">
                 <div class="col-xs-1"></div>   
@@ -43,14 +47,11 @@
             </div>
         </header>
 
-=======
-        
->>>>>>> a809ee65495fb84e7fc7003c06e1aa98f1e870b8
+
         {% block main_content %}
            
         {% endblock %}
 
-<<<<<<< HEAD
 
         <footer>
             {% include ':layouts:navfooter.html.twig' %}
@@ -65,16 +66,14 @@
 
 
         {% block javascripts %}
-=======
-        {% block utils_javascripts %}
->>>>>>> a809ee65495fb84e7fc7003c06e1aa98f1e870b8
+
+
             <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
             <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        {% endblock %}
 
+            <script type="text/javascript" src="{{ asset('js/address.js') }}"></script>
 
-        {% block javascripts %}
         {% endblock %}
 
     </body>
