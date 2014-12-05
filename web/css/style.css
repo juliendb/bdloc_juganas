@@ -105,7 +105,6 @@ a.subscribe {
 *****************************************
 ****************************************/
 #footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   margin-top: 50px;
@@ -133,4 +132,40 @@ a.subscribe {
 #copyright p {
   font: 300 0.8em Oswald;
   color: #999;
+}
+/****************************************
+*****************************************
+************** SUBSCRIBE ****************
+*****************************************
+****************************************/
+.step1 {
+  position: relative;
+  margin: 101px auto 40px;
+  text-align: center;
+}
+.step1 li {
+  display: inline-block;
+  height: 55px;
+  margin-right: 5px;
+  padding: 0 15px 0 15px;
+  background-color: #e90000;
+  font: 700 0.9em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 53px;
+}
+.info li position relative::before {
+  content: "";
+  position: absolute;
+  left: 127px;
+  border-left: 10px solid transparent;
+  border-bottom: 55px solid #e90000;
+}
+.info li position relative::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  border-right: 10px solid transparent;
+  border-top: 55px solid #e90000;
 }

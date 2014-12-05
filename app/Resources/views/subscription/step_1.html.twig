@@ -7,15 +7,18 @@
 {# contenu du body #}
 
 {% block main_content %}
-    <h1>S'abonner</h1>
     
-    <ul class="stepsRegister">
-    	<li>1. Infos personnelles > </li>
-    	<li class="disable">2. Points relais > </li>
-    	<li class="disable">3. Paiement </li>
-    </ul>
 
-<div class="row clearfix">
+    <div class="step1">
+        <ul class="stepsRegister">
+        	<li class="info">1. Infos personnelles</li>
+        	<li class="relais" class="disable">2. Points relais</li>
+        	<li class="paiement" class="disable">3. Paiement</li>
+        </ul>
+    </div>
+
+<div class="clearfix"> </div>
+<div class="row">
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4">{{ form( registerForm ) }}</div>
 	<div class="col-xs-4"></div>
