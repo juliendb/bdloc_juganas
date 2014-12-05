@@ -93,9 +93,7 @@ class SubscribeController extends Controller
      */
     public function deliveryStep2Action()
     {
-        $params = array(
-
-        );
+        $params = array();
 
 
         //affichage de la google map
@@ -107,12 +105,12 @@ class SubscribeController extends Controller
         $map->setHtmlContainerId('map_canvas');
 
         $map->setAsync(false);
-        $map->setAutoZoom(false);
+        $map->setAutoZoom(true);
 
-        $map->setCenter(0, 0, true);
-        $map->setMapOption('zoom', 3);
+        $map->setCenter(0, 0, false);
+        $map->setMapOption('zoom', 5);
 
-        $map->setBound(-2.1, -3.9, 2.6, 1.4, true, true);
+        $map->setBound(-2.1, -3.9, 2.6, 1.4, false, false);
 
         $map->setMapOption('mapTypeId', MapTypeId::HYBRID);
         $map->setMapOption('mapTypeId', 'hybrid');
@@ -135,18 +133,12 @@ class SubscribeController extends Controller
             'disableDoubleClickZoom' => true,
         ));
 
-        $map->setStylesheetOption('width', '300px');
-        $map->setStylesheetOption('height', '300px');
-        $map->setStylesheetOptions(array(
-            'width'  => '300px',
-            'height' => '300px',
-        ));
+        $map->setStylesheetOption('width', '600px');
+        $map->setStylesheetOption('height', '400px');
+
 
         $map->setLanguage('fr');
 
-
-
-        //print_r($map) ;
 
         //recuperer les coordonnées
 
@@ -169,7 +161,7 @@ class SubscribeController extends Controller
         //zoomer par rapport à l'adress user
 
 
-
+        $params["map"] = $map;
         return $this->render("subscription/step_2.html.twig", $params);
     }
 
