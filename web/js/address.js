@@ -40,10 +40,9 @@ app = {
 
  		google.maps.event.addListener(autocomplete, 'place_changed', function() { 
 
-			var place = autocomplete.getPlace();
+			var place = autocomplete.getPlace()
 
       		var val = place.address_components[6].short_name
-      		console.log(place.address_components)
       		$("#bdloc_appbundle_user_postalCode").val(val)
 
 

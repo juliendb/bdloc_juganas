@@ -29,8 +29,8 @@ class BookRepository extends EntityRepository
 	// select un livre par isbn
 	public function selectBookByIsbn($isbn)
 	{
-		$query = $this->getEntityManager()->createQueryBuilder()
-			->select('b')
+		$query = $this->getEntityManager()->createQueryBuilder("b")
+			->addSelect('b')
 			->from('BdlocAppBundle:Book', 'b')
 			->where('b.isbn = :isbn')
 			->setParameter('isbn', $isbn)
@@ -167,19 +167,33 @@ class BookRepository extends EntityRepository
 		$results = ($params["page"]-1)* $params["limit"];
 
 
-		$query = $this->getEntityManager()->createQueryBuilder();
-		$query
-			->select('b')
-			->from('BdlocAppBundle:Book', 'b');
+		$query = $this
+			->createQueryBuilder("b")
+			->addSelect('b')
+			->join("b.illustrator", "il")
+			->join("b.scenarist", "sc")
+			->join("b.colorist", "co")
+			->join("b.serie", "s")
+			->addSelect("il,sc,co,s");
+
+		
+
+		// genres
+		if ( !empty($params['genres']) )
+		{
+			for($i=0; $i<count($params['genres']); $i++)
+			{
+				$query
+					->orWhere('s.style = :genre'.$i)
+					->setParameter('genre'.$i, $params['genres'][$i]);
+			}
+		}
 
 
 		// auteur
 		if ( !empty($params['author']) )
 		{
 			$query
-				->join("b.illustrator", "il")
-				->join("b.scenarist", "sc")
-				->join("b.colorist", "co")
 				->andWhere(
 					$query->expr()->orX
 					(
@@ -193,16 +207,16 @@ class BookRepository extends EntityRepository
 		}
 
 
-
-
 		$query
 			->setFirstResult($results)
 			->setMaxResults($params["limit"]);
 
 		// order
-		if ($params["order"] === "ASC") $query->orderBy('b.title', 'ASC');
-		if ($params["order"] === "DESC") $query->orderBy('b.title', 'DESC');
+		if ($params["order"] === "ASC") $query->addOrderBy('b.title', 'ASC');
+		if ($params["order"] === "DESC") $query->addOrderBy('b.title', 'DESC');
 		
+
+
 		return new Paginator($query);
 	}
 

@@ -63,6 +63,20 @@ class DeliveryPoints
      */
     private $dateModified;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longitude", type="string", length=255, nullable = true)
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="latitude", type="string", length=255, nullable = true)
+     */
+    private $latitude;
+
 
     /**
      * Get id
@@ -211,5 +225,52 @@ class DeliveryPoints
     public function getDateModified()
     {
         return $this->dateModified;
+    }
+
+
+    /**
+     * Set longitude
+     *
+     * @param integer $longitude
+     * @return User
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return integer 
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set latitude
+     *
+     * @param integer $latitude
+     * @return User
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return integer 
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
     }
 }
