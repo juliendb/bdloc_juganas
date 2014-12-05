@@ -2,42 +2,83 @@
 
 {% block title %}Bdloc | Accueil {% endblock %}
 
-{% block main_content %}
-    
+{% block main_content %} 
+
+
+
+
 
 
 <nav>
-	{% if pagination.page > 1 %}
-		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page-1) }) }} ">page précédente</a>
-	{% endif %}
 	
-	{% if pagination.page < pagination.pages %}
-		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page+1) }) }} ">page suivante</a>
-	{% endif %}
+	<div id="filter_cats">
+
+		{% for categorie in categories %}
+			<input type="checkbox" name="category" value="{{ categorie.style }}">
+			<label>{{ categorie.style }}</label>
+		{% endfor %}
+
+		<input type="submit" value="filtrer">
+		
+	</div>
+
+
+	<div id="filter_pages">
+		
+		<select name="order_pages">
+			<option value="book_title_asc">livre alphabetique</option>
+			<option value="book_title_desc">livre alphabetique inversée</option>
+			<option value="style_asc">genre alphabetique</option>
+			<option value="style_desc">genre alphabetique inversée</option>
+		</select>
+
+		<select name="limit_pages">
+			
+		</select>
+			
+		</select>
+		{% for i in 5..50 %}
+				{{ i }}
+			{% endfor %}
+
+		{% if pagination.page > 1 %}
+			<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page-1) }) }} ">page précédente</a>
+		{% endif %}
+		
+		{% if pagination.page < pagination.pages %}
+			<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': (pagination.page+1) }) }} ">page suivante</a>
+		{% endif %}
+		
+
+
+		{# affiche page 1 et dernière page #}
+		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': 1 }) }} ">page 1</a>
+		<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': pagination.pages }) }} ">page {{ pagination.pages }}</a>
+		
+		{# affiche ex 11 / 18 à voir demain #}
+		<p># {{ (pagination.page-1)*pagination.limit +1 }} à </p>
+
+		{% if pagination.page == pagination.pages %}
+			<p>{{ pagination.total }}</p>
+		{% else %}
+			<p>{{ (pagination.page*pagination.limit) }}</p>
+		{% endif %}
+
+		<p>sur {{ pagination.total }} BD</p>
+
+	</div>
 	
-
-
-	{# affiche page 1 et dernière page #}
-	<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': 1 }) }} ">page 1</a>
-	<a href=" {{ path('bdloc_app_catalogue_catalogueall', { 'page': pagination.pages }) }} ">page {{ pagination.pages }}</a>
-	
-	{# affiche ex 11 / 18 à voir demain #}
-	<p># {{ (pagination.page-1)*pagination.limit +1 }} à </p>
-
-	{% if pagination.page == pagination.pages %}
-		<p>{{ pagination.total }}</p>
-	{% else %}
-		<p>{{ (pagination.page*pagination.limit) }}</p>
-	{% endif %}
-
-	<p>sur {{ pagination.total }} BD</p>
 </nav>
 
 
+
+
 {% for book in books %}
+	
+	<div id="popup"></div>
 
 	<div>
-		<a href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }} ">
+		<a id="{{ book.isbn }}" class="link_detail_book" title="{{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }} ">
 			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 		</a>
 		
@@ -58,11 +99,16 @@
 
 		
 
-		<a href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+		<a class="link_detail_book" title="{{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
 		<a href="">ajouter au panier</a>
 	</div>
 {% endfor %}
 
 
 
+{% endblock %}
+
+
+{% block javascripts %}
+	 <script type="text/javascript" src="{{ asset('js/catalogue.js') }}"></script>
 {% endblock %}
