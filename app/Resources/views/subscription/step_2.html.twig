@@ -7,17 +7,26 @@
 {# contenu du body #}
 
 {% block main_content %}
+
+
     <h1>S'abonner</h1>
     <ul class="stepsRegister">
     	<li><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a> > </li>
     	<li class="">2. Points relais > </li>
     	<li class="disable">3. Paiement </li>
     </ul>
-<div class="clearfix"></div>
+	<div class="clearfix"></div>
+
+
+	<div id="map">
+		{{ google_map_container(map) }}
+		{{ google_map_css(map) }}
+		{{ google_map_js(map) }}
+	    		
+	</div>
 
 
 
-    
 {% endblock %}
 
 
