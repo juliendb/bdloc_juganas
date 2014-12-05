@@ -15,13 +15,21 @@ use Bdloc\AppBundle\Entity\Author;
 
 
 
+
+
 class CatalogueController extends Controller
 {
+
+
+    
     /**
-     * @Route("/catalogue/{page}", defaults={"page"=1})
+     * @Route("/catalogue/{page}/{limit}/{order}", defaults={"page"=1,"limit"=20, "order"="ASC"})
      */
-    public function catalogueAllAction($page = 1)
+    public function catalogueAllAction($page, $limit, $order)
     {
+        //$slugger = $this->get("bd.slugger");
+
+
     	$params = array();
 
 
@@ -29,19 +37,21 @@ class CatalogueController extends Controller
 
 
         $pagination["page"] = $page;
-        $pagination["limit"] = 5;
-        $pagination["order"] = "ASC";
-        $pagination['author'] = "Rosinski";
+        $pagination["limit"] = $limit;
+        $pagination["order"] = $order;
+        //$pagination['author'] = "Rosinski";
         
         $books = $repoBook->selectBooksByPagination($pagination);
+        $categories = $repoBook->selectCategories();
 
         // total nombre bd
-        $pagination['pages'] = $books->count();
-        $pagination['total'] = ceil($books->count() / $pagination["limit"]);
+        $pagination['total'] = $books->count();
+        $pagination['pages'] = ceil($pagination['total'] / $pagination["limit"]);
 
 
     	$params["books"] = $books;
         $params["pagination"] = $pagination;
+        $params["categories"] = $categories;
 
 
         return $this->render("catalogue/catalogue.html.twig", $params);
@@ -50,20 +60,22 @@ class CatalogueController extends Controller
 
 
     /**
-     * @Route("/catalogue/detail/{isbn}")
+     * @Route("/livre/detail/{isbn}")
      */
     public function viewBookAction($isbn)
     {
+        //2878271734 tome 6
+        //9782878271737 tome 7
+
         $params = array();
 
-
+        
         $repoBook = $this->getDoctrine()->getRepository("BdlocAppBundle:Book");
         $book = $repoBook->selectBookByIsbn($isbn);
 
 
         $params["book"] = $book;
-
-
+        
         return $this->render("catalogue/view_book.html.twig", $params);
     }
 }

@@ -22,12 +22,15 @@ app = {
 
 		var componentForm = {
 		  bdloc_appbundle_user_adress: 'long_name',
-		  bdloc_appbundle_user_postalCode: 'short_name'
+		  bdloc_appbundle_user_postalCode: 'short_name',
+		  bdloc_appbundle_user_longitude: 'long_name',
+		  bdloc_appbundle_user_latitude: 'long_name'
 		};
 
 		// Paramètres
 		var options = {
-			types: ['address'],
+			//types: ['address'],
+			type: ['geocode'],
 			componentRestrictions: {
 				country: 'fr'
 			}
@@ -43,36 +46,36 @@ app = {
 			var place = autocomplete.getPlace()
 
 			var val = place.address_components[6].short_name
+			console.log(place.address_components)
 			$("#bdloc_appbundle_user_postalCode").val(val)
+
+			if (navigator.geolocation) {
+			    var geoloc = navigator.geolocation.getCurrentPosition(function(position){
+			    	var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			      	autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,    geolocation));
+			    });
+			    //console.log(geolocation);
+			}
+
 
 		})
 
-	  	if (navigator.geolocation) {
-	    	navigator.geolocation.getCurrentPosition(function(position) {
-	      	var geolocation = new google.maps.LatLng(
-	          position.coords.latitude, position.coords.longitude);
-	      	autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
-	          geolocation));
-	    });
+
 
 
 	},
 
 	dataSave: function(){
 		//console.log("toto")
+
 		var formData = JSON.stringify(jQuery($(this)).serializeArray())
 		console.log(sessionStorage.getItem("dataAboStep1"))
 		sessionStorage.setItem("dataAboStep1", formData)
 		console.log("toto")
-
-
-
-		//return false
+		
+		//sessionStorage.getItem("dataAboStep1",geoloc )
+		return false
 	}
-
-
-
-
 }
 
 

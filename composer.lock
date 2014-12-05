@@ -1927,16 +1927,19 @@
             "time": "2014-11-29 10:12:05"
         }
     ],
-    "aliases": [],
+    "aliases": [
+
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "paypal/rest-api-sdk-php": 20,
         "kmj/paypalbridgebundle": 20,
         "willdurand/geocoder-bundle": 0
     },
-    "prefer-stable": false,
     "platform": {
         "php": ">=5.3.3"
     },
-    "platform-dev": []
+    "platform-dev": [
+
+    ]
 }

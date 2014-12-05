@@ -61,7 +61,7 @@ array_pop($dropPoints);
 
 
 // ca va me servir a remplir en cascade
-$allDropPoints = array();
+$data = array();
 
 
 foreach($dropPoints as $dropPoint)
@@ -70,21 +70,10 @@ foreach($dropPoints as $dropPoint)
 	$expl = explode(" - ", $dropPoint);
 
 	
-	// bam badaboum j'injecte a chaque boucle dans allDropPoints
+	// bam badaboum j'injecte a chaque boucle dans data
 	// ps tu changes les noms array associatif si tu veux
-	$allDropPoints[] = array(
-		"name"			=> $expl[0],
-		"address"		=> $expl[1],
-		"postal"		=> $expl[2],
-		"city"			=> 'Paris'
-	);
+	$data[] = array($expl[0],$expl[1],$expl[2],'Paris');
 }
-
-
-// ben j'affiche quoi
-print_r($allDropPoints);
-
-// si tu veux on verra ensemble quel est le mieux pour injecter dans la table ensuite non ?
 
 
 

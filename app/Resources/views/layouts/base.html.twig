@@ -17,6 +17,7 @@
     </head>
    
     <body>
+<<<<<<< HEAD
         <header id="header">
             <div class="row">
                 <div class="col-xs-1"></div>   
@@ -42,10 +43,14 @@
             </div>
         </header>
 
+=======
+        
+>>>>>>> a809ee65495fb84e7fc7003c06e1aa98f1e870b8
         {% block main_content %}
            
         {% endblock %}
 
+<<<<<<< HEAD
 
         <footer>
             {% include ':layouts:navfooter.html.twig' %}
@@ -60,11 +65,16 @@
 
 
         {% block javascripts %}
+=======
+        {% block utils_javascripts %}
+>>>>>>> a809ee65495fb84e7fc7003c06e1aa98f1e870b8
             <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 
             <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        {% endblock %}
 
-            <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+        {% block javascripts %}
         {% endblock %}
 
     </body>
