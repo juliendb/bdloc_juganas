@@ -22,8 +22,8 @@ header nav a {
   text-transform: uppercase;
   margin-right: 5px;
 }
-header nav a:before {
-  content: e 8;
+#connexion::before {
+  content: "\e008";
 }
 #header #connexion {
   display: block;
