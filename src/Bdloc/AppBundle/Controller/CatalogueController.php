@@ -27,10 +27,34 @@ class CatalogueController extends Controller
      */
     public function catalogueAllAction($page, $limit, $order)
     {
-        //$slugger = $this->get("bd.slugger");
-
-
     	$params = array();
+
+
+        //$slugger = $this->get("bd.slugger");
+        if ( !empty($_POST["category"]) )
+        {
+            $genres = $_POST["category"];
+            $pagination["genres"] = $genres;
+
+            $page = 1;
+        }
+
+
+        
+        // select pagination
+        if ( !empty($_POST["order_pages"]) ) $order = $_POST["order_pages"];
+        if ( !empty($_POST["limit_pages"]) ) $limit = $_POST["limit_pages"];
+
+        if ( !empty($_POST["order_pages"]) || !empty($_POST["limit_pages"]) )
+        {
+            $params["order"] = $order;
+            $params["page"] = $page;
+            $params["limit"] = $limit;
+
+            $url = $this->generateUrl('bdloc_app_catalogue_catalogueall', $params);
+            return $this->redirect($url);
+        }
+
 
 
     	$repoBook = $this->getDoctrine()->getRepository("BdlocAppBundle:Book");
@@ -40,7 +64,7 @@ class CatalogueController extends Controller
         $pagination["limit"] = $limit;
         $pagination["order"] = $order;
         //$pagination['author'] = "Rosinski";
-        
+
         $books = $repoBook->selectBooksByPagination($pagination);
         $categories = $repoBook->selectCategories();
 
