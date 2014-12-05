@@ -6,7 +6,14 @@
 
 
 {% block main_content %}
-    <h1>Bdloc !</h1>
-	<a class="btn btn-primary btn-lg" href="{{ path('bdloc_app_subscribe_registerstep1')}}">S'abonner à BdLoc</a>
-     
+	<div class="col-xs-1"></div>
+
+    <div  id="location" class="col-xs-10">
+    	<h1>Louer ses bd préférées</h1>
+		<h2>12 € par mois</h2>
+		<p>10 bd par abonné</p>
+    
+		<a class="subscribe" href="{{ path('bdloc_app_subscribe_registerstep1')}}">Je m'abonne</a>
+    </div>
+    <div class="col-xs-1"></div>
 {% endblock %}
