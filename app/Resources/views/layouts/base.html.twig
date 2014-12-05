@@ -50,13 +50,26 @@
 
         <main>
         {% block main_content %}
+            
+
+
            
         {% endblock %}
         </main>
 
 
-        <footer>
-            {% include ':layouts:navfooter.html.twig' %}
+        <footer id="footer">
+            <div id="nav">
+                {% include ':layouts:navfooter.html.twig' %}
+            </div>
+
+            <div id="petitlogo">
+                <img src="{{ asset('img/logo_pt.png') }}" alt="logo_bdloc_petit">
+            </div>
+
+            <div id="copyright">
+                <p>©{{ "now"|date("Y") }} BDLOCJUGANAS</p>
+            </div> 
         </footer>
 
 
