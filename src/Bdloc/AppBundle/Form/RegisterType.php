@@ -16,27 +16,27 @@ class RegisterType extends AbstractType
     {
         $builder
             ->add('firstname', 'text', array(
-                "label" => "Votre prénom *"
+                "label" => false,
                 //"required" => false
             ))
             ->add('name', 'text', array(
-                "label" => "Votre nom *"
+                "label" => false,
             ))
             ->add('email', 'email', array(                
-                "label" => "Votre email *"
+                "label" => false,
             ))
             ->add('password', 'repeated', array(
                 'type' => 'password',
                 'invalid_message' => 'Les mots de passe doivent correspondre',
                 'options' => array('required' => true),
-                'first_options'  => array('label' => 'Mot de passe *'),
-                'second_options' => array('label' => 'Mot de passe (validation) *'),
+                'first_options'  => array('label' => false),
+                'second_options' => array('label' => false),
             ))
             ->add('adress', 'text', array(                
-                "label" => "Votre adresse *"
+                "label" => false,
             ))
             ->add('postalCode', 'number', array(                
-                "label" => "Votre code postal *"
+                "label" => false,
             ))
 /*            ->add('city', 'text', array(             
                 'options' => array('disabled' => true)
@@ -46,15 +46,15 @@ class RegisterType extends AbstractType
             ->add('latitude', 'hidden', array())
 
             ->add('tel', 'number', array(                
-                "label" => "Votre téléphone"
+                "label" => false,
             ))
 
 
 
             ->add('submit','submit', array(                
-                "label" => "Suivant",
+                "label" => 'valider',
                 "attr" => array(
-                    "class" => "btn"
+                    "class" => "valider"
                 )
             ));
     }

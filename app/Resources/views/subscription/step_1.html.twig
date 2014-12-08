@@ -8,7 +8,7 @@
 
 {% block main_content %}
     
-
+<div id="abonnement">
     <div class="steps">
         <ul class="stepsRegister">
         	<li class="tab on tab1">1. Infos personnelles</li>
@@ -18,19 +18,52 @@
     </div>
 
 <div class="clearfix"> </div>
-<div class="row">
-	<div class="col-xs-4"></div>
-	<div class="col-xs-4">
+ {{ form_start(registerForm) }}
+    <div id="formRegister">
+        <div class="champs">
+       
+            {{ form_row(registerForm.firstname,  { 'attr':{'placeholder': 'Votre nom', 'class': 'champ_class'}}) }}
+        </div>
 
+        <div class="champs">
+        
+            {{ form_row(registerForm.name,  { 'attr': {'placeholder': 'Votre prénom', 'class': 'champ_class'}}) }}
+        </div>
 
-    {{ form( registerForm ) }}
+        <div class="champs">
+            {{ form_row(registerForm.email,  { 'attr': {'placeholder': 'Votre email', 'class': 'champ_class'}}) }} 
+        </div> 
+        
+        <div class="champs">
+            {{ form_row(registerForm.tel,  { 'attr': {'placeholder': 'Votre téléphone', 'class': 'champ_class'}}) }} 
+        </div>
 
+        <div class="champs">
+            {{ form_row(registerForm.name,  { 'attr': {'placeholder': 'Votre prénom', 'class': 'champ_class'}}) }} 
+        </div>
 
+        <div class="champs">
+            {{ form_row(registerForm.password.first,  { 'attr': {'placeholder': 'Votre mot de passe', 'class': 'champ_class'}}) }}
+        </div>
+        
+        <div class="champs">
+            {{ form_row(registerForm.password.second,  { 'attr': {'placeholder': 'Vérifier votre mot de passe', 'class': 'champ_class'}}) }}
+        </div>
 
-    
+        <div class="champs">
+            {{ form_row(registerForm.adress,  { 'attr': {'placeholder': 'Votre adresse', 'class': 'champ_class'}}) }}
+        </div>
+
+        <div class="champs">
+            {{ form_row(registerForm.postalCode,  { 'attr': {'placeholder': 'Votre code postal', 'class': 'champ_class'}}) }}
+        </div>
+
+        {{ form_row(registerForm.submit,  { 'attr': {'name': 'Valider', 'class': 'valider'}}) }}
+
     </div>
-	
-    <div class="col-xs-4"></div>
+ {{ form_end(registerForm) }}
+
+    <div id="halo"></div>
 </div>
 {% endblock %}
 
