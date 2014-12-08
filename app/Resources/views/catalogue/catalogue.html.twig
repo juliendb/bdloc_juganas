@@ -70,12 +70,12 @@
 
 		{% if pagination.page > 1 %}
 			{% set url = { 'page': pagination.page-1 }|merge(params) %}
-			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="page précédente">page précédente</a>
+			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page précédente">page précédente</a>
 		{% endif %}
 		
 		{% if pagination.page < pagination.pages %}
 			{% set url = { 'page': pagination.page+1 }|merge(params) %}
-			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="page suivante">page suivante</a>
+			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page suivante">page suivante</a>
 		{% endif %}
 		
 
@@ -83,9 +83,9 @@
 		{# affiche page 1 et dernière page si il y a #}
 		{% if pagination.pages > 1 %}
 			{% set url = { 'page': 1 }|merge(params) %}
-			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="page 1">page 1</a>
+			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page 1">page 1</a>
 			{% set url = { 'page': pagination.pages }|merge(params) %}
-			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="page {{ pagination.pages }}">page {{ pagination.pages }}</a>
+			<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page {{ pagination.pages }}">page {{ pagination.pages }}</a>
 		{% endif %}
 		
 		{# affiche ex 11 / 18 à voir demain #}
@@ -115,7 +115,7 @@
 	
 
 	<div>
-		<a class="link_detail_book" title="détail du livre {{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
+		<a class="link_detail_book" title="Détail du livre {{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
 			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 		</a>
 		
@@ -138,8 +138,8 @@
 
 		
 
-		<a class="link_detail_book" title="détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
-		<a href="">ajouter au panier</a>
+		<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+		<a href="" title="Ajouter au panier">ajouter au panier</a>
 	</div>
 {% endfor %}
 
