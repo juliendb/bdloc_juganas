@@ -85,9 +85,3 @@ services:
     bd.catalogue:
         class: Bdloc\AppBundle\Service\Catalogue
 
-
-ivory_google_map:
-    info_window:
-        helper_class: Ivory\GoogleMap\Helper\Overlays\InfoBoxHelper
-    extensions:
-        info_box: ivory_google_map.helper.extension.info_box

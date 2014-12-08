@@ -38,8 +38,15 @@
                 </div>   
 
 
-                <div class="col-xs-3">
-                    <a id="connexion" href="{{ path('bdloc_app_user_login')}}">Se connecter</a>
+				<div class="col-xs-3">
+					{% if app.user %}
+						<p>Bonjour {{ app.user.username }}</p>
+						<a href="{{ path('logout') }}">Se déconnecter</a>
+					{% else %}
+						<p>Bonjour toi inconnu !</p>
+						<a id="connexion" href="{{ path('bdloc_app_user_login')}}">Se connecter</a>
+					{% endif %}
+
                 </div>   
               
 

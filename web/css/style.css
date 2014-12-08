@@ -136,7 +136,7 @@ a.subscribe {
 }
 /****************************************
 *****************************************
-************** SUBSCRIBE ****************
+************** SUBSCRIBE  ****************
 *****************************************
 ****************************************/
 .steps {
@@ -217,4 +217,68 @@ a.subscribe {
   cursor: pointer;
   opacity: 0.6;
   transition-duration: 0.2s;
+}
+/****************************************
+*****************************************
+********** Register form ****************
+*****************************************
+****************************************/
+#formRegister {
+  width: 701px;
+  margin: auto;
+}
+#formRegister .champs {
+  float: left;
+  width: 335px;
+  margin-right: 10px;
+}
+#formRegister .champs ::-webkit-input-placeholder {
+  color: #222;
+  text-transform: uppercase;
+}
+#formRegister .champs input[type='text'] {
+  color: #222;
+  text-transform: uppercase;
+}
+.form-control:focus {
+  border-color: #e90000;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(233,0,0,0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(233,0,0,0.6);
+}
+.valider {
+  background-color: #e90000;
+  height: 39px;
+  font: 700 0.9em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-left: 42%;
+}
+.valider:hover {
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.6;
+  transition-duration: 0.2s;
+}
+#abonnement {
+  position: relative;
+}
+#halo {
+  position: absolute;
+  margin: 0 auto;
+  z-index: -10;
+  height: 804px;
+  width: 1303px;
+  background: url("../img/halo.png");
+  top: -182px;
+  left: 14%;
+}
+/****************************************
+*****************************************
+********** Step points relais  **********
+*****************************************
+****************************************/
+#map {
+  position: relative;
 }

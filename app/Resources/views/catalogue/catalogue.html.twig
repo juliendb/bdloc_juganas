@@ -20,7 +20,7 @@
 			{% for genre in genres %}
 				
 
-				<div class="form-group">
+				<div class="genres" class="form-group">
 					<input type="checkbox" name="genres[]" value="{{ genre.style }}"
 						{% for page_genre in pagination.genres %}
 							{% if page_genre == genre.style %}checked{% endif %}
@@ -89,15 +89,18 @@
 		{% endif %}
 		
 		{# affiche ex 11 / 18 à voir demain #}
-		<p># {{ (pagination.page-1)*pagination.limit +1 }} à </p>
-
+		{% set val = ("# " ~ ((pagination.page-1)*pagination.limit+1) ~ " à ") %}
+		
 		{% if pagination.page == pagination.pages %}
-			<p>{{ pagination.total }}</p>
+			{% set val = val ~ pagination.total %}
 		{% else %}
-			<p>{{ (pagination.page*pagination.limit) }}</p>
+			{% set val = val ~ (pagination.page*pagination.limit) %}
 		{% endif %}
+		
+		{% set val = val ~ " sur " ~ pagination.total ~ " BD" %}
 
-		<p>sur {{ pagination.total }} BD</p>
+
+		<p>{{ val }}</p>
 
 	</div>
 	
@@ -112,7 +115,7 @@
 	
 
 	<div>
-		<a class="link_detail_book" title="{{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
+		<a class="link_detail_book" title="détail du livre {{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
 			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 		</a>
 		
@@ -135,7 +138,7 @@
 
 		
 
-		<a class="link_detail_book" title="{{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+		<a class="link_detail_book" title="détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
 		<a href="">ajouter au panier</a>
 	</div>
 {% endfor %}
