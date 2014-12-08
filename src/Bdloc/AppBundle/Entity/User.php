@@ -119,7 +119,6 @@ class User implements UserInterface
      */
     private $idPaypal;
 
-
     /**
      * @var \DateTime
      *
