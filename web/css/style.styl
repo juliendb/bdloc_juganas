@@ -1,6 +1,10 @@
 
 red = #e90000
 white = #fff
+coloron = #e90000
+coloroff = #444444
+colorok = #9D0C0C
+
 
 
 
@@ -176,40 +180,83 @@ a.subscribe
 ****************************************/
 
 
-.step1
+.steps
 	position relative
 	margin 101px auto 40px
 	text-align center
 
-	li
+	.tab		
+		position relative
 		display inline-block
 		height 55px
-		margin-right 5px
+		margin-right 15px
 		padding 0 15px 0 15px		
 		background-color red
 		font 700 0.9em Oswald
 		letter-spacing 0.07em
 		text-transform uppercase
-		color white
 		line-height 53px
-		
-.info
-	li
-		position relative
-			&::before
-				content ""
-				position absolute
-				left 127px
-				border-left 10px solid transparent
-				border-bottom 55px solid red
-			&::after
-				content ""
-				position absolute
-				right -10px
-				border-right 10px solid transparent
-				border-top 55px solid red
+	
+		&::before
+			content ""
+			position absolute
+			border-left 10px solid transparent
+			border-bottom 55px solid red
+		&::after
+			content ""
+			position absolute
+			border-right 10px solid transparent
+			border-top 55px solid red
+		a
+			color white
+			text-decoration none
 				
+.tab1
+	&::before
+		left -10px
+	&::after
+		right -10px
+
+.tab2
+	&::before
+		left -10px
+	&::after
+		right -10px
+
+.tab3
+	&::before
+		left -10px
+	&::after
+		right -10px
+
+.steps
+	.on
+		text-shadow 1px 1px 1px #c01616
 		
+	
+.steps	
+	.off
+		background-color coloroff
+		color #666666
+		&::before
+			border-bottom 55px solid coloroff
+		&::after
+			border-top 55px solid coloroff
+			
+.steps	
+	.ok
+		background-color colorok
+		color white
+		&::before
+			border-bottom 55px solid colorok
+		&::after
+			border-top 55px solid colorok
+
+		&:hover
+			cursor pointer
+			opacity 0.6
+			transition-duration 0.2s
+
 
 	
 
