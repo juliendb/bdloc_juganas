@@ -28,7 +28,8 @@ class CatalogueController extends Controller
     public function catalogueAllAction($page, $limit, $choice, $order, $genres)
     {
     	$params = array();
-        
+
+
 
 		$params["page"] = $page;
 		$params["limit"] = $limit;
