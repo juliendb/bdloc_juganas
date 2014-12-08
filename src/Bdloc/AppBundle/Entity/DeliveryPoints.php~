@@ -38,7 +38,7 @@ class DeliveryPoints
     /**
      * @var integer
      *
-     * @ORM\Column(name="postalCode", type="smallint")
+     * @ORM\Column(name="postalCode", type="string", length=6)
      */
     private $postalCode;
 

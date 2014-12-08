@@ -134,6 +134,30 @@ class User implements UserInterface
     private $dateModified;
 
 
+
+
+
+
+   /**
+    *
+    * @ORM\OneToMany(targetEntity="CreditCard", mappedBy="user")
+    */
+    private $creditcards;
+
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Cart", mappedBy="user")
+     * @ORM\JoinColumn(nullable = false)
+     */
+    private $carts;
+
+
+
+
+
+
     /**
      * Get id
      *
@@ -534,5 +558,79 @@ class User implements UserInterface
     public function getLatitude()
     {
         return $this->latitude;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->creditcards = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->carts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add creditcards
+     *
+     * @param \Bdloc\AppBundle\Entity\CreditCard $creditcards
+     * @return User
+     */
+    public function addCreditcard(\Bdloc\AppBundle\Entity\CreditCard $creditcards)
+    {
+        $this->creditcards[] = $creditcards;
+
+        return $this;
+    }
+
+    /**
+     * Remove creditcards
+     *
+     * @param \Bdloc\AppBundle\Entity\CreditCard $creditcards
+     */
+    public function removeCreditcard(\Bdloc\AppBundle\Entity\CreditCard $creditcards)
+    {
+        $this->creditcards->removeElement($creditcards);
+    }
+
+    /**
+     * Get creditcards
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCreditcards()
+    {
+        return $this->creditcards;
+    }
+
+    /**
+     * Add carts
+     *
+     * @param \Bdloc\AppBundle\Entity\Cart $carts
+     * @return User
+     */
+    public function addCart(\Bdloc\AppBundle\Entity\Cart $carts)
+    {
+        $this->carts[] = $carts;
+
+        return $this;
+    }
+
+    /**
+     * Remove carts
+     *
+     * @param \Bdloc\AppBundle\Entity\Cart $carts
+     */
+    public function removeCart(\Bdloc\AppBundle\Entity\Cart $carts)
+    {
+        $this->carts->removeElement($carts);
+    }
+
+    /**
+     * Get carts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCarts()
+    {
+        return $this->carts;
     }
 }
