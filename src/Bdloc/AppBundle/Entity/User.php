@@ -159,6 +159,15 @@ class User implements UserInterface
 
 
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="DeliveryPoints", mappedBy="user")
+     * @ORM\JoinColumn(nullable = false)
+     */
+    private $mydelivery;
+
+
+
 
 
 
@@ -636,5 +645,38 @@ class User implements UserInterface
     public function getCarts()
     {
         return $this->carts;
+    }
+
+    /**
+     * Add mydelivery
+     *
+     * @param \Bdloc\AppBundle\Entity\DeliveryPoints $mydelivery
+     * @return User
+     */
+    public function addMydelivery(\Bdloc\AppBundle\Entity\DeliveryPoints $mydelivery)
+    {
+        $this->mydelivery[] = $mydelivery;
+
+        return $this;
+    }
+
+    /**
+     * Remove mydelivery
+     *
+     * @param \Bdloc\AppBundle\Entity\DeliveryPoints $mydelivery
+     */
+    public function removeMydelivery(\Bdloc\AppBundle\Entity\DeliveryPoints $mydelivery)
+    {
+        $this->mydelivery->removeElement($mydelivery);
+    }
+
+    /**
+     * Get mydelivery
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMydelivery()
+    {
+        return $this->mydelivery;
     }
 }

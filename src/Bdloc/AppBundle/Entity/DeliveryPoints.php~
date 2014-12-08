@@ -78,6 +78,17 @@ class DeliveryPoints
     private $latitude;
 
 
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="mydelivery")
+     */
+    private $user;
+
+
+
+
+
     /**
      * Get id
      *
