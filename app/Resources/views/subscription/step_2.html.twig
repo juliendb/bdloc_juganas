@@ -8,13 +8,13 @@
 
 {% block main_content %}
 
-
-    <h1>S'abonner</h1>
+<div class="steps">
     <ul class="stepsRegister">
-    	<li><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a> > </li>
-    	<li class="">2. Points relais > </li>
-    	<li class="disable">3. Paiement </li>
+    	<li class="tab ok tab1"><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a></li>
+    	<li class="tab on tab2">2. Choisir un point relais</li>
+    	<li class="tab off tab3">3. Paiement</li>
     </ul>
+</div>
 	<div class="clearfix"></div>
 
 
