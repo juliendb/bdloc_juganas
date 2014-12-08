@@ -1,7 +1,10 @@
 <?php
+	
+	namespace Bdloc\AppBundle\Service;
 
 
 	use Symfony\Component\HttpFoundation\Request;
+	use Symfony\Component\HttpFoundation\RequestStack;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,54 +15,67 @@
 	use Bdloc\AppBundle\Entity\Author;
 
 
-	namespace Bdloc\AppBundle\Service;
 
 
 
-	class Catalogue
+	class Catalogue extends Controller
 	{
 
 
-		public function redirect($params)
+		protected $requestStack;
+		protected $doctrine;
+
+		public function __construct(RequestStack $requestStack, $doctrine) {
+			$this->requestStack = $requestStack;
+			$this->doctrine = $doctrine;
+		}
+
+
+
+		public function redirection($params)
 		{
-			$url = $this->generateUrl('bdloc_app_catalogue_catalogueall', $params);
-			return $this->redirect($url);
+			$params["redirect"] = true;
+			return $params;
 		}
 
 
 		public function isValid($params)
 		{
-			if ( !is_numeric($params["page"]) ) $this->redirect(array());
-			if ( !is_numeric($params["limit"]) ) $this->redirect(array());
+			if ( !is_numeric($params["page"]) ) return false;
+			if ( !is_numeric($params["limit"]) ) return false;
 
 
 			if ( $params["order"] != "ASC" && $params["order"] != "DESC" ) {
-				$this->redirect(array());
+				return false;
 			}
 
 
 			if ( $params["choice"] != "title" && $params["choice"] != "serie" && $params["choice"] != "publisher" ) {
-				$this->redirect(array());
+				return false;
 			}
+
+
+			return true;
 		}
 
 
 
 		public function pagination($params)
 		{
-			$this->isValid($params);
+			// vérifie si valeurs correctes
+			if ( $this->isValid($params) ) $this->redirection($params);
+			
+
+			extract($params);
 
 
-			$page = $params["page"];
-			$limit = $params["limit"];
-			$choice = $params["choice"];
-			$order = $params["order"];
-			$genres = $params["genres"];
+			$request = $this->requestStack->getCurrentRequest();
+
+			$repoBook = $this->doctrine->getRepository("BdlocAppBundle:Book");
+			$repoSerie = $this->doctrine->getRepository("BdlocAppBundle:Serie");
 			
-			$request = $params["request"];
-			$repoBook = $params["repoBook"];
-			$repoSerie = $params["repoSerie"];
-			
+
+
 
 
 			$params = array();
@@ -100,7 +116,7 @@
 
 
 			// redirect url si dans le post y a un truc
-			if ($request->getMethod() == 'POST') $this->redirect($pagination);
+			if ($request->getMethod() == 'POST') $this->redirection($pagination);
 
 
 			// calcul la ou commence la pagination

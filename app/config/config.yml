@@ -84,5 +84,4 @@ bazinga_geocoder:
 services:
     bd.catalogue:
         class: Bdloc\AppBundle\Service\Catalogue
-
-
+        arguments: ["@request_stack", "@doctrine"]

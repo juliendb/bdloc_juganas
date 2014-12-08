@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Bdloc\AppBundle\Entity\Book;
 use Bdloc\AppBundle\EntitySerie;
@@ -29,11 +28,7 @@ class CatalogueController extends Controller
     public function catalogueAllAction($page, $limit, $choice, $order, $genres)
     {
     	$params = array();
-    	$request = Request::createFromGlobals();
-
-    	$repoBook = $this->getDoctrine()->getRepository("BdlocAppBundle:Book");
-		$repoSerie = $this->getDoctrine()->getRepository("BdlocAppBundle:Serie");
-
+        
 
 		$params["page"] = $page;
 		$params["limit"] = $limit;
@@ -41,13 +36,15 @@ class CatalogueController extends Controller
 		$params["order"] = $order;
 		$params["genres"] = $genres;
 
-		$params["request"] = $request;
-		$params["repoBook"] = $repoBook;
-		$params["repoSerie"] = $repoSerie;
-
 
 		$catalogue = $this->get("bd.catalogue");
 		$params = $catalogue->pagination($params);
+
+        if ( !empty($params["redirection"]) )
+        {
+            $url = $this->generateUrl('bdloc_app_catalogue_catalogueall', $params);
+            return $this->redirect($url);
+        }
 
 
         return $this->render("catalogue/catalogue.html.twig", $params);
