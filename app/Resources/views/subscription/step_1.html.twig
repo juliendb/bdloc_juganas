@@ -7,21 +7,20 @@
 {# contenu du body #}
 
 {% block main_content %}
-    
 
-    <div id="abonnement">
-        <div class="steps">
-            <ul class="stepsRegister">
-            	<li class="info">1. Infos personnelles</li>
-            	<li class="relais" class="disable">2. Points relais</li>
-            	<li class="paiement" class="disable">3. Paiement</li>
-            </ul>
-        </div>
-
-    <div class="clearfix"> </div>
+<div id="abonnement">
+    <div class="steps">
+        <ul class="stepsRegister">
+        	<li class="tab on tab1">1. Infos personnelles</li>
+        	<li class="tab off tab2">2. Points relais</li>
+        	<li class="tab off tab3">3. Paiement</li>
+        </ul>
+    </div>
 
 
-    {{ form_start(registerForm) }}
+<div class="clearfix"> </div>
+
+ {{ form_start(registerForm) }}
     <div id="formRegister">
         <div class="champs">
        
@@ -64,7 +63,7 @@
         {{ form_row(registerForm.submit,  { 'attr': {'name': 'Valider', 'class': 'valider'}}) }}
 
     </div>
-    {{ form_end(registerForm) }}
+ {{ form_end(registerForm) }}
 
     <div id="halo"></div>
 </div>
