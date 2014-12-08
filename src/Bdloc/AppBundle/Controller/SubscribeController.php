@@ -21,7 +21,7 @@ use Ivory\GoogleMap\Map;
 use Ivory\GoogleMap\MapTypeId;
 use Ivory\GoogleMap\Overlays\Animation;
 use Ivory\GoogleMap\Overlays\Marker;
-
+use Ivory\GoogleMap\Overlays\MarkerCluster;
 
 class SubscribeController extends Controller
 {
@@ -132,8 +132,8 @@ class SubscribeController extends Controller
             'disableDoubleClickZoom' => true,
         ));
 
-        $map->setStylesheetOption('width', '600px');
-        $map->setStylesheetOption('height', '400px');
+        $map->setStylesheetOption('width', '100%');
+        $map->setStylesheetOption('height', '600px');
 
         $map->setLanguage('fr');
 
@@ -151,18 +151,51 @@ class SubscribeController extends Controller
             'flat'      => true,
         ));
 
-        $marker->setIcon('http://maps.gstatic.com/mapfiles/markers/marker.png');
+        //recupere l'url relative
+        $request = $this->getRequest();
+        $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
+        $marker->setIcon( $baseurl . '/img/marker-icon.png');
+
         $map->addMarker($marker);
 
 
+        //affichage des points relais
+        $deliveryPoints = array();
+        $deliveryPoints = $this->getDoctrine()->getRepository("BdlocAppBundle:DeliveryPoints");
+        $dPoints = $deliveryPoints->findAll();
 
+         //print_r($dPoints);
+        $markerCluster = $map->getMarkerCluster();
+
+
+        // Configure markers
+        for($i = 0; $i < count($dPoints) ; $i++) {
+
+            $markers = new Marker();
+
+            $markers->setPrefixJavascriptVariable('marker_');
+            $markers->setPosition($dPoints[$i]->getLatitude(), $dPoints[$i]->getLongitude(), true);
+            $markers->setAnimation(Animation::DROP);
+
+            $markers->setOptions(array(
+                'clickable' => true,
+                'flat'      => true,
+            ));
+
+            $markers->setIcon('http://maps.gstatic.com/mapfiles/markers/marker.png');
+            $markerCluster->addMarker($markers);
+
+            //print_r($markers);
+        }
+        $map->setMarkerCluster($markerCluster);
 
         //recup l'id du user 
         $params['idUser'] = $id;
         //affichage de la map 
         $params["map"] = $map;
         //afficher le marker
-        $params['marker'] = $marker;
+       // $params['marker'] = $marker;
+       // $params['markers'] = $markers;
 
         return $this->render("subscription/step_2.html.twig", $params);
 

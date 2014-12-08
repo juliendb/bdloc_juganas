@@ -12,7 +12,7 @@ app = {
 
 
 	/*
-	 * Autocomplete du champ adresse Server Error - NonUniqueResultException
+	 * Autocomplete du champ adresse
 	 */
 	adresses: function() {
 
