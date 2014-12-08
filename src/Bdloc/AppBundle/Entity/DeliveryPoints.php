@@ -78,6 +78,20 @@ class DeliveryPoints
     private $latitude;
 
 
+
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="User", mappedBy="mydelivery")
+     * @ORM\JoinColumn(nullable = false)
+     */
+    private $user;
+
+
+
+
+
     /**
      * Get id
      *
@@ -275,22 +289,40 @@ class DeliveryPoints
     }
 
     /**
-     * Set user
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add user
      *
      * @param \Bdloc\AppBundle\Entity\User $user
      * @return DeliveryPoints
      */
-    public function setUser(\Bdloc\AppBundle\Entity\User $user = null)
+    public function addUser(\Bdloc\AppBundle\Entity\User $user)
     {
-        $this->user = $user;
+        $this->user[] = $user;
 
         return $this;
     }
 
     /**
+     * Remove user
+     *
+     * @param \Bdloc\AppBundle\Entity\User $user
+     */
+    public function removeUser(\Bdloc\AppBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
      * Get user
      *
-     * @return \Bdloc\AppBundle\Entity\User 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getUser()
     {

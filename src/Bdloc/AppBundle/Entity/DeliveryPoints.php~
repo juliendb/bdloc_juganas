@@ -79,9 +79,12 @@ class DeliveryPoints
 
 
 
+
+
     /**
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="mydelivery")
+     * @ORM\OneToMany(targetEntity="User", mappedBy="mydelivery")
+     * @ORM\JoinColumn(nullable = false)
      */
     private $user;
 
@@ -284,4 +287,5 @@ class DeliveryPoints
     {
         return $this->latitude;
     }
+
 }
