@@ -9,29 +9,19 @@
 {% block main_content %}
     
 
-    <div class="steps">
+    <div class="step1">
         <ul class="stepsRegister">
-        	<li class="tab on tab1">1. Infos personnelles</li>
-        	<li class="tab off tab2">2. Choisir un point relais</li>
-        	<li class="tab off tab3">3. Paiement</li>
+        	<li class="info">1. Infos personnelles</li>
+        	<li class="relais" class="disable">2. Points relais</li>
+        	<li class="paiement" class="disable">3. Paiement</li>
         </ul>
     </div>
 
 <div class="clearfix"> </div>
-<div class="row">
-	<div class="col-xs-4"></div>
-	<div class="col-xs-4">
-
-
-    {{ form( registerForm ) }}
 
 
 
-    
-    </div>
-	
-    <div class="col-xs-4"></div>
-</div>
+
 {% endblock %}
 
 
