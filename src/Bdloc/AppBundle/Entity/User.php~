@@ -120,12 +120,16 @@ class User implements UserInterface
     private $idPaypal;
 
 
+<<<<<<< HEAD
     /**
      * @var integer
      *
      * @ORM\Column(name="myDeliveryPoint", type="string", length=255, nullable = true)
      */
     private $myDeliveryPoint;
+=======
+
+>>>>>>> 65f29b71df3bf3cf6147b0fcabef995f4eeacaab
 
 
     /**
@@ -161,6 +165,15 @@ class User implements UserInterface
      * @ORM\JoinColumn(nullable = false)
      */
     private $carts;
+
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="DeliveryPoints", mappedBy="user")
+     * @ORM\JoinColumn(nullable = false)
+     */
+    private $mydelivery;
 
 
 

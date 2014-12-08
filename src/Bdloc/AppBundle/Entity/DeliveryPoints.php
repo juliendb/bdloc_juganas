@@ -77,6 +77,7 @@ class DeliveryPoints
      */
     private $latitude;
 
+
     /**
      * Get id
      *
@@ -271,5 +272,28 @@ class DeliveryPoints
     public function getLatitude()
     {
         return $this->latitude;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Bdloc\AppBundle\Entity\User $user
+     * @return DeliveryPoints
+     */
+    public function setUser(\Bdloc\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Bdloc\AppBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
