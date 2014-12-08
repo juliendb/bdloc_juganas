@@ -119,6 +119,15 @@ class User implements UserInterface
      */
     private $idPaypal;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="myDeliveryPoint", type="string", length=255, nullable = true)
+     */
+    private $myDeliveryPoint;
+
+
     /**
      * @var \DateTime
      *

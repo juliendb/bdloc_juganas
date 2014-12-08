@@ -121,8 +121,6 @@ class User implements UserInterface
 
 
 
-
-
     /**
      * @var \DateTime
      *
@@ -136,10 +134,6 @@ class User implements UserInterface
      * @ORM\Column(name="dateModified", type="datetime")
      */
     private $dateModified;
-
-
-
-
 
 
    /**

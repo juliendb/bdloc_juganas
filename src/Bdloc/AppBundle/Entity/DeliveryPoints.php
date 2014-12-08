@@ -77,7 +77,6 @@ class DeliveryPoints
      */
     private $latitude;
 
-
     /**
      * Get id
      *
