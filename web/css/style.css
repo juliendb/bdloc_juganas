@@ -139,34 +139,82 @@ a.subscribe {
 ************** SUBSCRIBE ****************
 *****************************************
 ****************************************/
-.step1 {
+.steps {
   position: relative;
   margin: 101px auto 40px;
   text-align: center;
 }
-.step1 li {
+.steps .tab {
+  position: relative;
   display: inline-block;
   height: 55px;
-  margin-right: 5px;
+  margin-right: 15px;
   padding: 0 15px 0 15px;
   background-color: #e90000;
   font: 700 0.9em Oswald;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #fff;
   line-height: 53px;
 }
-.info li position relative::before {
+.steps .tab::before {
   content: "";
   position: absolute;
-  left: 127px;
   border-left: 10px solid transparent;
   border-bottom: 55px solid #e90000;
 }
-.info li position relative::after {
+.steps .tab::after {
   content: "";
   position: absolute;
-  right: -10px;
   border-right: 10px solid transparent;
   border-top: 55px solid #e90000;
+}
+.steps .tab a {
+  color: #fff;
+  text-decoration: none;
+}
+.tab1::before {
+  left: -10px;
+}
+.tab1::after {
+  right: -10px;
+}
+.tab2::before {
+  left: -10px;
+}
+.tab2::after {
+  right: -10px;
+}
+.tab3::before {
+  left: -10px;
+}
+.tab3::after {
+  right: -10px;
+}
+.steps .on {
+  text-shadow: 1px 1px 1px #c01616;
+}
+.steps .off {
+  background-color: #444;
+  color: #666;
+}
+.steps .off::before {
+  border-bottom: 55px solid #444;
+}
+.steps .off::after {
+  border-top: 55px solid #444;
+}
+.steps .ok {
+  background-color: #9d0c0c;
+  color: #fff;
+}
+.steps .ok::before {
+  border-bottom: 55px solid #9d0c0c;
+}
+.steps .ok::after {
+  border-top: 55px solid #9d0c0c;
+}
+.steps .ok:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition-duration: 0.2s;
 }
