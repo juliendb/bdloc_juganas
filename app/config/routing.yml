@@ -11,4 +11,6 @@ bdloc_app_subscribe:
 
 login_check:
     pattern:   /login_check
+logout:
+    path: /logout
 
