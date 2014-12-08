@@ -25,4 +25,19 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         return $class === 'Bdloc\AppBundle\Entity\User';
     }
 
+/*    public function getCoordUser($id)
+    {
+        $query = $this
+            ->createQueryBuilder('u')
+            ->addSelect('u.latitude')
+            ->addSelect('u.longitude')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+            
+            return $query->getSingleResult();
+    }
+*/
+
 }

@@ -20,12 +20,12 @@ app = {
 		var address = document.getElementById("bdloc_appbundle_user_adress")
 		var postal_code = document.getElementById("bdloc_appbundle_user_postalCode")
 
-		var componentForm = {
+/*		var componentForm = {
 		  bdloc_appbundle_user_adress: 'long_name',
 		  bdloc_appbundle_user_postalCode: 'short_name',
 		  bdloc_appbundle_user_longitude: 'long_name',
 		  bdloc_appbundle_user_latitude: 'long_name'
-		};
+		};*/
 
 		// Paramètres
 		var options = {
@@ -52,22 +52,17 @@ app = {
 			$("#bdloc_appbundle_user_longitude").val(lon)
 			$("#bdloc_appbundle_user_latitude").val(lat)
 	
-			//return true;
  		});
 	},
 
 
 	dataSave: function(){
-		//console.log("toto")
 
 		var formData = JSON.stringify(jQuery($(this)).serializeArray())
-		//console.log(sessionStorage.getItem("dataAboStep1"))
 		sessionStorage.setItem("dataAboStep1", formData)
-
-		
-
-		//return false
 	}
+
+	
 }
 
 

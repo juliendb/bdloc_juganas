@@ -73,28 +73,37 @@ class SubscribeController extends Controller
             //on excute toutes nos données
             $em->flush();
 
+
             //CONNEXION AUTOMATIQUE : src : http://stackoverflow.com/questions/9550079/how-to-programmatically-login-authenticate-a-user
             //secured_area est le nom du firewall défini dans security.yml
             $token = new UsernamePasswordToken($user, $user->getPassword(), "secured_area", $user->getRoles());
             $this->get("security.context")->setToken($token);
 
+
             //redirige vers l'accueil
-            return $this->redirect( $this->generateUrl("bdloc_app_subscribe_deliverystep2"));
+            return $this->redirect( $this->generateUrl("bdloc_app_subscribe_deliverystep2", array(
+                'id' => $user->getId()
+            )));
         }
 
 
         $params['registerForm'] = $registerForm->createView();
-  
+        
+        
         return $this->render("subscription/step_1.html.twig", $params);
     }
 
     /**
-     * @Route("/step-2")
+     * @Route("/step-2/{id}")
      */
-    public function deliveryStep2Action()
+    public function deliveryStep2Action($id)
     {
+        
         $params = array();
 
+        //recuperer les coordonnées dans la bdd
+        $repoCoordUser = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
+        $user = $repoCoordUser->find($id);
 
         //affichage de la google map
         $map = $this->get('ivory_google_map.map');
@@ -104,27 +113,17 @@ class SubscribeController extends Controller
         $map->setPrefixJavascriptVariable('map_');
         $map->setHtmlContainerId('map_canvas');
 
-        $map->setAsync(false);
-        $map->setAutoZoom(true);
+        $map->setAsync(true);
+        $map->setAutoZoom(false);
 
-        $map->setCenter(0, 0, false);
-        $map->setMapOption('zoom', 5);
+        //centrer la map sur les coordonnées du user
+        $map->setCenter($user->getLongitude(), $user->getLatitude(), true);
+        //$map->setCenter(48.8788866, 2.331609599999979, true);
+        $map->setMapOption('zoom', 17);
 
-        $map->setBound(-2.1, -3.9, 2.6, 1.4, false, false);
-
-        $map->setMapOption('mapTypeId', MapTypeId::HYBRID);
-        $map->setMapOption('mapTypeId', 'hybrid');
-
+        //$map->setBound(-2.1, -3.9, 2.6, 1.4, true, true);
         $map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
         $map->setMapOption('mapTypeId', 'roadmap');
-
-        $map->setMapOption('mapTypeId', MapTypeId::SATELLITE);
-        $map->setMapOption('mapTypeId', 'satellite');
-
-        $map->setMapOption('mapTypeId', MapTypeId::TERRAIN);
-        $map->setMapOption('mapTypeId', 'terrain');
-
-
 
         $map->setMapOption('disableDefaultUI', true);
         $map->setMapOption('disableDoubleClickZoom', true);
@@ -136,11 +135,7 @@ class SubscribeController extends Controller
         $map->setStylesheetOption('width', '600px');
         $map->setStylesheetOption('height', '400px');
 
-
         $map->setLanguage('fr');
-
-
-        //recuperer les coordonnées
 
 
         //les afficher sur la map (marker)
@@ -148,31 +143,44 @@ class SubscribeController extends Controller
 
         // Configure your marker options
         $marker->setPrefixJavascriptVariable('marker_');
-        $marker->setPosition(0, 0, true);
+        $marker->setPosition($user->getLongitude(), $user->getLatitude(), true);
         $marker->setAnimation(Animation::DROP);
 
-        $marker->setOption('clickable', false);
-        $marker->setOption('flat', true);
         $marker->setOptions(array(
-            'clickable' => false,
+            'clickable' => true,
             'flat'      => true,
         ));
 
-        //zoomer par rapport à l'adress user
+        $marker->setIcon('http://maps.gstatic.com/mapfiles/markers/marker.png');
+        $map->addMarker($marker);
 
 
+        //recup l'id du user 
+        $params['idUser'] = $id;
+        //affichage de la map 
         $params["map"] = $map;
+        //afficher le marker
+        $params['marker'] = $marker;
+
         return $this->render("subscription/step_2.html.twig", $params);
+
+
+
     }
 
     /**
-     * @Route("/step-3")
+     * @Route("/step-3/{id}")
      */
-    public function billingStep3Action()
+    public function billingStep3Action($id)
     {
         $params = array();
 
+        /*//recuperer les coordonnées dans la bdd
+        $repoIdUser = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
+        $user = $repoIdUser->find($id);*/
 
+
+        $params['idUser'] = $id;
         return $this->render("subscription/step_3.html.twig", $params);
     }
 

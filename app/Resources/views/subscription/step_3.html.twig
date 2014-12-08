@@ -8,11 +8,12 @@
 
     <ul class="stepsRegister">
     	<li><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a> > </li>
-    	<li><a href="{{ path("bdloc_app_subscribe_deliverystep2")}}">2. Points relais ></a> > </li>
+    	<li><a href="{{ path("bdloc_app_subscribe_deliverystep2", {'id': idUser}) }}">2. Points relais ></a> > </li>
     	<li class="">3. Paiement </li>
     </ul>
 
 <div class="clearfix"></div>
+	<input type="hidden" value="{{ idUser }}">
 
 
 {% endblock %}
