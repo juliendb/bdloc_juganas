@@ -82,7 +82,7 @@ bazinga_geocoder:
             use_ssl:              false
 
 services:
-    bd.slugger:
-        class: Bdloc\AppBundle\Service\Slugger
+    bd.catalogue:
+        class: Bdloc\AppBundle\Service\Catalogue
 
 

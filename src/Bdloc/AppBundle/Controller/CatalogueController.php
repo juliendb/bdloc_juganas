@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Bdloc\AppBundle\Entity\Book;
 use Bdloc\AppBundle\EntitySerie;
 use Bdloc\AppBundle\Entity\Author;
+use Bdloc\AppBundle\Service\Catalogue;
 
 
 
@@ -23,35 +24,30 @@ class CatalogueController extends Controller
 
     
     /**
-     * @Route("/catalogue/{page}/{limit}/{order}", defaults={"page"=1,"limit"=20, "order"="ASC"})
+     * @Route("/catalogue/{page}/{limit}/{choice}/{order}/{genres}", defaults={"page"=1,"limit"=20,"choice"="title","order"="ASC","genres"=""})
      */
-    public function catalogueAllAction($page, $limit, $order)
+    public function catalogueAllAction($page, $limit, $choice, $order, $genres)
     {
-        //$slugger = $this->get("bd.slugger");
-
-
     	$params = array();
-
+    	$request = Request::createFromGlobals();
 
     	$repoBook = $this->getDoctrine()->getRepository("BdlocAppBundle:Book");
+		$repoSerie = $this->getDoctrine()->getRepository("BdlocAppBundle:Serie");
 
 
-        $pagination["page"] = $page;
-        $pagination["limit"] = $limit;
-        $pagination["order"] = $order;
-        //$pagination['author'] = "Rosinski";
-        
-        $books = $repoBook->selectBooksByPagination($pagination);
-        $categories = $repoBook->selectCategories();
+		$params["page"] = $page;
+		$params["limit"] = $limit;
+		$params["choice"] = $choice;
+		$params["order"] = $order;
+		$params["genres"] = $genres;
 
-        // total nombre bd
-        $pagination['total'] = $books->count();
-        $pagination['pages'] = ceil($pagination['total'] / $pagination["limit"]);
+		$params["request"] = $request;
+		$params["repoBook"] = $repoBook;
+		$params["repoSerie"] = $repoSerie;
 
 
-    	$params["books"] = $books;
-        $params["pagination"] = $pagination;
-        $params["categories"] = $categories;
+		$catalogue = $this->get("bd.catalogue");
+		$params = $catalogue->pagination($params);
 
 
         return $this->render("catalogue/catalogue.html.twig", $params);
@@ -64,9 +60,6 @@ class CatalogueController extends Controller
      */
     public function viewBookAction($isbn)
     {
-        //2878271734 tome 6
-        //9782878271737 tome 7
-
         $params = array();
 
         
