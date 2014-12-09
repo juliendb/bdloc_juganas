@@ -8,145 +8,146 @@
 
 
 
-
-<nav>
-	<div id="filtres">
-		<div class="col-xs-4"></div>
-		<div id="filter_pages" class="col-xs-5">
-			
-			<form method="POST" id="form_filter_pages" action="{{ path('bdloc_app_catalogue_catalogueall') }}" page="{{ pagination.page }}">
-
+<div class="container">
+	<nav>
+		<div id="filtres">
+			<h1 id="titre">Filtres</h1>
+			<div id="filter_pages">
 				
-				
-				{% for genre in genres %}
+				<form method="POST" id="form_filter_pages" action="{{ path('bdloc_app_catalogue_catalogueall') }}" page="{{ pagination.page }}">
+
 					
+					{% for genre in genres %}
+						
 
-					<div class="genres" class="form-group">
-						<input type="checkbox" name="genres[]" value="{{ genre.style }}"
-							{% for page_genre in pagination.genres %}
-								{% if page_genre == genre.style %}checked{% endif %}
-							{% endfor %}>
-						<label>{{ genre.style }}</label>
+						<div class="genres" class="form-group">
+							<input type="checkbox" name="genres[]" value="{{ genre.style }}"
+								{% for page_genre in pagination.genres %}
+									{% if page_genre == genre.style %}checked{% endif %}
+								{% endfor %}>
+							<label>{{ genre.style }}</label>
+						</div>
+					{% endfor %}
+					
+				<div id="selecteur">
+					<div class="form-group"  class="clearfix">
+						<select id="choice" name="choice">
+							<option value="title" {% if pagination.choice == 'title' %}selected{% endif %}>
+								titre de livre</option>
+							<option value="serie" {% if pagination.choice == 'serie' %}selected{% endif %}>
+								titre de série</option>
+							<option value="publisher" {% if pagination.choice == 'publisher' %}selected{% endif %}>
+								éditeur</option>
+						</select>
 					</div>
-				{% endfor %}
+					<div class="form-group">
+						<select id="order" name="order">
+							<option value="ASC" {% if pagination.order == 'ASC' %}selected{% endif %}>
+								alphabetique</option>
+							<option value="DESC" {% if pagination.order == 'DESC' %}selected{% endif %}>
+								alphabetique inversée</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id="limit" name="limit">
+							{% for i in range(5, 50, 5) %}
+								<option value="{{ i }}" {% if pagination.limit == i %}selected{% endif %}>
+									afficher {{ i }} résultats</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="filtrer">
+					</div>
+				</div>
+				</form>
+
+				<div class="clearfix">
+				{% set params = {'limit': pagination.limit, 'choice': pagination.choice, 'order': pagination.order } %}
+				{% if genres %}
+					{% set params = params|merge({ 'genres': pagination.url_genres }) %}
+				{% endif %}
+
+
+				{% if pagination.page > 1 %}
+					{% set url = { 'page': pagination.page-1 }|merge(params) %}
+					<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page précédente">page précédente</a>
+				{% endif %}
+				
+				{% if pagination.page < pagination.pages %}
+					{% set url = { 'page': pagination.page+1 }|merge(params) %}
+					<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page suivante">page suivante</a>
+				{% endif %}
 				
 
-				<div class="form-group">
-					<select id="choice" name="choice">
-						<option value="title" {% if pagination.choice == 'title' %}selected{% endif %}>
-							titre de livre</option>
-						<option value="serie" {% if pagination.choice == 'serie' %}selected{% endif %}>
-							titre de série</option>
-						<option value="publisher" {% if pagination.choice == 'publisher' %}selected{% endif %}>
-							éditeur</option>
-					</select>
+				
+				{# affiche page 1 et dernière page si il y a #}
+				{% if pagination.pages > 1 %}
+					{% set url = { 'page': 1 }|merge(params) %}
+					<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page 1">page 1</a>
+					{% set url = { 'page': pagination.pages }|merge(params) %}
+					<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page {{ pagination.pages }}">page {{ pagination.pages }}</a>
+				{% endif %}
+				
+				{# affiche ex 11 / 18 à voir demain #}
+				{% set val = ("# " ~ ((pagination.page-1)*pagination.limit+1) ~ " à ") %}
+				
+				{% if pagination.page == pagination.pages %}
+					{% set val = val ~ pagination.total %}
+				{% else %}
+					{% set val = val ~ (pagination.page*pagination.limit) %}
+				{% endif %}
+				
+				{% set val = val ~ " sur " ~ pagination.total ~ " BD" %}
+
+
+				<p>{{ val }}</p>
 				</div>
-				<div class="form-group">
-					<select id="order" name="order">
-						<option value="ASC" {% if pagination.order == 'ASC' %}selected{% endif %}>
-							alphabetique</option>
-						<option value="DESC" {% if pagination.order == 'DESC' %}selected{% endif %}>
-							alphabetique inversée</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<select id="limit" name="limit">
-						{% for i in range(5, 50, 5) %}
-							<option value="{{ i }}" {% if pagination.limit == i %}selected{% endif %}>
-								afficher {{ i }} résultats</option>
-						{% endfor %}
-					</select>
-				</div>
-				<div class="form-group">
-					<input type="submit" value="filtrer">
-				</div>
-			</form>
 
-			
-			{% set params = {'limit': pagination.limit, 'choice': pagination.choice, 'order': pagination.order } %}
-			{% if genres %}
-				{% set params = params|merge({ 'genres': pagination.url_genres }) %}
-			{% endif %}
-
-
-			{% if pagination.page > 1 %}
-				{% set url = { 'page': pagination.page-1 }|merge(params) %}
-				<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page précédente">page précédente</a>
-			{% endif %}
-			
-			{% if pagination.page < pagination.pages %}
-				{% set url = { 'page': pagination.page+1 }|merge(params) %}
-				<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page suivante">page suivante</a>
-			{% endif %}
-			
-
-
-			{# affiche page 1 et dernière page si il y a #}
-			{% if pagination.pages > 1 %}
-				{% set url = { 'page': 1 }|merge(params) %}
-				<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page 1">page 1</a>
-				{% set url = { 'page': pagination.pages }|merge(params) %}
-				<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page {{ pagination.pages }}">page {{ pagination.pages }}</a>
-			{% endif %}
-			
-			{# affiche ex 11 / 18 à voir demain #}
-			{% set val = ("# " ~ ((pagination.page-1)*pagination.limit+1) ~ " à ") %}
-			
-			{% if pagination.page == pagination.pages %}
-				{% set val = val ~ pagination.total %}
-			{% else %}
-				{% set val = val ~ (pagination.page*pagination.limit) %}
-			{% endif %}
-			
-			{% set val = val ~ " sur " ~ pagination.total ~ " BD" %}
-
-
-			<p>{{ val }}</p>
-
+			</div>
 		</div>
+		
+	</nav>
+
+
+	<div id="popup"></div>
+
+	<div id="catalogue">
+
+	{% for book in books %}
+		
+		<div id="livre">
+			<a class="link_detail_book" title="Détail du livre {{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
+				<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
+			</a>
+			
+			<p>titre : {{ book.title }}</p>
+			<p>série : {{ book.serie.title }}</p>
+
+			
+			{# vérifie si il y a auteur a chaque fois #}
+			{% if book.scenarist %}
+				<p>scénario : {{ book.scenarist.lastName }}</p>
+			{% endif %}
+
+			{% if book.illustrator %}
+				<p>dessin : {{ book.illustrator.lastName }}</p>
+			{% endif %}
+
+			{% if book.colorist %}
+				<p>couleurs : {{ book.colorist.lastName }}</p>
+			{% endif %}
+
+			
+
+			<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+			<a href="" title="Ajouter au panier">ajouter au panier</a>
+		</div>
+	{% endfor %}
+
 	</div>
-	
-</nav>
-
-
-<div id="popup"></div>
-
-<div id="catalogue">
-
-{% for book in books %}
-	
-
-	<div>
-		<a class="link_detail_book" title="Détail du livre {{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
-			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
-		</a>
-		
-		<p>titre : {{ book.title }}</p>
-		<p>série : {{ book.serie.title }}</p>
-
-		
-		{# vérifie si il y a auteur a chaque fois #}
-		{% if book.scenarist %}
-			<p>scénario : {{ book.scenarist.lastName }}</p>
-		{% endif %}
-
-		{% if book.illustrator %}
-			<p>dessin : {{ book.illustrator.lastName }}</p>
-		{% endif %}
-
-		{% if book.colorist %}
-			<p>couleurs : {{ book.colorist.lastName }}</p>
-		{% endif %}
-
-		
-
-		<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
-		<a href="" title="Ajouter au panier">ajouter au panier</a>
-	</div>
-{% endfor %}
-
 </div>
-<div class="col-xs-1"></div>
+
 
 
 {% endblock %}
