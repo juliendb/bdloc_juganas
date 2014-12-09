@@ -85,3 +85,6 @@ services:
     bd.catalogue:
         class: Bdloc\AppBundle\Service\Catalogue
         arguments: ["@request_stack", "@doctrine"]
+    bd.cartitemservice:
+        class: Bdloc\AppBundle\Service\CartItemService
+        arguments: ["@request_stack", "@doctrine"]

@@ -1,0 +1,17 @@
+{% extends ':layouts:base.html.twig' %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block main_content %}
+	
+
+{% for book in books %}
+
+	<div>
+		<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" />
+		<p>titre : {{ book.title }} </p>
+
+		<a href="" title="Retirer du panier">retirer du panier</a>
+	</div>
+
+{% endblock %}

@@ -12,9 +12,9 @@ class BookRepository extends EntityRepository
 	// select un livre par isbn
 	public function selectBookByIsbn($isbn)
 	{
-		$query = $this->getEntityManager()->createQueryBuilder("b")
+		$query = $this
+			->createQueryBuilder("b")
 			->addSelect('b')
-			->from('BdlocAppBundle:Book', 'b')
 			->where('b.isbn = :isbn')
 			->setParameter('isbn', $isbn)
 			->getQuery();
@@ -94,8 +94,6 @@ class BookRepository extends EntityRepository
 
 		return new Paginator($query);
 	}
-
-
 
 
 }
