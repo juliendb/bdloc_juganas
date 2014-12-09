@@ -1,0 +1,62 @@
+{% extends "layouts/base.html.twig" %}
+
+{# titre de la page dans head #}
+{% block title %} Mon profil | Bdloc {% endblock %}   
+
+
+{# contenu du body #}
+
+{% block main_content %}
+<div class="container">
+    <h1>Mon compte</h1>
+
+    <a href="" class="btn btn-primary">Editer</a>
+
+
+<h2>Infos personelles</h2>
+    <h3>{{ user.firstname }} {{ user.name }}</h3>
+    
+    <p>Mail : {{ user.email }}</p>
+    <p>Adresse : {{ user.adress }} - {{ user.postalCode }} {{ user.city }}</p>
+    <p>Telephone : {{ user.tel }}</p>
+
+    <a href="" class="btn btn-primary">Changer mon mot de passe</a>
+
+
+<h2>Mon point relais</h2>
+    <h3></h3>
+    
+    <p>Adresse : </p>
+    
+    <a href="" class="btn btn-primary">Modifier mon point relais</a>
+
+<h2>Paiement</h2>
+
+<a href="" class="btn btn-primary">Modifier mes informations de paiement</a>
+
+
+<h2>Mon historique de location</h2>
+
+<h2>Mes amendes</h2>
+
+
+
+
+
+
+    <a href="" class="btn btn-danger">Me désabonner</a>
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+
+
+
+{% endblock %}
+
+    
