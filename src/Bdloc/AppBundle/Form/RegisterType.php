@@ -17,7 +17,6 @@ class RegisterType extends AbstractType
         $builder
             ->add('firstname', 'text', array(
                 "label" => false,
-                //"required" => false
             ))
             ->add('name', 'text', array(
                 "label" => false,
@@ -37,10 +36,7 @@ class RegisterType extends AbstractType
             ))
             ->add('postalCode', 'number', array(                
                 "label" => false,
-            ))
-/*            ->add('city', 'text', array(             
-                'options' => array('disabled' => true)
-            ))  */    
+            ))  
 
             ->add('longitude', 'hidden', array())
             ->add('latitude', 'hidden', array())
