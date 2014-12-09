@@ -51,17 +51,22 @@ header
 			text-transform uppercase
 			margin-right 20px
 			
-#connexion
-	&::before
-		content "\e008"
-			
+
 #header
 	#connexion
 		display block
 		font 300 1em Oswald
 		color #fff
 		line-height 81px
-		text-align right
+
+		
+#header
+	#deconnexion
+		&::before
+			font 300 1em Oswald
+			color #fff
+			line-height 81px
+
 
 
 		
@@ -273,17 +278,28 @@ a.subscribe
 		width 335px
 		margin-right 10px
 		::-webkit-input-placeholder
-				color dark
+				color coloroff
 				text-transform uppercase
+				font-weight 700
+				
 		input[type='text']
 				color dark
+				font-weight 700
 				text-transform uppercase
-
-		
-
+		input[type='email']
+				color dark
+				font-weight 700
+				text-transform uppercase
+		input[type='password']
+				color dark
+				font-weight 700
+				text-transform uppercase		
+	
 
 
 .form-control
+	height 44px
+	font-size 17px
 	&:focus
 		border-color red
 		outline 0
@@ -320,6 +336,7 @@ a.subscribe
 	background url("../img/halo.png")
 	top -182px
 	left 14%
+
 
 
 

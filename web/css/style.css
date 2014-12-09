@@ -28,15 +28,16 @@ header nav a {
   text-transform: uppercase;
   margin-right: 20px;
 }
-#connexion::before {
-  content: "\e008";
-}
 #header #connexion {
   display: block;
   font: 300 1em Oswald;
   color: #fff;
   line-height: 81px;
-  text-align: right;
+}
+#header #deconnexion::before {
+  font: 300 1em Oswald;
+  color: #fff;
+  line-height: 81px;
 }
 /****************************************
 *****************************************
@@ -233,12 +234,28 @@ a.subscribe {
   margin-right: 10px;
 }
 #formRegister .champs ::-webkit-input-placeholder {
-  color: #222;
+  color: #444;
   text-transform: uppercase;
+  font-weight: 700;
 }
 #formRegister .champs input[type='text'] {
   color: #222;
+  font-weight: 700;
   text-transform: uppercase;
+}
+#formRegister .champs input[type='email'] {
+  color: #222;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+#formRegister .champs input[type='password'] {
+  color: #222;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.form-control {
+  height: 44px;
+  font-size: 17px;
 }
 .form-control:focus {
   border-color: #e90000;
