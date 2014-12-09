@@ -215,28 +215,34 @@ class SubscribeController extends Controller
             ));
 
             $markers->setInfoWindow($infoWindow);
-
-
-
         }
 
         //lier les markers à la map
         $map->setMarkerCluster($markerCluster);
 
+/*        //gère la soumission du form
+        $request = Request::createFromGlobals();
+      //  $delivery_id->handleRequest($request);
+
+        if($request->getMethod() == "POST"){
+            $delivery_id = $request->request->get('pointRelaisId');
 
 
+            $user->setMydelivery($delivery_id);
 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-
+        }*/
 
 
         //recup l'id du user 
         $params['idUser'] = $id;
         //affichage de la map 
         $params["map"] = $map;
-        //afficher le marker
-       // $params['marker'] = $marker;
-       // $params['markers'] = $markers;
+        //$params["delivery_id"] = $delivery_id;
+
 
         return $this->render("subscription/step_2.html.twig", $params);
 
@@ -256,6 +262,7 @@ class SubscribeController extends Controller
         $user = $repoIdUser->find($id);*/
 
 
+       // $params['delivery_id'] = $delivery_id;
         $params['idUser'] = $id;
         return $this->render("subscription/step_3.html.twig", $params);
     }
