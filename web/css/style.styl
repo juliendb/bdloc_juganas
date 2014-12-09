@@ -12,10 +12,10 @@ text = #f4eeeb
 
 body
 	font 300 2em/2em Oswald
-	margin 0
+	margin 0 auto
 	padding 0
 	color #fff
-	background url('../img/fond_bd.png') no-repeat 0 0 #000
+	background url('../img/fond_bd.png') no-repeat top center #000
 	/*background-size cover*/
 
 
@@ -430,7 +430,6 @@ a.subscribe
 			color text
 
 .form-group
-	float left
 	margin-left 10px
 	
 #livre
@@ -442,22 +441,24 @@ a.subscribe
 	display block
 	clear both
 	padding-top 30px
-	select
-		font 300 0.8em Oswald
-		color coloroff
-		height 30px
-		text-decoration none
-	input[type="submit"]
-		height 30px	
-		margin-top 8px
-		background-color coloron
-		border none
-		line-height 0.8em
-		&:hover
-			cursor pointer
-			color white
-			opacity 0.6
-			transition-duration 0.2s
+	.form-group
+		float left
+		select
+			font 300 0.8em Oswald
+			color coloroff
+			height 30px
+			text-decoration none
+		input[type="submit"]
+			height 30px	
+			margin-top 8px
+			background-color coloron
+			border none
+			line-height 0.8em
+			&:hover
+				cursor pointer
+				color white
+				opacity 0.6
+				transition-duration 0.2s
 
 		
 		
