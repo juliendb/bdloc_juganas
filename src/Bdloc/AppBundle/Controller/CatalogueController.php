@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 use Bdloc\AppBundle\Entity\Book;
 use Bdloc\AppBundle\EntitySerie;
@@ -37,7 +38,7 @@ class CatalogueController extends Controller
 		$params["order"] = $order;
 		$params["genres"] = $genres;
 
-
+        
 		$catalogue = $this->get("bd.catalogue");
 		$params = $catalogue->pagination($params);
 

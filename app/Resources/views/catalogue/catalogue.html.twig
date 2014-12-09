@@ -139,7 +139,8 @@
 		
 
 		<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
-		<a href="" title="Ajouter au panier">ajouter au panier</a>
+	
+		<a class="link_cart_book" href="{{ path('bdloc_app_cart_addcartitem', { 'isbn': book.isbn, id: app.user.id }) }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
 	</div>
 {% endfor %}
 
