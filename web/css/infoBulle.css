@@ -1,0 +1,22 @@
+#infoBulle {
+  background-color: #fff;
+  padding: 20px;
+  color: #000;
+  line-height: 24px;
+}
+h1 {
+  font: 700 2em Oswald;
+  text-transform: normal;
+  color: #e90000;
+  margin: 0;
+  padding: 0;
+}
+p,
+span {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+.horaires {
+  color: #9d0c0c;
+}

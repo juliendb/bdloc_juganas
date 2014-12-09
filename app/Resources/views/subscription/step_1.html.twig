@@ -7,17 +7,19 @@
 {# contenu du body #}
 
 {% block main_content %}
-    
+
 <div id="abonnement">
     <div class="steps">
         <ul class="stepsRegister">
         	<li class="tab on tab1">1. Infos personnelles</li>
-        	<li class="tab off tab2">2. Choisir un point relais</li>
+        	<li class="tab off tab2">2. Points relais</li>
         	<li class="tab off tab3">3. Paiement</li>
         </ul>
     </div>
 
+
 <div class="clearfix"> </div>
+
  {{ form_start(registerForm) }}
     <div id="formRegister">
         <div class="champs">
@@ -65,6 +67,7 @@
 
     <div id="halo"></div>
 </div>
+
 {% endblock %}
 
 

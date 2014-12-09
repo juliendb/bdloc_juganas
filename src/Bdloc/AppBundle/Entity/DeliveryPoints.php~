@@ -38,7 +38,7 @@ class DeliveryPoints
     /**
      * @var integer
      *
-     * @ORM\Column(name="postalCode", type="smallint")
+     * @ORM\Column(name="postalCode", type="string", length=6)
      */
     private $postalCode;
 
@@ -76,6 +76,20 @@ class DeliveryPoints
      * @ORM\Column(name="latitude", type="string", length=255, nullable = true)
      */
     private $latitude;
+
+
+
+
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="User", mappedBy="mydelivery")
+     * @ORM\JoinColumn(nullable = false)
+     */
+    private $user;
+
+
+
 
 
     /**
@@ -273,4 +287,5 @@ class DeliveryPoints
     {
         return $this->latitude;
     }
+
 }

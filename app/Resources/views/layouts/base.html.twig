@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="{{ asset("css/bootstrap.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/bootstrap-theme.css" )}}" type="text/css">
             <link rel="stylesheet" href="{{ asset("css/style.css" )}}" type="text/css">
+            <link rel="stylesheet" href="{{ asset("css/infoBulle.css" )}}" type="text/css">
 
             <link href='http://fonts.googleapis.com/css?family=Oswald:700,300|Open+Sans' rel='stylesheet' type='text/css'>
 
@@ -28,7 +29,7 @@
                 
                 <div class="col-xs-3">
                      <div id="logo">
-                         <img src="{{ asset('img/Logo_grd.png') }}" alt="logo Bdloc">
+                        <a href="{{ path('bdloc_app_default_home') }}" title="Accueil"><img src="{{ asset('img/Logo_grd.png') }}" alt="logo Bdloc"></a>
                      </div>
                 </div>  
 
@@ -40,10 +41,11 @@
 				<div class="col-xs-3">
 					{% if app.user %}
 						<p>Bonjour {{ app.user.username }}</p>
-						<a id="deconnexion" href="{{ path('logout') }}">Se déconnecter</a>
+
+						<a id="deconnexion" href="{{ path('logout') }}" title="Déconnexion">Se déconnecter</a>
+
 					{% else %}
-						<p>Bonjour toi inconnu !</p>
-						<a id="connexion" href="{{ path('bdloc_app_user_login')}}">Se connecter</a>
+						<a id="connexion" href="{{ path('bdloc_app_user_login')}}" title="Connexion">Se connecter</a>
 					{% endif %}
 
                 </div>   

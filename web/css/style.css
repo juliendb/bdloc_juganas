@@ -1,3 +1,4 @@
+/*font-family: 'Open Sans', sans-serif;*/
 body {
   font: 300 2em/2em Oswald;
   margin: 0;
@@ -28,12 +29,23 @@ header nav a {
   text-transform: uppercase;
   margin-right: 20px;
 }
-#header #connexion {
+#connexion::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e008";
+  margin-right: 10px;
+}
+#header a#connexion {
   display: block;
   font: 300 1em Oswald;
   color: #fff;
+  text-transform: uppercase;
   line-height: 81px;
   text-align: right;
+  text-decoration: none;
+}
+#header a#connexion:hover {
+  color: #e90000;
+  transition-duration: 0.2s;
 }
 #header #deconnexion::before {
   font: 300 1em Oswald;
@@ -117,10 +129,33 @@ a.subscribe {
   float: left;
   margin-left: 15px;
 }
-#nav a {
-  font: 300 0.8em Oswald;
-  color: #999;
-  margin-right: 15px;
+.cat {
+  font: 300 1em Oswald;
+  color: #fff;
+  margin-right: 45px;
+}
+.cat::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e043";
+  margin-right: 10px;
+}
+.cat:hover {
+  text-decoration: none;
+  color: #e90000;
+}
+.panier {
+  font: 300 1em Oswald;
+  color: #fff;
+  margin-right: 45px;
+}
+.panier::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e116";
+  margin-right: 10px;
+}
+.panier:hover {
+  text-decoration: none;
+  color: #e90000;
 }
 #petitlogo {
   position: absolute;
@@ -299,4 +334,16 @@ a.subscribe {
 ****************************************/
 #map {
   position: relative;
+}
+/****************************************
+*****************************************
+************** CATALOGUE  ***************
+*****************************************
+****************************************/
+#form_filter_pages .genres {
+  display: inline-block;
+  float: left;
+  margin-right: 30px;
+  font: 300 0.8em Open Sans;
+  color: #e90000;
 }

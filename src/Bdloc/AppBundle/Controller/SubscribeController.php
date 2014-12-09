@@ -22,6 +22,8 @@ use Ivory\GoogleMap\MapTypeId;
 use Ivory\GoogleMap\Overlays\Animation;
 use Ivory\GoogleMap\Overlays\Marker;
 use Ivory\GoogleMap\Overlays\MarkerCluster;
+use Ivory\GoogleMap\Events\MouseEvent;
+use Ivory\GoogleMap\Overlays\InfoWindow;
 
 class SubscribeController extends Controller
 {
@@ -105,7 +107,8 @@ class SubscribeController extends Controller
         $repoCoordUser = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
         $user = $repoCoordUser->find($id);
 
-        //affichage de la google map
+
+    //AFFICHER LA GOOGLE MAP
         $map = $this->get('ivory_google_map.map');
 
         $map = new Map();
@@ -116,10 +119,10 @@ class SubscribeController extends Controller
         $map->setAsync(true);
         $map->setAutoZoom(false);
 
-        //centrer la map sur les coordonnées du user
+    //AFFICHER LE MARKER DE L'ADRESSE DU USER
         $map->setCenter($user->getLongitude(), $user->getLatitude(), true);
         //$map->setCenter(48.8788866, 2.331609599999979, true);
-        $map->setMapOption('zoom', 17);
+        $map->setMapOption('zoom', 15);
 
         //$map->setBound(-2.1, -3.9, 2.6, 1.4, true, true);
         $map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
@@ -132,13 +135,13 @@ class SubscribeController extends Controller
             'disableDoubleClickZoom' => true,
         ));
 
-        $map->setStylesheetOption('width', '100%');
-        $map->setStylesheetOption('height', '600px');
+        $map->setStylesheetOption('width', '700px');
+        $map->setStylesheetOption('height', '400px');
 
         $map->setLanguage('fr');
 
 
-        //les afficher sur la map (marker)
+    //AFFICHER LES MARKER POINTS RELAIS
         $marker = new Marker();
 
         // Configure your marker options
@@ -182,12 +185,50 @@ class SubscribeController extends Controller
                 'flat'      => true,
             ));
 
+
             $markers->setIcon('http://maps.gstatic.com/mapfiles/markers/marker.png');
+
             $markerCluster->addMarker($markers);
 
-            //print_r($markers);
+    //AFFICHER LES BULLES INFOS SUR LES MARKER POINTS RELAIS
+
+            $infoWindow = new InfoWindow();
+
+            $dataContent = array();
+            $dataContent['pointRelais'] = $dPoints[$i];
+
+            $content = $this->renderView('subscription/infoBulle.html.twig', $dataContent);
+
+            $infoWindow->setPrefixJavascriptVariable('info_window_');
+            $infoWindow->setPosition($dPoints[$i]->getLatitude(), $dPoints[$i]->getLongitude(), true);
+            $infoWindow->setPixelOffset(1.1, 2.1, 'px', 'pt');
+            $infoWindow->setContent($content);
+            $infoWindow->setOpen(false);
+            $infoWindow->setAutoOpen(true);
+            $infoWindow->setOpenEvent(MouseEvent::CLICK);
+            $infoWindow->setAutoClose(true);
+            $infoWindow->setOption('disableAutoPan', true);
+            $infoWindow->setOption('zIndex', 10);
+            $infoWindow->setOptions(array(
+                'disableAutoPan' => true,
+                'zIndex'         => 10,
+            ));
+
+            $markers->setInfoWindow($infoWindow);
+
+
+
         }
+
+        //lier les markers à la map
         $map->setMarkerCluster($markerCluster);
+
+
+
+
+
+
+
 
         //recup l'id du user 
         $params['idUser'] = $id;
@@ -218,6 +259,5 @@ class SubscribeController extends Controller
         $params['idUser'] = $id;
         return $this->render("subscription/step_3.html.twig", $params);
     }
-
 
 }
