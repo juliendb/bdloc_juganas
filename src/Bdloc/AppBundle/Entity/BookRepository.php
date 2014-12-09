@@ -15,7 +15,6 @@ class BookRepository extends EntityRepository
 		$query = $this
 			->createQueryBuilder("b")
 			->addSelect('b')
-			->from('BdlocAppBundle:Book', 'b')
 			->where('b.isbn = :isbn')
 			->setParameter('isbn', $isbn)
 			->getQuery();
@@ -95,26 +94,6 @@ class BookRepository extends EntityRepository
 
 		return new Paginator($query);
 	}
-
-
-
-
-
-	/*
-	public function changeStockBook()
-	{
-		$query = $this
-			->createQueryBuilder("b");
-			->update('models\User', 'u')
-		    ->set('u.username', '?1')
-		    ->set('u.email', '?2')
-		    ->where('u.id = ?3')
-		    ->setParameter(1, $username)
-		    ->setParameter(2, $email)
-		    ->setParameter(3, $editId)
-		    ->getQuery();
-		$p = $q->execute();
-	}*/
 
 
 }

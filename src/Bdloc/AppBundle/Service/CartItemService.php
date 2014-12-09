@@ -36,23 +36,70 @@
 
 
 
-		public function isValid($params)
+		private function isValid($params)
 		{
 			extract($params);
 
 
 			$count = count($cartitems);
 
-			if ($count < 10) {
-				return true;
-			}
-
-			if ($book->getIsbn() == 1) {
+			if ($count < 10 && $book->getStock() >= 1) {
 				return true;
 			}
 
 			return false;
 		}
+
+
+
+		private function changeStock($params)
+		{
+			extract($params);
+
+			$val = 0;
+			if ($stock = "en stock") $val = 1;
+			if ($stock = "plus stock") $val = 0;
+
+
+
+			$book->setStock($val);
+			$book->setDateModified(new \DateTime());
+
+			$em = $this->doctrine->getManager();
+            $em->persist($book);
+            $em->flush();
+		}
+
+
+
+		public function sortCartItem($params)
+		{
+			extract($params);
+
+
+			$repoCartItem = $this->doctrine->getRepository("BdlocAppBundle:CartItem");
+			$repoUser = $this->doctrine->getRepository("BdlocAppBundle:User");
+			$repoBook = $this->doctrine->getRepository("BdlocAppBundle:Book");
+
+
+			$user = $repoUser->find($id);
+	        $book = $repoBook->selectBookByIsbn($isbn);
+
+
+	        $params = array();
+	        $params["book"] = $book;
+
+
+			$params["stock"] = "plus stock";
+			$this->changeStock($params);
+
+
+			$em->remove($cartitem);
+			$em->persist($cartitem);
+			$em->flush();
+		}
+
+
 
 
 		public function addCartItem($params)
@@ -78,6 +125,10 @@
 	            $em = $this->doctrine->getManager();
 	            $em->persist($cartitem);
 	            $em->flush();
+
+
+	            $params["stock"] = "en stock";
+	            $this->changeStock($params);
 			}
 			
 		}
@@ -102,12 +153,8 @@
 
 
 	        // a mettre plus tard en service
-	        if ($cart = $repoCart->selectCartUser())
+	        if (!$cart = $repoCart->selectCartUser())
 	        {
-	            $params["cart"] = $cart;
-	            $this->addCartItem($params);
-
-	        } else {
 	            
 	            $cart = new Cart();
 
@@ -120,11 +167,13 @@
 	            $em = $this->getDoctrine()->getManager();
 	            $em->persist($cart);
 	            $em->flush();
-
-
-	            $params["cart"] = $cart;
-	            $this->addCartItem($params);
 	        }
+
+
+	        $params["cart"] = $cart;
+	        $this->addCartItem($params);
+
+
 
 
 			return $params;

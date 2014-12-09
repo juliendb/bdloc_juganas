@@ -22,7 +22,7 @@ class CartItemRepository extends EntityRepository
 		$cart = $query->getResult();
 
 		return $cart;
-	}	
+	}
 
 
 }
