@@ -10,60 +10,6 @@
 
 <div class="container">
 
- {% for book in books %}
-		
-		<div class="view view-fifth">
-
-			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
-
-			<div class="mask">
-				<h2 class="title">{{ book.title }} </h2>
-				<h2 class="serie">{{ book.serie.title }}</h2>
-				<h2 class="tome"> - tome {{ book.num }}</h2>
-
-				<!-- {# vérifie si il y a auteur a chaque fois #}
-				{% if book.scenarist %}
-					<p class="scenario">scénario : {{ book.scenarist.lastName }}</p>
-				{% endif %}
-				
-				{% if book.illustrator %}
-					<p class="dessin">dessin : {{ book.illustrator.lastName }}</p>
-				{% endif %} -->
-
-				<div id="btnAjouter">
-					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
-				
-					{% if app.user %}
-						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn, 'id': app.user.id }) %}
-					{% else %}
-						{% set url = "" %}
-					{% endif %}
-				
-					<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
-				</div>
-			</div>
-
-			
-		</div>
-{% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<nav>
 		<div id="filtres">
 			<h1 id="titre">Filtres</h1>
@@ -205,7 +151,7 @@
 				{% endif %} -->
 
 				<div id="btnAjouter">
-					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}"></a>
 				
 					{% if app.user %}
 						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn, 'id': app.user.id }) %}

@@ -1,4 +1,4 @@
-/*font-family: 'Open Sans', sans-serif;*/
+/*font-family 'Open Sans', sans-serif;*/
 body {
   font: 300 2em/2em Oswald;
   margin: 0 auto;
@@ -397,113 +397,80 @@ a.subscribe {
 /****************************************
 ************ Afficher BDs  **************
 ****************************************/
-/*#livre
-	float left
-	margin-right 30px
-	width 340px
-	background-color rgba(41, 41, 41, 0.9)
-	margin-bottom 30px
-
-	#imgBd
-		text-align center
-		width 300px
-		height 397px
-		overflow hidden
-		text-align center
-		margin auto
-		overflow hidden
-		padding 22px 0 0 0
-		
-	
-	#infosBd
-		margin auto
-		padding-left 22px
-		
-		.title
-			font 300 1.2em Oswald
-			line-height 0.5em
-			color text
-			
-		.serie
-			display inline-block
-			font 300 0.9em Oswald
-			color text
-			
-		.tome
-			display inline-block
-			font 300 0.9em Oswald
-			color tome
-			
-		.link_detail_book
-			font 300 0.7em Oswald
-			color coloron
-			&::before
-				font 0.8em Glyphicons Halflings
-				content  "\2b"
-				margin-right 5px
-	
-	#btnAjouter
-		a.link_cart_book
-			text-align center
-			background-color red
-			font 300 0.8em Oswald
-			letter-spacing 0.07em
-			text-transform uppercase
-			color white
-			line-height 53px
-			padding 10px	
-			border-radius 5px
-			text-decoration none
-			&::before
-				font 0.9em Glyphicons Halflings
-				content "\e008"
-				margin-right 10px
-			&:hover
-				cursor pointer
-				color white
-				background-color colorok
-				transition-duration 0.2s*/
-/****************************************
-************ Afficher BDs New  **************
-****************************************/
-.view {
-  width: 300px;
-  height: 400px;
-  margin: 10px;
+#livre {
   float: left;
-  border: 10px solid #fff;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  -webkit-box-shadow: 1px 1px 2px #e6e6e6;
-  -moz-box-shadow: 1px 1px 2px #e6e6e6;
-  box-shadow: 1px 1px 2px #e6e6e6;
-  cursor: default;
+  margin-right: 30px;
+  width: 340px;
+  background-color: rgba(41,41,41,0.9);
+  margin-bottom: 30px;
 }
-.view .mask img,
-width 300px img,
-height 400px img,
-position absolute img,
-overflow hidden img,
-top 0 img,
-left 0 img,
-.view img img,
-display block img,
-position relative img,
-.view h2 img,
-text-transform uppercase img,
-color #fff img,
-text-align center img,
-font-size 17px img,
-padding 10px img,
-background rgba(0 img,
-0 img,
-0.8) img,
-margin 20px 0 0 0 img,
-.view-fifth img {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+#livre #imgBd {
+  text-align: center;
+  width: 300px;
+  height: 397px;
+  overflow: hidden;
+  text-align: center;
+  margin: auto;
+  overflow: hidden;
+  padding: 22px 0 0 0;
+}
+#livre #infosBd {
+  margin: auto;
+  padding-left: 22px;
+}
+#livre #infosBd .title {
+  font: 300 1.2em Oswald;
+  line-height: 0.5em;
+  color: #f4eeeb;
+}
+#livre #infosBd .serie {
+  display: inline-block;
+  font: 300 0.9em Oswald;
+  color: #f4eeeb;
+}
+#livre #infosBd .tome {
+  display: inline-block;
+  font: 300 0.9em Oswald;
+  color: #e9b33d;
+}
+#livre #infosBd .link_detail_book {
+  float: right;
+  font: 300 1.5em Oswald;
+  color: #fff;
+  margin-bottom: 20px;
+}
+#livre #infosBd .link_detail_book::before {
+  font: 0.8em Glyphicons Halflings;
+  content: "\2b";
+  margin-right: 5px;
+}
+#livre #infosBd .link_detail_book:hover {
+  color: #e9b33d;
+  text-decoration: none;
+}
+#livre #btnAjouter {
+  margin-bottom: 20px;
+}
+#livre #btnAjouter a.link_cart_book {
+  text-align: center;
+  background-color: #e90000;
+  font: 300 0.8em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 53px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+#livre #btnAjouter a.link_cart_book::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e008";
+  margin-right: 10px;
+}
+#livre #btnAjouter a.link_cart_book:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #9d0c0c;
+  transition-duration: 0.2s;
 }
