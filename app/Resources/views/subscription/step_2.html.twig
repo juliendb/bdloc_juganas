@@ -27,7 +27,17 @@
 		{{ google_map_js(map) }}
 	</div>
 
-<!-- 	<a href="{{ path("bdloc_app_subscribe_billingstep3", {'id': idUser}) }}" id="stepbilling" class="btn btn-primary">Suivant</a> -->
+	<div>
+		{% if mydelivery is defined %}
+			
+			<p>{{ mydelivery.name }}</p>
+			<p>{{ mydelivery.address }}</p>
+			<p>{{ mydelivery.city ~ " " ~ mydelivery.postalCode }}</p>
+
+			<a href="{{ path("bdloc_app_subscribe_registerstep3", {'id': idUser}) }}" id="stepbilling" class="btn btn-primary">Suivant</a>
+
+		{% endif %}
+	</div>
 
 
 {% endblock %}

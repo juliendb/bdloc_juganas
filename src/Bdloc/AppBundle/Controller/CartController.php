@@ -25,30 +25,53 @@ class CartController extends Controller
 
     
     /**
-     * @Route("/panier/voir/{id}")
+     * @Route("/panier/voir")
      */
-    public function cartViewAction($id)
+    public function cartViewAction()
     {
     	$params = array();
+        $params["user"] = $this->getUser();
+
+
+        $cartitem = $this->get("bd.cartitemservice");
+        $params = $cartitem->gestion($params, "display");
 
 
         return $this->render("cart/view_cart.html.twig", $params);
     }
 
 
+    
     /**
-     * @Route("/panier/ajouter/{isbn}/{id}")
+     * @Route("/panier/retirer/{isbn}")
      */
-    public function addCartItemAction($isbn, $id)
+    public function sortCartItemAction($isbn)
     {
         $params = array();
-
+        $params["user"] = $this->getUser();
+        $params["isbn"] = $isbn;
 
         $cartitem = $this->get("bd.cartitemservice");
-        $params = $cartitem->gestion($isbn, $id, "adding");
+        $params = $cartitem->gestion($params, "sorting");
         
 
+        return $this->render("cart/sort_cart.html.twig", $params);
+    }
 
+
+
+    /**
+     * @Route("/panier/ajouter/{isbn}")
+     */
+    public function addCartItemAction($isbn)
+    {
+        $params = array();
+        $params["user"] = $this->getUser();
+        $params["isbn"] = $isbn;
+
+        $cartitem = $this->get("bd.cartitemservice");
+        $params = $cartitem->gestion($params, "adding");
+        
 
         return $this->render("cart/add_cart.html.twig", $params);
     }

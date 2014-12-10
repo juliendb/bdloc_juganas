@@ -75,41 +75,27 @@
 
 
 
-		/*
-		public function sortCartItem()
+		
+		public function sortCartItem($cart, $book, $repoCartItem)
 		{
-			extract($params);
+			$cartitem = $repoCartItem->selectCartItem($cart, $book);
+			dump($cartitem);
+			die();
+
+			$this->changeStock($book, "off stock");
 
 
-			$repoCartItem = $this->doctrine->getRepository("BdlocAppBundle:CartItem");
-			$repoUser = $this->doctrine->getRepository("BdlocAppBundle:User");
-			$repoBook = $this->doctrine->getRepository("BdlocAppBundle:Book");
-
-
-			$user = $repoUser->find($id);
-	        $book = $repoBook->selectBookByIsbn($isbn);
-
-
-	        $params = array();
-	        $params["book"] = $book;
-
-
-			$params["stock"] = "plus stock";
-			$this->changeStock($params);
-
-
+			$em = $this->doctrine->getManager();
 			$em->remove($cartitem);
 			$em->persist($cartitem);
 			$em->flush();
-		}*/
+		}
 
 
 
 		// ajoute un livre au panier
-		public function addCartItem($cart, $book)
+		public function addCartItem($cart, $book, $repoCartItem)
 		{
-
-			$repoCartItem = $this->doctrine->getRepository("BdlocAppBundle:CartItem");
 			$cartitems = $repoCartItem->selectAllCartItem($cart);
 
 
@@ -135,23 +121,42 @@
 
 
 
-		public function gestion($isbn, $id, $action)
+		public function gestion($params, $action)
 		{
-			$params = array();
-
+			$user = $params["user"];
 
 			$repoBook = $this->doctrine->getRepository("BdlocAppBundle:Book");
 	        $repoUser = $this->doctrine->getRepository("BdlocAppBundle:User");
 	        $repoCart = $this->doctrine->getRepository("BdlocAppBundle:Cart");
+	        $repoCartItem = $this->doctrine->getRepository("BdlocAppBundle:CartItem");
 
-	        
-	        $user = $repoUser->find($id);
-	        $book = $repoBook->selectBookByIsbn($isbn);
 			$cart = $repoCart->selectCartUser($user);
 			
 
+
+
+			if ($action == "display")
+			{
+				if ( !empty($cart) )
+		        {
+
+		        	$cartitems = $repoCartItem->selectAllCartItem($cart);
+
+
+		        	$params = array();
+		        	$params["cartitems"] = $cartitems;
+
+		        }
+			}
+
+
+
+
 	        if ($action == "adding")
 	        {
+	        	$isbn = $params["isbn"];
+	        	$book = $repoBook->selectBookByIsbn($isbn);
+
 
 				if (empty($cart))
 		        {
@@ -169,13 +174,26 @@
 		        }
 
 
-	 	       $this->addCartItem($cart, $book);
+	 	       $this->addCartItem($cart, $book, $repoCartItem);
+
+
+				$params = array();
+				$params["id"] = $id;
+				$params["isbn"] = $isbn;
 			}
 
 
-			if ($action == "delete")
+			if ($action == "sorting")
 			{
+				$isbn = $params["isbn"];
+	        	$book = $repoBook->selectBookByIsbn($isbn);
 
+
+	        	$this->sortCartItem($cart, $book, $repoCartItem);
+
+
+	        	$params = array();
+	        	$params["isbn"] = $isbn;
 			}
 
 

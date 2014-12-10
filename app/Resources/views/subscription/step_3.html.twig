@@ -8,14 +8,14 @@
 <div class="steps">
     <ul class="stepsRegister">
     	<li class="tab ok"><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a> > </li>
-    	<li class="tab ok"><a href="{{ path("bdloc_app_subscribe_deliverystep2", {'id': idUser}) }}">2. Choisir un point relais</a> > </li>
+    	<li class="tab ok"><a href="{{ path("bdloc_app_subscribe_registerstep2", {'id': idUser}) }}">2. Choisir un point relais</a> > </li>
     	<li class="tab on tab3">3. Paiement </li>
 
     </ul>
 </div>
 
 <div id="paypal">
-	<h1>Paiement sécurisé par Paypal</h1>
+	<h1>Paiement sécurisé par Paypal ou pas du tout !</h1>
 	<img src="{{ asset("img/paypal.png" )}}" alt="logo paypal">
 	<p class="info">Vous n'avez pas de compte paypal enregistré. </p>
 	<a href="https://www.paypal.com/login" target="_blank" class="btn btn-success">Je me connecte à mon compte Paypal</a>
