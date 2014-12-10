@@ -80,7 +80,7 @@ class User implements UserInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="postalCode", type="smallint")
+     * @ORM\Column(name="postalCode", type="string", length=255, nullable = true)
      */
     private $postalCode;
 
@@ -108,7 +108,7 @@ class User implements UserInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="tel", type="smallint")
+     * @ORM\Column(name="tel", type="string", length=255, nullable = true)
      */
     private $tel;
 

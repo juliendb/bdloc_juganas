@@ -41,12 +41,20 @@ class ProfilController extends Controller
         $params = array(
             "user" => $user
         );
-        $user = new User();
 
+        //créer le formulaire
         $editForm = $this->createForm(new RegisterType(), $user);
+        //prerempli le formulaire avec les données user
+        $user = $this->getUser();
 
-        $params['editForm'] = $editForm->createView();
-        
+
+        if ($editForm->isValid()){
+        	
+        	
+        }
+
+        //afficher le formulaire
+        $params['editForm'] = $editForm->createView();              
         return $this->render("profil/edit.html.twig", $params);
 
     }
