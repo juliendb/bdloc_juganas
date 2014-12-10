@@ -5,7 +5,7 @@ body {
   padding: 0;
   color: #fff;
   background: url("../img/fond_bd.png") no-repeat top center #000;
-/*background-size cover*/
+  background-size: contain;
 }
 /****************************************
 *****************************************
@@ -340,6 +340,9 @@ a.subscribe {
 ************** CATALOGUE  ***************
 *****************************************
 ****************************************/
+/****************************************
+******** FILTRES RECHERCHE  *************
+****************************************/
 #titre {
   margin-top: 45px;
   font: 300 1.5em Oswald;
@@ -363,11 +366,6 @@ a.subscribe {
 }
 .form-group {
   margin-left: 10px;
-}
-#livre {
-  float: left;
-  width: 300px;
-  margin-right: 30px;
 }
 #selecteur {
   display: block;
@@ -395,4 +393,117 @@ a.subscribe {
   color: #fff;
   opacity: 0.6;
   transition-duration: 0.2s;
+}
+/****************************************
+************ Afficher BDs  **************
+****************************************/
+/*#livre
+	float left
+	margin-right 30px
+	width 340px
+	background-color rgba(41, 41, 41, 0.9)
+	margin-bottom 30px
+
+	#imgBd
+		text-align center
+		width 300px
+		height 397px
+		overflow hidden
+		text-align center
+		margin auto
+		overflow hidden
+		padding 22px 0 0 0
+		
+	
+	#infosBd
+		margin auto
+		padding-left 22px
+		
+		.title
+			font 300 1.2em Oswald
+			line-height 0.5em
+			color text
+			
+		.serie
+			display inline-block
+			font 300 0.9em Oswald
+			color text
+			
+		.tome
+			display inline-block
+			font 300 0.9em Oswald
+			color tome
+			
+		.link_detail_book
+			font 300 0.7em Oswald
+			color coloron
+			&::before
+				font 0.8em Glyphicons Halflings
+				content  "\2b"
+				margin-right 5px
+	
+	#btnAjouter
+		a.link_cart_book
+			text-align center
+			background-color red
+			font 300 0.8em Oswald
+			letter-spacing 0.07em
+			text-transform uppercase
+			color white
+			line-height 53px
+			padding 10px	
+			border-radius 5px
+			text-decoration none
+			&::before
+				font 0.9em Glyphicons Halflings
+				content "\e008"
+				margin-right 10px
+			&:hover
+				cursor pointer
+				color white
+				background-color colorok
+				transition-duration 0.2s*/
+/****************************************
+************ Afficher BDs New  **************
+****************************************/
+.view {
+  width: 300px;
+  height: 400px;
+  margin: 10px;
+  float: left;
+  border: 10px solid #fff;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  -webkit-box-shadow: 1px 1px 2px #e6e6e6;
+  -moz-box-shadow: 1px 1px 2px #e6e6e6;
+  box-shadow: 1px 1px 2px #e6e6e6;
+  cursor: default;
+}
+.view .mask img,
+width 300px img,
+height 400px img,
+position absolute img,
+overflow hidden img,
+top 0 img,
+left 0 img,
+.view img img,
+display block img,
+position relative img,
+.view h2 img,
+text-transform uppercase img,
+color #fff img,
+text-align center img,
+font-size 17px img,
+padding 10px img,
+background rgba(0 img,
+0 img,
+0.8) img,
+margin 20px 0 0 0 img,
+.view-fifth img {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
