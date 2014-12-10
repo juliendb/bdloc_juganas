@@ -43,6 +43,7 @@ class BookRepository extends EntityRepository
 
 		
 
+
 		// genres
 		if ( !empty($params['genres']) )
 		{
@@ -52,6 +53,14 @@ class BookRepository extends EntityRepository
 					->orWhere('s.style = :genre'.$i)
 					->setParameter('genre'.$i, $params['genres'][$i]);
 			}
+		}
+
+
+		// availability
+		if ( !empty($params['availability']) )
+		{
+			if ($params['availability'] == "available") $query->andWhere('b.stock > 0');
+			if ($params['availability'] == "noneavailable") $query->andWhere('b.stock = 0');
 		}
 
 
@@ -84,6 +93,7 @@ class BookRepository extends EntityRepository
 		$query
 			->setFirstResult($params["first"])
 			->setMaxResults($params["limit"]);
+
 
 		// order
 		if ($params['choice'] == "title") $query->addOrderBy('b.title', $params['order']);

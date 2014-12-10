@@ -31,6 +31,7 @@ catalogue =
 		var url = $(this).attr("action")+"/1"
 		var limit = "/"+$("#limit").val()
 		var choice = "/"+$("#choice").val()
+		var availability = "/"+$("#availability").val()
 		var order = "/"+$("#order").val()
 
 		var genres = ""
@@ -46,7 +47,7 @@ catalogue =
 		})
 
 
-		url += limit+choice+order+genres
+		url += limit+choice+availability+order+genres
 
 		$(this).attr("href", url)
 		_this.rechargeCatalogue.call($(this))

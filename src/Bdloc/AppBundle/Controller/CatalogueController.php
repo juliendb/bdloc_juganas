@@ -24,9 +24,9 @@ class CatalogueController extends Controller
 
     
     /**
-     * @Route("/catalogue/{page}/{limit}/{choice}/{order}/{genres}", defaults={"page"=1,"limit"=20,"choice"="title","order"="ASC","genres"=""})
+     * @Route("/catalogue/{page}/{limit}/{choice}/{availability}/{order}/{genres}", defaults={"page"=1, "limit"=20, "choice"="title", "availability"="all", "order"="ASC", "genres"=""})
      */
-    public function catalogueAllAction($page, $limit, $choice, $order, $genres)
+    public function catalogueAllAction($page, $limit, $choice, $availability, $order, $genres)
     {
     	$params = array();
 
@@ -35,7 +35,8 @@ class CatalogueController extends Controller
 		$params["page"] = $page;
 		$params["limit"] = $limit;
 		$params["choice"] = $choice;
-		$params["order"] = $order;
+        $params["order"] = $order;
+		$params["availability"] = $availability;
 		$params["genres"] = $genres;
 
         

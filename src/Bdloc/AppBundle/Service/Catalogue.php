@@ -54,6 +54,10 @@
 				return false;
 			}
 
+			if ( $params["availability"] != "all" && $params["availability"] != "available" && $params["availability"] != "noneavailable") {
+				return false;
+			}
+
 
 			return true;
 		}
@@ -94,6 +98,7 @@
 				$genres = $request->request->get('genres');
 				$limit = $request->request->get('limit');
 				$choice = $request->request->get('choice');
+				$availability = $request->request->get('availability');
 				$order = $request->request->get('order');
 
 				if ( !empty($genres) )
@@ -111,6 +116,7 @@
 			$pagination["limit"] = $limit;
 			$pagination["order"] = $order;
 			$pagination["choice"] = $choice;
+			$pagination["availability"] = $availability;
 			$pagination["genres"] = $url_genres;
 
 

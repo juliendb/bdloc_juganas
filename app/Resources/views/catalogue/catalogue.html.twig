@@ -30,7 +30,7 @@
 					{% endfor %}
 					
 				<div id="selecteur">
-					<div class="form-group"  class="clearfix">
+					<div class="form-group clearfix">
 						<select id="choice" name="choice">
 							<option value="title" {% if pagination.choice == 'title' %}selected{% endif %}>
 								titre de livre</option>
@@ -38,6 +38,16 @@
 								titre de série</option>
 							<option value="publisher" {% if pagination.choice == 'publisher' %}selected{% endif %}>
 								éditeur</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select id="availability" name="availability">
+						<option value="all" {% if pagination.availability == 'all' %}selected{% endif %}>
+							tous</option>
+						<option value="available" {% if pagination.availability == 'available' %}selected{% endif %}>
+							disponible</option>
+						<option value="noneavailable" {% if pagination.availability == 'noneavailable' %}selected{% endif %}>
+							non disponible</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -63,7 +73,7 @@
 				</form>
 
 				<div class="clearfix">
-				{% set params = {'limit': pagination.limit, 'choice': pagination.choice, 'order': pagination.order } %}
+				{% set params = {'limit': pagination.limit, 'choice': pagination.choice, 'availability': pagination.availability, 'order': pagination.order } %}
 				{% if genres %}
 					{% set params = params|merge({ 'genres': pagination.url_genres }) %}
 				{% endif %}
@@ -141,7 +151,14 @@
 			
 
 			<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
-			<a class="link_cart_book" href="{{ path('bdloc_app_cart_addcartitem', { 'isbn': book.isbn, id: app.user.id }) }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
+			
+			{% if app.user %}
+				{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn, 'id': app.user.id }) %}
+			{% else %}
+				{% set url = "" %}
+			{% endif %}
+
+			<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
 		</div>
 	{% endfor %}
 	

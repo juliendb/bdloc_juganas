@@ -11,12 +11,15 @@ class CartRepository extends EntityRepository
 
 
 	// select cart utilisateur
-	public function selectCartUser()
+	public function selectCartUser($user)
 	{
 		$query = $this
 			->createQueryBuilder("c")
-			->where("c.status = 'active'")
-			->addSelect("c")
+			->join("c.user", "u")
+			->addSelect("c,u")
+			->andWhere("u.id = :user_id")
+			->andWhere("c.status = 'active'")
+			->setParameter('user_id', $user->getId())
 			->getQuery();
 
 		$cart = $query->getOneOrNullResult();

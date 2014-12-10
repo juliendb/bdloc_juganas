@@ -36,12 +36,16 @@
 
 
 
-		private function isValid($params)
+		private function isValid($cartitems, $book)
 		{
-			extract($params);
-
-
 			$count = count($cartitems);
+			
+
+			foreach ($cartitems as $cartitem) {
+				if ($cartitem->getBook() == $book) {
+					return false;
+				}
+			}
 
 			if ($count < 10 && $book->getStock() >= 1) {
 				return true;
@@ -52,17 +56,14 @@
 
 
 
-		private function changeStock($params)
+
+
+		private function changeStock($book, $action)
 		{
-			extract($params);
 
-			$val = 0;
-			if ($stock = "en stock") $val = 1;
-			if ($stock = "plus stock") $val = 0;
+			if ($action == "on stock") $book->setStock( $book->getStock()-1 );
+			if ($action == "off stock") $book->setStock( $book->getStock()+1 );
 
-
-
-			$book->setStock($val);
 			$book->setDateModified(new \DateTime());
 
 			$em = $this->doctrine->getManager();
@@ -72,7 +73,10 @@
 
 
 
-		public function sortCartItem($params)
+
+
+		/*
+		public function sortCartItem()
 		{
 			extract($params);
 
@@ -97,23 +101,19 @@
 			$em->remove($cartitem);
 			$em->persist($cartitem);
 			$em->flush();
-		}
+		}*/
 
 
 
-
-		public function addCartItem($params)
+		// ajoute un livre au panier
+		public function addCartItem($cart, $book)
 		{
-			extract($params);
-
 
 			$repoCartItem = $this->doctrine->getRepository("BdlocAppBundle:CartItem");
 			$cartitems = $repoCartItem->selectAllCartItem($cart);
 
-			$params["cartitems"] = $cartitems;
 
-
-			if ($this->isValid($params)) 
+			if ($this->isValid($cartitems, $book)) 
 			{
 				$cartitem = new CartItem();
 
@@ -127,52 +127,56 @@
 	            $em->flush();
 
 
-	            $params["stock"] = "en stock";
-	            $this->changeStock($params);
+				$this->changeStock($book, "on stock");
+			
 			}
 			
 		}
 
 
 
-		public function gestion($params)
+		public function gestion($isbn, $id, $action)
 		{
-			extract($params);
+			$params = array();
+
 
 			$repoBook = $this->doctrine->getRepository("BdlocAppBundle:Book");
 	        $repoUser = $this->doctrine->getRepository("BdlocAppBundle:User");
 	        $repoCart = $this->doctrine->getRepository("BdlocAppBundle:Cart");
+
 	        
 	        $user = $repoUser->find($id);
 	        $book = $repoBook->selectBookByIsbn($isbn);
+			$cart = $repoCart->selectCartUser($user);
+			
 
-
-	        $params = array();
-	        $params["book"] = $book;
-
-
-
-	        // a mettre plus tard en service
-	        if (!$cart = $repoCart->selectCartUser())
+	        if ($action == "adding")
 	        {
-	            
-	            $cart = new Cart();
 
-	            $cart->setDateCreated(new \DateTime());
-	            $cart->setDateModified(new \DateTime());
-	            $cart->setStatus("active");
-	            $cart->setUser($user);
+				if (empty($cart))
+		        {
+		            $cart = new Cart();
 
-
-	            $em = $this->getDoctrine()->getManager();
-	            $em->persist($cart);
-	            $em->flush();
-	        }
+		            $cart->setDateCreated(new \DateTime());
+		            $cart->setDateModified(new \DateTime());
+		            $cart->setStatus("active");
+		            $cart->setUser($user);
 
 
-	        $params["cart"] = $cart;
-	        $this->addCartItem($params);
+		            $em = $this->doctrine->getManager();
+		            $em->persist($cart);
+		            $em->flush();
+		        }
 
+
+	 	       $this->addCartItem($cart, $book);
+			}
+
+
+			if ($action == "delete")
+			{
+
+			}
 
 
 

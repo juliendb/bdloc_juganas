@@ -43,11 +43,9 @@ class CartController extends Controller
     {
         $params = array();
 
-        $params["isbn"] = $isbn;
-        $params["id"] = $id;
 
         $cartitem = $this->get("bd.cartitemservice");
-        $params = $cartitem->gestion($params);
+        $params = $cartitem->gestion($isbn, $id, "adding");
         
 
 
