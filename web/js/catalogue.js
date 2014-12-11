@@ -1,3 +1,74 @@
+cart =
+{
+
+
+	init:function()
+	{
+		var _this = cart
+
+
+		$(".link_cart_book").off().on("click", _this.getCartItem)
+	},
+
+
+	getCartItem:function()
+	{
+		var _this = cart
+		var url = $(this).attr("href")
+
+
+		$.ajax
+		({
+			url: url,
+			dataType: "html",
+			success: function(html)
+			{
+				var response = $(html).find("#response")
+
+				if (response) 
+				{
+				
+					var action = response.attr("action")
+					var isbn = response.attr("isbn")
+
+					var stock_book = response.children("#stock_book").val()
+					var count_cart = response.children("#count_cart").val()
+
+
+					// adding
+					if (action == "adding")
+					{
+						console.log(stock_book, count_cart)
+					}
+
+
+					// sorting
+					if (action == "sorting")
+					{
+						console.log(stock_book, count_cart)
+
+						$("#"+isbn).fadeOut(600)
+					}
+
+				}
+
+
+				//console.log(response.children("#stock_book").val())
+			}
+		})
+
+
+		return false
+	}
+
+}
+
+
+
+
+
+
+
 catalogue =
 {
 
@@ -8,6 +79,8 @@ catalogue =
 		
 		_this.initElement()
 		_this.popup()
+
+		cart.init()
 	},
 
 
@@ -21,6 +94,20 @@ catalogue =
 		$("#filter_pages").off().on("click", "a", _this.rechargeCatalogue)
 
 		$("#form_filter_pages").off().on("submit", _this.rechargePostCatalogue)
+
+
+		$(".genres").off().on("click", "label", _this.clickCheckbox)
+	},
+
+
+
+	clickCheckbox:function()
+	{
+		var _this = catalogue
+		var input = $(this).prev("input")
+		var checked = !input.prop("checked")
+
+		input.prop("checked", checked)
 	},
 
 
@@ -120,6 +207,7 @@ catalogue =
 			$(this).replaceWith(content).fadeOut(0).fadeIn(time)
 			
 			_this.initElement()
+			cart.init()
 		})
 	},
 
