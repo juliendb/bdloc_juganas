@@ -424,17 +424,12 @@ a.subscribe {
   font: 300 0.9em Oswald;
   color: #f4eeeb;
 }
-.view #infosBd .tome {
-  display: inline-block;
-  font: 300 0.9em Oswald;
-  color: #e9b33d;
-}
 .view #btnAjouter {
   margin-bottom: 20px;
 }
 .view #btnAjouter a.link_cart_book {
   text-align: center;
-  background-color: #e90000;
+  background-color: #142725;
   font: 300 0.8em Oswald;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -446,14 +441,22 @@ a.subscribe {
 }
 .view #btnAjouter a.link_cart_book::before {
   font: 0.9em Glyphicons Halflings;
-  content: "\e008";
+  content: "\e116";
   margin-right: 10px;
 }
 .view #btnAjouter a.link_cart_book:hover {
   cursor: pointer;
   color: #fff;
-  background-color: #9d0c0c;
+  background-color: #e9b33d;
   transition-duration: 0.2s;
+}
+.view #btnAjouter .stock {
+  font: 300 0.9em Oswald;
+  color: #e9b33d;
+  background-color: #fff;
+  padding: 5px;
+  width: 30%;
+  margin-bottom: 19px;
 }
 /****************************************
 *****Afficher BDs New transitions *******
@@ -467,8 +470,7 @@ a.subscribe {
   overflow: hidden;
   position: relative;
   text-align: center;
-/*-webkit-box-shadow 1px 1px 2px #e6e6e6
-000000	box-shadow 1px 1px 2px #e6e6e6*/
+  -webkit-box-shadow: 1px 1px 2px #e6e6e6;
   cursor: pointer;
 }
 .view img {
@@ -476,28 +478,78 @@ a.subscribe {
   position: relative;
 }
 .view .mask {
-  width: 300px;
-  height: 400px;
+  width: 280px;
+  height: 381px;
   position: absolute;
   overflow: hidden;
   top: 0;
   left: 0;
+}
+.view #btnAjouter {
+  margin-top: 45px;
 }
 #descriptionBd {
   display: block;
   margin: auto;
 }
 /******** texte en masque ********/
-.view h2,
-.view p {
-  text-transform: uppercase;
-  color: #f4eeeb;
+.view {
   text-align: center;
+}
+.view h2 {
+  margin-top: 35px;
+  text-transform: uppercase;
+  color: #e9b33d;
   position: relative;
-  font-size: 17px;
-  padding: 10px;
-/*background rgba(0, 0, 0, 0.8)*/
-  margin: 20px 0 0 0;
+  font: 300 1.2em Open Sans;
+  max-height: 127px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.8);
+  padding: 20px;
+}
+.view p.serie {
+  color: #f4eeeb;
+  position: relative;
+  font: 300 1.1em Open Sans;
+  line-height: 1em;
+  display: inline-block;
+  margin: 12px 10px 12px 10px;
+}
+.view .tome {
+  color: #142725;
+  font: 700 0.8em Oswald;
+  text-transform: uppercase;
+}
+.view .link_detail_book {
+  position: relative;
+}
+.view .link_detail_book:hover {
+  text-decoration: none;
+  color: #f4eeeb;
+}
+.view #triangle {
+  z-index: 90;
+  position: absolute;
+  left: 254px;
+  top: 339px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-right: 30px solid #222;
+  transform: rotate(-135deg);
+}
+.view #triangle:after {
+  position: absolute;
+  font: 0.7em Glyphicons Halflings;
+  content: "\2b";
+  color: #fff;
+  transform: rotate(45deg);
+  left: 11px;
+  top: -7px;
+}
+.view #triangle:after:hover {
+  color: #e9b33d;
 }
 /*********** transition ************/
 .view-fifth img {
@@ -509,7 +561,7 @@ a.subscribe {
 }
 .view-fifth .mask {
   opacity: 1;
-  background-color: rgba(146,96,91,0.3);
+  background-color: #65c6bb;
   -webkit-transform: translateX(-300px);
   -moz-transform: translateX(-300px);
   -o-transform: translateX(-300px);
@@ -523,22 +575,14 @@ a.subscribe {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.view-fifth h2 {
-/*background rgba(255, 255, 255, 0.5)*/
-  color: #000;
-/*-webkit-box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)
-		-moz-box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)
-		box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)*/
-}
-.view-fifth h2:hover {
+.view-fifth h2:hover,
+.view-fifth h3:hover,
+.view-fifth p:hover {
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha 100;
   opacity: 1;
 }
 .view-fifth p {
-  filter: alpha 0;
-  opacity: 0;
-  color: #333;
   -webkit-transition: all 0.2s linear;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
@@ -546,6 +590,7 @@ a.subscribe {
   transition: all 0.2s linear;
 }
 .view-fifth:hover .mask {
+  cursor: default;
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   -o-transform: translateX(0px);
