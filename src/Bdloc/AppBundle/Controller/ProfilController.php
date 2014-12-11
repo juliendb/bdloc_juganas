@@ -5,6 +5,7 @@ namespace Bdloc\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 use Bdloc\AppBundle\Entity\User;
 use Bdloc\AppBundle\Util\StringHelper;
@@ -44,13 +45,26 @@ class ProfilController extends Controller
 
         //créer le formulaire
         $editForm = $this->createForm(new RegisterType(), $user);
+
         //prerempli le formulaire avec les données user
         $user = $this->getUser();
 
+        //gère la soumission du form
+        $request = $this->getRequest();
+        $editForm->handleRequest($request);
+
+
 
         if ($editForm->isValid()){
-        	
-        	
+
+            //sauvegarde le user en base
+            $em = $this->getDoctrine()->getManager();
+            $em->persist( $user );
+            $em->flush();
+
+
+            //redirige vers l'accueil
+            return $this->redirect( $this->generateUrl( "bdloc_app_default_home" ) );
         }
 
         //afficher le formulaire
