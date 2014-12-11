@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 11 Décembre 2014 à 14:31
+-- Généré le :  Jeu 11 Décembre 2014 à 14:58
 -- Version du serveur :  5.6.16
 -- Version de PHP :  5.5.11
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `author` (
 -- Contenu de la table `author`
 --
 
-INSERT INTO `author` (`id`, `firstName`, `lastName`, `aka`, `birthDate`, `deathDate`, `country`, `picture`, `idbel`, `dateCreated`, `dateModified`) VALUES
+REPLACE INTO `author` (`id`, `firstName`, `lastName`, `aka`, `birthDate`, `deathDate`, `country`, `picture`, `idbel`, `dateCreated`, `dateModified`) VALUES
 (2, 'Alexandro', 'Jodorowsky', NULL, '1929-02-07', NULL, 'Chili', NULL, 89, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (3, 'Jean', 'Giraud', 'Moebius', '1938-05-08', NULL, 'France', NULL, 70, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (4, 'Isabelle', 'Beaumenay-Joannet', NULL, '1957-01-01', NULL, 'France', NULL, 2167, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -391,7 +391,7 @@ CREATE TABLE IF NOT EXISTS `book` (
 -- Contenu de la table `book`
 --
 
-INSERT INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
+REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
 (2, 3, 2, 4, 1, 'Ce qui est en bas', 3, 'Les Humanoïdes Associés', '2-7316-0241-4', 'johndifoolt3cequiestenbas1983.jpg', 'johndifool03v_520.jpg', 60, NULL, 520, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (3, 3, 2, 5, 1, '5ème essence : galaxie qui songe', 5, 'Les Humanoïdes Associés', '2-7316-0531-6', 'johndifoolt5la5essence1galaxiequisonge1988.jpg', 'johndifool05v_522.jpg', 45, NULL, 522, 4, '2014-12-01 10:39:03', '2014-12-09 17:20:57'),
 (4, 3, 2, 5, 1, '5ème essence : La planète Difool', 6, 'Les Humanoïdes Associés', '2-7316-0532-4', 'johndifoolt6la5essence2laplanetedifool1988.jpg', 'johndifool06v_523.jpg', 46, NULL, 523, 7, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -643,7 +643,7 @@ INSERT INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `t
 (274, 151, 151, 151, 102, 'Les années ventoline', 4, 'Futuropolis', '978-2-7548-0026-6', 'PetitPolio3_11112007_125910.jpg', NULL, 59, NULL, 68456, 3, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (275, 152, 130, 152, 103, 'Le bar du vieux français 1', 1, 'Dupuis', '2-8001-1910-1', 'barduvieuxfrancaiscouv01.jpg', 'barfrancais14p.jpg', 54, 'barduvieuxfrancais01p.jpg', 6789, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (277, 153, 153, 24, 104, 'La belette', 1, 'Casterman', '2-203-33417-7', 'Comes_Belette_01.jpg', 'Comes_Belette_01v.jpg', 140, 'Belette_p_22883.jpg', 22883, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03');
-INSERT INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
+REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
 (278, 153, 153, 24, 105, 'L''arbre-coeur', 1, 'Casterman', '2-203-33442-8', 'arbrecoeur_19012003.jpg', 'arbrecoeurverso.jpg', 84, NULL, 22884, 5, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (279, 153, 153, 153, 106, 'Le Maître des Ténèbres', 2, 'Casterman', '2-203-33502-5', 'ergunlerrant02a.jpg', 'ergunlerrant02av.jpg', 44, 'ergunlerrant02p.jpg', 32218, 6, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (280, 154, 154, 154, 107, 'Dracula, Dracul, Vlad?, bah...', 1, 'Les Humanoïdes Associés', '2-73161-105-7', 'dracula_30082002.jpg', NULL, 80, NULL, 18093, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -893,7 +893,7 @@ CREATE TABLE IF NOT EXISTS `deliverypoints` (
 -- Contenu de la table `deliverypoints`
 --
 
-INSERT INTO `deliverypoints` (`id`, `name`, `address`, `postalCode`, `city`, `dateCreated`, `dateModified`, `latitude`, `longitude`) VALUES
+REPLACE INTO `deliverypoints` (`id`, `name`, `address`, `postalCode`, `city`, `dateCreated`, `dateModified`, `latitude`, `longitude`) VALUES
 (1, 'Libria ', ' 82 Passage Choiseul ', '75002', 'Paris', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.3356084', '48.8685692'),
 (2, 'Telecom Star ', ' 15 Bd de Bonne Nouvelle ', '75002', 'Paris', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.3502658', '48.8698981'),
 (3, 'Hypso Reprographie ', ' 53 rue de Montmorency ', '75003', 'Paris', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.3527359', '48.8636854'),
@@ -966,7 +966,7 @@ CREATE TABLE IF NOT EXISTS `serie` (
 -- Contenu de la table `serie`
 --
 
-INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
+REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
 (1, 'Incal (L'')', 'Science-fiction', NULL, 'IncalP.jpg', 15, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (2, 'Incal (Avant l'')', 'Science-fiction', 'Une remarquable série de SF (peut être la meilleur). Commencé superbement, elle s''enlise un peut dans les cristaux mystiques (mais c''est Jodorowski ...)', 'AvantIncal.jpg', 16, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (3, 'Juan Solo', 'Roman graphique', 'Juan Solo est une jeune frappe haineuse, un fils de flingue que son inextinguible ambition va mener au meurtre, à la richesse, puis à la rédemption. Un thriller moderne situé dans une cité fictive en Amérique du Sud. \r\n', 'juansolo.jpg', 584, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -1075,7 +1075,7 @@ INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `langu
 (106, 'Ergün l''errant', 'Science-fiction', NULL, 'ergunlerrant_19012003.jpg', 5575, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (107, 'Dracula, dracul, vlad?, bah...', 'Divers', NULL, 'draculabrecciap.JPG', 4113, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (108, 'Magasin général', 'Quotidien', 'L’histoire de Magasin général se déroule dans un village du Québec rural à partir du début des années 40. Elle gravite autour d’un personnage féminin, Marie, veuve avant l’heure et héritière du principal commerce local (le « Magasin général » qui donne son titre au récit), que l’irruption d’un étranger dans la petite communauté va progressivement réconcilier avec le bonheur ; bonheur d’aimer, bonheur d’être aimé(e), mais pas exactement de la manière que l’on pourrait imaginer…', 'MagasinGeneral_14032006.jpg', 13259, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03');
-INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
+REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
 (109, 'XXe ciel.com', 'Roman graphique', 'Psychanalyse d''un ange.\r\nEva Stern le raconte dans son journal : une nuit, à San Francisco, l''écran de son ordinateur s''est allumé pour lui livrer une succession d''images pour le moins troublantes, ''''sans lien apparent, si ce n''est ces représentations d''anges récurrentes..''''\r\nDepuis cette nuit de février 97, chaque mois, la psychanalyste reçoit un e-mail composé exclusivement d''images et de photos.\r\nQuel sens donner aux messages de l''Ange ? Autoportrait, autobiographie ou effet de miroir ? Miroir d''un siècle ou d''un Ange qui se meurt ? L''Ange du XXe siècle existe-t-il ? Qui est cet Ange, messager virtuel ressuscitant la mémoire du XXe Ciel ? Pourquoi avoir choisi précisément Eva Stern ? Est-ce la femme ou la psychanalyste qui est visée ? Quelle histoire (Histoire) cherche-t-il à lui livrer ?\r\nC''est cette histoire que raconte Bernard Yslaire, ces questions auxquelles son album et ceux qui le suivront s''efforcent de répondre.\r\nUne histoire de vie et de mort, d''anges virtuels ou d''un siècle qui s''achève comme il avait commencé : dans le sang et les larmes.\r\n\r\n(c) Humanoïdes associés', 'xxecielpl.jpg', 1523, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (110, 'Ciel au-dessus de Bruxelles (Le)', 'Drame', '17 mars 2003.\r\nSoixante ans après la shoah, trois jours avant le début de la guerre en Irak, Jules Engell Stern rencontre Fadya.\r\nIl est juif Khazar, elle est beur, musulmane. Lui est de passage à Bruxelles, cherche son frère. Elle prépare un attentat terroriste au milieu d''une manifestation pacifiste...', 'CielAudessusDeBruxellesLe_14032006.jpg', 13262, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (111, 'Canoë Bay', 'Historique', 'CANOË BAY est un récit d’aventures, sur fond historique, qui raconte la vie de Jack, un jeune orphelin à la recherche de son destin. Un ouvrage grand public dont Tiburce, son scénariste dira  ''''C’est ce type de livres qui m’a fait rêver quand j’étais enfant et qui m’a donné envie d’écrire et de créer''''.', NULL, 20164, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -1143,7 +1143,7 @@ INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `langu
 (173, 'Shenzhen', 'Biographie', 'Les tribulations de Delisle en Chine, très remarquées dans Lapin, retrouvent ici, avec près de deux tiers de pages inédites, la force du journal intime augmentée de l''exotisme du récit de voyage. Voyageur immobile, Delisle y raconte ses rencontres, ses remarques anodines qui font mouche à chaque fois, des chinoiseries existentielles et quotidiennes qui touchent à l''universel.\r\n\r\nImages: © ASSOCIATION (L'') - Delisle / Delisle', 'Shenzhen_09032002.jpg', 2956, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (174, 'Logicomix', 'Roman graphique', 'Sur le mode d’un psycho-thriller mathématique, Logicomix est un roman graphique ambitieux, qui explore les grandes recherches en mathématiques fondamentales et en philosophie du XXe siècle. Dans cette quête acharnée de la vérité, on croise Wittgenstein, Poincaré, Russell, Hilbert, Frege, Cantor, mathématiciens, logiciens et philosophes de renom, tous plus vrais que nature. Ce livre retrace brillamment et avec beaucoup d’humour le débat passionné qui anima cette période, sans rien cacher des conflits intérieurs des personnages, dont certains vacillent au bord de la folie.', 'PlancheS_24949.jpg', 24949, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (175, 'Grand Mort (Le)', 'Heroic Fantasy', 'Tout avait été prévu pour que ce soit une semaine studieuse ! Pauvre Pauline ! Elle comptait se mettre au vert pour préparer sa maîtrise de sciences éco... La nuit recouvre la forêt bretonne et la « deuch » vient de tomber en panne d’essence juste devant chez Erwan, à 20 kilomètres de tout village. Erwan est un métis du genre placide. Solitaire, il vit simplement, entouré d’objets étranges. Il propose à Pauline de partager sa soupe et de l’héberger pour la nuit... Contrainte par les circonstances, elle finit par accepter... Tandis qu’elle mange, il parcourt un vieux grimoire traitant du « petit peuple »... Elle ricane de ces sornettes. Elle ignore, alors, que cette rencontre sera pour elle le point de départ vers un autre univers, un autre espace-temps, où toute sa vie et ses principes vont basculer... Les conséquences de cette aventure seront des plus surprenantes pour elle, pour son entourage, voire pour l’humanité...', 'GrandMortLe_14112007_210500.jpg', 16623, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03');
-INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
+REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
 (176, 'Car l''enfer est ici', 'Policier-Thriller-Polar', 'Le Pouvoir des innocents se passait en 1997 et évoquait l’accession à la tête de la ville de New York, de Jessica Ruppert, grande humaniste. Car l''Enfer est ici prend place six mois après (et se terminera au 11 septembre 2001). Joshua Logan, accusé à tort d''avoir assassiné 508 personnes, s''apprête à se rendre à la police pour essayer de clamer son innocence, alors qu''on assiste à New York à la montée de forces d''opposition très actives et très dures contre la politique de Jessica Ruppert. Des opposants, qui vont prendre Joshua comme symbole de leur combat…', 'PlancheS_28937.jpg', 28937, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (177, 'Homme qui n''aimait pas les armes à feu (L'')', 'Humour', 'Début du XXe siècle, Arizona... Maître Byron Peck, citoyen britannique et avocat d''affaires, escorté de son acolyte, l''effrayant Monsieur Hoggaard, parcourt le désert en quête d''un mystérieux papier qui pourrait changer à jamais le cours de l''histoire des États-Unis d''Amérique. Dans le même but, la dangereuse Margot de Garine s''associe à une bande de Mexicains sans foi ni loi... Et ils seront sans pitié !											', 'PlancheS_27331.jpg', 27331, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (178, 'Quai d''Orsay', 'Policier-Thriller-Polar', 'Le jeune Arthur Vlaminck est embauché en tant que chargé du ''''langage'''' par le ministre des Affaires étrangères Alexandre Taillard de Worms. En clair, il doit écrire les discours du ministre ! Mais encore faut-il se faire une place entre le directeur du cabinet et les conseillers qui gravitent dans un Quai d''Orsay où le stress, l''ambition et les coups fourrés ne sont pas rares... Inspiré de l''expérience d''Abel Lanzac qui fut conseiller dans un ministère, cet album restitue une vision de la politique à la fois pleine d''acuité et d''humour. Un pur régal !\r\n', '24260_pl.jpg', 24260, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
