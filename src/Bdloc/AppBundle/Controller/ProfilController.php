@@ -28,6 +28,10 @@ class ProfilController extends Controller
             "user" => $user
         );
 
+/*
+        dump($user);
+        die();*/
+        
         return $this->render("profil/compte.html.twig", $params);
 
     }
@@ -72,6 +76,7 @@ class ProfilController extends Controller
             //redirige vers l'accueil
             return $this->redirect( $this->generateUrl( "bdloc_app_default_home" ) );
         }
+
 
         //afficher le formulaire
         $params['editForm'] = $editForm->createView();              

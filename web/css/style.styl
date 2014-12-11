@@ -259,20 +259,26 @@ a.subscribe
 .tab1
 	&::before
 		left -10px
+		top 0
 	&::after
 		right -10px
-
+		top 0
+		
 .tab2
 	&::before
-		left -10px
+		left -10px	
+		top 0
 	&::after
 		right -10px
-
+		top 0
+		
 .tab3
 	&::before
 		left -10px
+		top 0
 	&::after
 		right -10px
+		top 0
 
 .steps
 	.on
@@ -382,8 +388,6 @@ a.subscribe
 
 
 
-
-
 	
 /****************************************
 *****************************************
@@ -429,6 +433,15 @@ a.subscribe
 		width 285px
 		letter-spacing 0.06em
 		margin-bottom: -10px;
+		
+			input[type="checkbox"]
+				&::after
+					content attr(value)
+				    margin -3px 15px
+				    vertical-align top
+				    white-space nowrap
+				    display inline-block
+		
 
 		
 #form_filter_pages
@@ -440,7 +453,8 @@ a.subscribe
 
 .form-group
 	margin-left 10px
-	
+
+
 
 #selecteur
 	display block
