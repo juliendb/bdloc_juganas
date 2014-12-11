@@ -493,17 +493,13 @@ a.subscribe
 			font 300 0.9em Oswald
 			color text
 			
-		.tome
-			display inline-block
-			font 300 0.9em Oswald
-			color jaune
 			
 	
 	#btnAjouter
 		margin-bottom 20px
 		a.link_cart_book
 			text-align center
-			background-color red
+			background-color #142725
 			font 300 0.8em Oswald
 			letter-spacing 0.07em
 			text-transform uppercase
@@ -514,14 +510,22 @@ a.subscribe
 			text-decoration none
 			&::before
 				font 0.9em Glyphicons Halflings
-				content "\e008"
+				content "\e116"
 				margin-right 10px
 			&:hover
 				cursor pointer
 				color white
-				background-color colorok
+				background-color jaune
 				transition-duration 0.2s
-					
+		
+		.stock 
+			font 300 0.9em Oswald
+			color jaune
+			background-color white
+			padding 5px
+			width 30%
+			margin-bottom 19px
+			
 
 /****************************************
 *****Afficher BDs New transitions *******
@@ -537,8 +541,8 @@ a.subscribe
 	overflow hidden
 	position relative
 	text-align center
-	/*-webkit-box-shadow 1px 1px 2px #e6e6e6
-000000	box-shadow 1px 1px 2px #e6e6e6*/
+	-webkit-box-shadow 1px 1px 2px #e6e6e6
+	000000	box-shadow 1px 1px 2px #e6e6e6
 	cursor pointer
 	
 	img 
@@ -546,13 +550,16 @@ a.subscribe
 		position relative
 		
 	.mask
-		width 300px
-		height 400px
+		width 280px
+		height 381px
 		position absolute
 		overflow hidden
 		top 0
 		left 0
-
+	
+	#btnAjouter 
+		margin-top 45px
+		
 #descriptionBd
 	display block
 	margin auto
@@ -562,17 +569,64 @@ a.subscribe
 /******** texte en masque ********/
 
 .view
-	h2,p 
+	text-align center
+	h2
+		margin-top 35px
 		text-transform uppercase
-		color text
-		text-align center
+		color jaune
 		position relative
-		font-size 17px
-		padding 10px
-		/*background rgba(0, 0, 0, 0.8)*/
-		margin 20px 0 0 0
+		font 300 1.2em Open Sans
+		max-height 127px
+		overflow hidden
+		background rgba(0, 0, 0, 0.8)
+		padding 20px
+	p.serie
+		color text
+		position relative
+		font 300 1.1em Open Sans
+		line-height 1em
+		display inline-block
+		margin 12px 10px 12px 10px
+
+	.tome
+		color #142725
+		font 700 0.8em Oswald
+		text-transform uppercase
+		
+		
+	.link_detail_book
+		position relative
+		&:hover
+			text-decoration none
+			color text
 		
 
+	#triangle
+		z-index 90
+		position absolute
+		left 254px
+		top 339px
+		width 0
+		height 0 
+		border-top 30px solid transparent
+		border-bottom 30px solid transparent
+		border-right 30px solid dark
+		transform rotate(-135deg)
+		&:after
+			position absolute
+			font 0.7em Glyphicons Halflings
+			content "\2b"
+			color white
+			transform rotate(45deg)
+			left 11px
+			top -7px
+			&:hover
+				color jaune
+				
+
+		
+			
+		
 
 	
 /*********** transition ************/
@@ -587,7 +641,7 @@ a.subscribe
 		
 	.mask    		
 		opacity 1
-		background-color rgba(146,96,91,0.3)
+		background-color #65C6BB
 		-webkit-transform translateX(-300px)
 		-moz-transform translateX(-300px)
 		-o-transform translateX(-300px)
@@ -601,21 +655,12 @@ a.subscribe
 		-ms-transition all 0.3s ease-in-out
 		transition all 0.3s ease-in-out	
 
-	h2 
-		/*background rgba(255, 255, 255, 0.5)*/
-		color #000
-		/*-webkit-box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)
-		-moz-box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)
-		box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)*/
-	
+	h2,h3,p 
 		&:hover
 			-ms-filter "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)"
 			filter alpha opacity=100
-			opacity 1		
+			opacity 1	
 	p 
-		filter alpha opacity=0
-		opacity 0
-		color #333
 		-webkit-transition all 0.2s linear
 		-moz-transition all 0.2s linear
 		-o-transition all 0.2s linear
@@ -623,15 +668,15 @@ a.subscribe
 		transition all 0.2s linear
 
 	&:hover
-		.mask 
-			
+		.mask
+			cursor: default;
 			-webkit-transform translateX(0px)
 			-moz-transform translateX(0px)
 			-o-transform translateX(0px)
 			-ms-transform translateX(0px)
 			transform translateX(0px)
 
-		img 
+		img
 			-webkit-transform translateX(300px)
 			-moz-transform translateX(300px)
 			-o-transform translateX(300px)
