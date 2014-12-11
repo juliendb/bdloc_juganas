@@ -88,9 +88,11 @@ services:
     bd.cartitemservice:
         class: Bdloc\AppBundle\Service\CartItemService
         arguments: ["@request_stack", "@doctrine"]
+
     bd.subscribestep1:
         class: Bdloc\AppBundle\Service\SubscribeStep1
-        arguments: ["@request_stack", "@doctrine", "@form.factory"]
+        arguments: ["@request_stack", "@doctrine", "@form.factory", "@security.encoder_factory", "@security.context"]
+
     bd.subscribestep2:
         class: Bdloc\AppBundle\Service\SubscribeStep2
         arguments: ["@request_stack", "@doctrine", "@form.factory", "@templating"]

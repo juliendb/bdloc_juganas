@@ -48,7 +48,8 @@ app = {
 
       		//ajout des coordonnées longitude/latitude
 			var lon = place.geometry.location.k;
-			var lat = place.geometry.location.B;
+			var lat = place.geometry.location.D;
+
 			$("#bdloc_appbundle_user_longitude").val(lon)
 			$("#bdloc_appbundle_user_latitude").val(lat)
 	
