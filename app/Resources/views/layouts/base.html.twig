@@ -25,20 +25,20 @@
         
         <header id="header">
             <div>
-                <div class="col-xs-1"></div>   
+                <div class="col-md-1 hidden-xs"></div>   
                 
-                <div class="col-xs-3">
+                <div class="col-md-3 col-xs-12">
                      <div id="logo">
                         <a href="{{ path('bdloc_app_default_home') }}" title="Accueil"><img src="{{ asset('img/Logo_grd.png') }}" alt="logo Bdloc"></a>
                      </div>
                 </div>  
 
-                <div class="col-xs-4">
+                <div class="col-md-4">
                     {% include ':layouts:nav.html.twig' %} 
                 </div>   
 
 
-				<div class="col-xs-3">
+				<div class="col-md-3">
 					{% if app.user %}
                         <p>Bonjour <a href="{{ path('bdloc_app_profil_account') }}">{{ app.user.username }}</a></p>
 
@@ -47,7 +47,7 @@
 					{% else %}
 						<a id="connexion" href="{{ path('bdloc_app_user_login')}}" title="Connexion">Se connecter</a>
 					{% endif %}
-                <div class="col-xs-1"></div>
+                <div class="col-md-1 hidden-xs"></div>
                 </div>                
             </div>
         </header>

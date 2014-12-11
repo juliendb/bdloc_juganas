@@ -31,7 +31,7 @@ class ProfilController extends Controller
 /*
         dump($user);
         die();*/
-        
+
         return $this->render("profil/compte.html.twig", $params);
 
     }
@@ -59,6 +59,7 @@ class ProfilController extends Controller
         //prerempli le formulaire avec les données user
         $user = $this->getUser();
 
+        dump($user);
         //gère la soumission du form
         $request = $this->getRequest();
         $editForm->handleRequest($request);
