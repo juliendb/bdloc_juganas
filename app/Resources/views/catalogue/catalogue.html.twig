@@ -11,43 +11,41 @@
 
 <div class="container">
 
-<h2>Coucou Gaële juste pour dire que je suis en ce moment sur la gestion du panier et dans celui-ci il y a la gestion du stock de bd ("book.stock"), alors ce serait cool d'afficher le nombre de bd encore disponible je ne sais pas comment mais à toi de voir... désolé pour le dérangement, tu peux supprimer le message</h2>
-
- {% for book in books %}
+{% for book in books %}
 		
-		<div class="view view-fifth">
+	<div class="view view-fifth">
 
-			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
+		<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 
-			<div class="mask">
-				<h2 class="title">{{ book.title }} </h2>
-				<p class="serie">{{ book.serie.title }}</p>
-				<p class="tome"> - tome {{ book.num }}</p>
+		<div class="mask">
+			<h2 class="title">{{ book.title }} </h2>
+			<p class="serie">{{ book.serie.title }}</p>
+			<p class="tome"> - tome {{ book.num }}</p>
 
-				<!-- {# vérifie si il y a auteur a chaque fois #}
-				{% if book.scenarist %}
-					<p class="scenario">scénario : {{ book.scenarist.lastName }}</p>
-				{% endif %}
-				
-				{% if book.illustrator %}
-					<p class="dessin">dessin : {{ book.illustrator.lastName }}</p>
-				{% endif %} -->
-
-				<div id="btnAjouter">
-					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
-				
-					{% if app.user %}
-						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn }) %}
-					{% else %}
-						{% set url = "" %}
-					{% endif %}
-				
-					<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
-				</div>
-			</div>
-
+			<!-- {# vérifie si il y a auteur a chaque fois #}
+			{% if book.scenarist %}
+				<p class="scenario">scénario : {{ book.scenarist.lastName }}</p>
+			{% endif %}
 			
+			{% if book.illustrator %}
+				<p class="dessin">dessin : {{ book.illustrator.lastName }}</p>
+			{% endif %} -->
+
+			<div id="btnAjouter">
+				<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
+			
+				{% if app.user %}
+					{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn }) %}
+				{% else %}
+					{% set url = "" %}
+				{% endif %}
+			
+				<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
+			</div>
 		</div>
+
+		
+	</div>
 {% endfor %}
 
 
@@ -138,7 +136,7 @@
 				{# affiche page 1 et dernière page si il y a #}
 				{% if pagination.pages > 1 %}
 					{% set url = { 'page': 1 }|merge(params) %}
-					<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page 1">page 1</a>
+					<a lala="bonjour" href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page 1">page 1</a>
 					{% set url = { 'page': pagination.pages }|merge(params) %}
 					<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page {{ pagination.pages }}">page {{ pagination.pages }}</a>
 				{% endif %}
