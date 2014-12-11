@@ -128,13 +128,11 @@
 
 	{% for book in books %}
 		
-		<div id="livre">
-			<div id="imgBd">
-				<a class="link_detail_book" title="Détail du livre {{ book.title }}" href="{{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
-				<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
-			</a>
-			</div>
-			<div id="infosBd">
+		<div id="livre" class="view view-fifth">
+
+			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
+
+			<div id="infosBd" class="mask">
 				<div id="descriptionBd">
 					<h2 class="title">{{ book.title }} </h2>
 					<h2 class="serie">{{ book.serie.title }}</h2>
@@ -142,14 +140,6 @@
 				
 				</div>
 				
-				<!-- {# vérifie si il y a auteur a chaque fois #}
-				{% if book.scenarist %}
-					<p class="scenario">scénario : {{ book.scenarist.lastName }}</p>
-				{% endif %}
-				
-				{% if book.illustrator %}
-					<p class="dessin">dessin : {{ book.illustrator.lastName }}</p>
-				{% endif %} -->
 
 				<div id="btnAjouter">
 					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}"></a>
@@ -161,10 +151,9 @@
 					{% endif %}
 				
 					<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
-			</div>
+				</div>
 			</div>
 
-			
 		</div>
 	{% endfor %}
 	
