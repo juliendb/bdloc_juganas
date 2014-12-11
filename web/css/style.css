@@ -366,15 +366,6 @@ a.subscribe {
   letter-spacing: 0.06em;
   margin-bottom: -10px;
 }
-#form_filter_pages .genres input[type="checkbox"] {
-  margin: -3px 15px;
-  vertical-align: top;
-  white-space: nowrap;
-  display: inline-block;
-}
-#form_filter_pages .genres input[type="checkbox"]::after {
-  content: attr(value);
-}
 #form_filter_pages .genres label {
   font: 300 0.9em Oswald;
   color: #f4eeeb;

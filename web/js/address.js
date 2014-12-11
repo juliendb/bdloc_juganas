@@ -50,7 +50,6 @@ app = {
 			var lon = place.geometry.location.k;
 			var lat = place.geometry.location.D;
 
-			console.log(lon);
 			$("#bdloc_appbundle_user_longitude").val(lon)
 			$("#bdloc_appbundle_user_latitude").val(lat)
 	
