@@ -519,11 +519,11 @@ a.subscribe {
 .view-fifth .mask {
   opacity: 1;
   background-color: rgba(146,96,91,0.3);
-  -webkit-transform: translateX -300px;
-  -moz-transform: translateX -300px;
-  -o-transform: translateX -300px;
-  -ms-transform: translateX -300px;
-  transform: translateX -300px;
+  -webkit-transform: translateX(-300px);
+  -moz-transform: translateX(-300px);
+  -o-transform: translateX(-300px);
+  -ms-transform: translateX(-300px);
+  transform: translateX(-300px);
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha 100;
   -webkit-transition: all 0.3s ease-in-out;
@@ -555,16 +555,16 @@ a.subscribe {
   transition: all 0.2s linear;
 }
 .view-fifth:hover .mask {
-  -webkit-transform: translateX 0px;
-  -moz-transform: translateX 0px;
-  -o-transform: translateX 0px;
-  -ms-transform: translateX 0px;
-  transform: translateX 0px;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  -o-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
 }
 .view-fifth:hover img {
-  -webkit-transform: translateX 300px;
-  -moz-transform: translateX 300px;
-  -o-transform: translateX 300px;
-  -ms-transform: translateX 300px;
-  transform: translateX 300px;
+  -webkit-transform: translateX(300px);
+  -moz-transform: translateX(300px);
+  -o-transform: translateX(300px);
+  -ms-transform: translateX(300px);
+  transform: translateX(300px);
 }
