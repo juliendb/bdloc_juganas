@@ -25,6 +25,13 @@ use Ivory\GoogleMap\Overlays\MarkerCluster;
 use Ivory\GoogleMap\Events\MouseEvent;
 use Ivory\GoogleMap\Overlays\InfoWindow;
 
+use Bdloc\AppBundle\Service\SubscribeStep1;
+
+
+
+
+
+
 class SubscribeController extends Controller
 {
     /**
@@ -35,227 +42,52 @@ class SubscribeController extends Controller
 
         $params = array();
 
-        $user = new User();
 
-        $registerForm = $this->createForm(new RegisterType(), $user);
-
-        //gère la soumission du form
-        $request = $this->getRequest();
-        $registerForm->handleRequest($request);
-
-        if ($registerForm->isValid()){
-
-            //on termine l'hydratation de notre objet User
-            //avant enregistrement
-
-            $user->setCity("paris");
-            $user->setDateCreated(new \DateTime());
-            $user->setDateModified(new \DateTime());
-
-            //salt, token, password hashé
-            //dates directement dans l'entité avec les lifesyclecallbacks
-           // $user->setRoles( array('ROLE_USER') );
-            $stringHelper = new stringHelper();
-
-            //hash le mot de passe(tiré de la doc)
-            //toujours donner un salt 
-            $user->setSalt( $stringHelper->randomString() );
-            $user->setToken( $stringHelper->randomString(30) );
-
-            $factory = $this->get('security.encoder_factory');
-            $encoder = $factory->getEncoder($user);
-            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
-            $user->setPassword($password);
+        $subscribe = $this->get("bd.subscribestep1");
+        $params = $subscribe->registerUser();
 
 
-            //sauvegarde en bdd avec l'entity manager
-            $em = $this->getDoctrine()->getManager();
-            //elle la sauvegarde en bdd en persistant
-            $em->persist($user);
-            //on excute toutes nos données
-            $em->flush();
-
-
-            //CONNEXION AUTOMATIQUE : src : http://stackoverflow.com/questions/9550079/how-to-programmatically-login-authenticate-a-user
-            //secured_area est le nom du firewall défini dans security.yml
-            $token = new UsernamePasswordToken($user, $user->getPassword(), "secured_area", $user->getRoles());
-            $this->get("security.context")->setToken($token);
-
-
-            //redirige vers l'accueil
-            return $this->redirect( $this->generateUrl("bdloc_app_subscribe_deliverystep2", array(
-                'id' => $user->getId()
-            )));
+        if ( !empty($params["redirection"]) ) 
+        {
+            return $this->redirect( $this->generateUrl($params["redirection"]) );
         }
-
-
-        $params['registerForm'] = $registerForm->createView();
         
         
         return $this->render("subscription/step_1.html.twig", $params);
     }
 
+
+
+
+
     /**
-     * @Route("/step-2/{id}")
+     * @Route("/step-2")
      */
-    public function deliveryStep2Action($id)
+    public function registerStep2Action()
     {
         
         $params = array();
 
-        //recuperer les coordonnées dans la bdd
-        $repoCoordUser = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
-        $user = $repoCoordUser->find($id);
-
-
-    //AFFICHER LA GOOGLE MAP
+        //AFFICHER LA GOOGLE MAP
+        $user = $this->getUser();
         $map = $this->get('ivory_google_map.map');
-
-        $map = new Map();
-
-        $map->setPrefixJavascriptVariable('map_');
-        $map->setHtmlContainerId('map_canvas');
-
-        $map->setAsync(true);
-        $map->setAutoZoom(false);
-
-    //AFFICHER LE MARKER DE L'ADRESSE DU USER
-        $map->setCenter($user->getLongitude(), $user->getLatitude(), true);
-        //$map->setCenter(48.8788866, 2.331609599999979, true);
-        $map->setMapOption('zoom', 15);
-
-        //$map->setBound(-2.1, -3.9, 2.6, 1.4, true, true);
-        $map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
-        $map->setMapOption('mapTypeId', 'roadmap');
-
-        $map->setMapOption('disableDefaultUI', true);
-        $map->setMapOption('disableDoubleClickZoom', true);
-        $map->setMapOptions(array(
-            'disableDefaultUI'       => true,
-            'disableDoubleClickZoom' => true,
-        ));
-
-        $map->setStylesheetOption('width', '700px');
-        $map->setStylesheetOption('height', '400px');
-
-        $map->setLanguage('fr');
-
-
-    //AFFICHER LES MARKER POINTS RELAIS
-        $marker = new Marker();
-
-        // Configure your marker options
-        $marker->setPrefixJavascriptVariable('marker_');
-        $marker->setPosition($user->getLongitude(), $user->getLatitude(), true);
-        $marker->setAnimation(Animation::DROP);
-
-        $marker->setOptions(array(
-            'clickable' => true,
-            'flat'      => true,
-        ));
-
-        //recupere l'url relative
-        $request = $this->getRequest();
-        $baseurl = $request->getScheme() . '://' . $request->getHttpHost() . $request->getBasePath();
-        $marker->setIcon( $baseurl . '/img/marker-icon.png');
-
-        $map->addMarker($marker);
-
-
-        //affichage des points relais
-        $deliveryPoints = array();
-        $deliveryPoints = $this->getDoctrine()->getRepository("BdlocAppBundle:DeliveryPoints");
-        $dPoints = $deliveryPoints->findAll();
-
-         //print_r($dPoints);
-        $markerCluster = $map->getMarkerCluster();
-
-
-        // Configure markers
-        for($i = 0; $i < count($dPoints) ; $i++) {
-
-            $markers = new Marker();
-
-            $markers->setPrefixJavascriptVariable('marker_');
-            $markers->setPosition($dPoints[$i]->getLatitude(), $dPoints[$i]->getLongitude(), true);
-            $markers->setAnimation(Animation::DROP);
-
-            $markers->setOptions(array(
-                'clickable' => true,
-                'flat'      => true,
-            ));
-
-
-            $markers->setIcon('http://maps.gstatic.com/mapfiles/markers/marker.png');
-
-            $markerCluster->addMarker($markers);
-
-    //AFFICHER LES BULLES INFOS SUR LES MARKER POINTS RELAIS
-
-            $infoWindow = new InfoWindow();
-
-            $dataContent = array();
-            $dataContent['pointRelais'] = $dPoints[$i];
-
-            $content = $this->renderView('subscription/infoBulle.html.twig', $dataContent);
-
-            $infoWindow->setPrefixJavascriptVariable('info_window_');
-            $infoWindow->setPosition($dPoints[$i]->getLatitude(), $dPoints[$i]->getLongitude(), true);
-            $infoWindow->setPixelOffset(1.1, 2.1, 'px', 'pt');
-            $infoWindow->setContent($content);
-            $infoWindow->setOpen(false);
-            $infoWindow->setAutoOpen(true);
-            $infoWindow->setOpenEvent(MouseEvent::CLICK);
-            $infoWindow->setAutoClose(true);
-            $infoWindow->setOption('disableAutoPan', true);
-            $infoWindow->setOption('zIndex', 10);
-            $infoWindow->setOptions(array(
-                'disableAutoPan' => true,
-                'zIndex'         => 10,
-            ));
-
-            $markers->setInfoWindow($infoWindow);
-        }
-
-        //lier les markers à la map
-        $map->setMarkerCluster($markerCluster);
-
-/*        //gère la soumission du form
-        $request = Request::createFromGlobals();
-      //  $delivery_id->handleRequest($request);
-
-        if($request->getMethod() == "POST"){
-            $delivery_id = $request->request->get('pointRelaisId');
-
-
-            $user->setMydelivery($delivery_id);
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-        }*/
-
-
-        //recup l'id du user 
-        $params['idUser'] = $id;
-        //affichage de la map 
-        $params["map"] = $map;
-        //$params["delivery_id"] = $delivery_id;
+        
+        $subscribe = $this->get("bd.subscribestep2");
+        $params = $subscribe->gestion($user, $map);
 
 
         return $this->render("subscription/step_2.html.twig", $params);
-
-
-
     }
 
     /**
-     * @Route("/step-3/{id}")
+     * @Route("/step-3")
      */
-    public function billingStep3Action($id)
+    public function registerStep3Action()
     {
         $params = array();
+
+        $user = $this->getUser();
+
 
         /*//recuperer les coordonnées dans la bdd
         $repoIdUser = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
@@ -263,7 +95,6 @@ class SubscribeController extends Controller
 
 
        // $params['delivery_id'] = $delivery_id;
-        $params['idUser'] = $id;
         return $this->render("subscription/step_3.html.twig", $params);
     }
 

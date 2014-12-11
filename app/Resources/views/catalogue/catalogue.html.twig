@@ -11,6 +11,8 @@
 
 <div class="container">
 
+<h2>Coucou Gaële juste pour dire que je suis en ce moment sur la gestion du panier et dans celui-ci il y a la gestion du stock de bd ("book.stock"), alors ce serait cool d'afficher le nombre de bd encore disponible je ne sais pas comment mais à toi de voir... désolé pour le dérangement, tu peux supprimer le message</h2>
+
  {% for book in books %}
 		
 		<div class="view view-fifth">
@@ -35,7 +37,7 @@
 					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
 				
 					{% if app.user %}
-						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn, 'id': app.user.id }) %}
+						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn }) %}
 					{% else %}
 						{% set url = "" %}
 					{% endif %}
@@ -76,12 +78,12 @@
 					{% for genre in genres %}
 						
 
-						<div class="genres" class="form-group">
+						<div class="genres form-group">
 							<input type="checkbox" name="genres[]" value="{{ genre.style }}"
 								{% for page_genre in pagination.genres %}
 									{% if page_genre == genre.style %}checked{% endif %}
 								{% endfor %}>
-							<label>{{ genre.style }}</label>
+							<label for="genres[]">{{ genre.style }}</label>
 						</div>
 					{% endfor %}
 					
@@ -209,7 +211,7 @@
 					<a class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">plus de détails</a>
 				
 					{% if app.user %}
-						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn, 'id': app.user.id }) %}
+						{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn }) %}
 					{% else %}
 						{% set url = "" %}
 					{% endif %}
