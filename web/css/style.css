@@ -412,72 +412,58 @@ a.subscribe {
 /****************************************
 ************ Afficher BDs  **************
 ****************************************/
-/*#livre
-	float left
-	margin-right 30px
-	width 340px
-	background-color rgba(41, 41, 41, 0.9)
-	margin-bottom 30px
-
-	#imgBd
-		text-align center
-		width 300px
-		height 397px
-		overflow hidden
-		text-align center
-		margin auto
-		overflow hidden
-		padding 22px 0 0 0
-		
-	
-	#infosBd
-		margin auto
-		padding-left 22px
-		
-		.title
-			font 300 1.2em Oswald
-			line-height 0.5em
-			color text
-			
-		.serie
-			display inline-block
-			font 300 0.9em Oswald
-			color text
-			
-		.tome
-			display inline-block
-			font 300 0.9em Oswald
-			color tome
-			
-		.link_detail_book
-			font 300 0.7em Oswald
-			color coloron
-			&::before
-				font 0.8em Glyphicons Halflings
-				content  "\2b"
-				margin-right 5px
-	
-	#btnAjouter
-		a.link_cart_book
-			text-align center
-			background-color red
-			font 300 0.8em Oswald
-			letter-spacing 0.07em
-			text-transform uppercase
-			color white
-			line-height 53px
-			padding 10px	
-			border-radius 5px
-			text-decoration none
-			&::before
-				font 0.9em Glyphicons Halflings
-				content "\e008"
-				margin-right 10px
-			&:hover
-				cursor pointer
-				color white
-				background-color colorok
-				transition-duration 0.2s*/
+.view {
+  float: left;
+  margin-right: 30px;
+  width: 300px;
+  background-color: #1b1917;
+  margin-bottom: 30px;
+}
+.view #infosBd {
+  text-align: center;
+  padding-left: 22px;
+}
+.view #infosBd .title {
+  font: 300 1.2em Oswald;
+  line-height: 0.5em;
+  color: #f4eeeb;
+}
+.view #infosBd .serie {
+  display: inline-block;
+  font: 300 0.9em Oswald;
+  color: #f4eeeb;
+}
+.view #infosBd .tome {
+  display: inline-block;
+  font: 300 0.9em Oswald;
+  color: #e9b33d;
+}
+.view #btnAjouter {
+  margin-bottom: 20px;
+}
+.view #btnAjouter a.link_cart_book {
+  text-align: center;
+  background-color: #e90000;
+  font: 300 0.8em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 53px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.view #btnAjouter a.link_cart_book::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e008";
+  margin-right: 10px;
+}
+.view #btnAjouter a.link_cart_book:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #9d0c0c;
+  transition-duration: 0.2s;
+}
 /****************************************
 *****Afficher BDs New transitions *******
 ****************************************/
@@ -490,9 +476,8 @@ a.subscribe {
   overflow: hidden;
   position: relative;
   text-align: center;
-  -webkit-box-shadow: 1px 1px 2px #e6e6e6;
-  -moz-box-shadow: 1px 1px 2px #e6e6e6;
-  box-shadow: 1px 1px 2px #e6e6e6;
+/*-webkit-box-shadow 1px 1px 2px #e6e6e6
+000000	box-shadow 1px 1px 2px #e6e6e6*/
   cursor: pointer;
 }
 .view img {
@@ -507,41 +492,21 @@ a.subscribe {
   top: 0;
   left: 0;
 }
+#descriptionBd {
+  display: block;
+  margin: auto;
+}
 /******** texte en masque ********/
-.view h2 {
+.view h2,
+.view p {
   text-transform: uppercase;
-  color: #fff;
+  color: #f4eeeb;
   text-align: center;
   position: relative;
   font-size: 17px;
   padding: 10px;
-  background: rgba(0,0,0,0.8);
+/*background rgba(0, 0, 0, 0.8)*/
   margin: 20px 0 0 0;
-}
-.view p {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-size: 12px;
-  position: relative;
-  color: #fff;
-  padding: 10px 20px 20px;
-  text-align: center;
-}
-.view a.info {
-  display: inline-block;
-  text-decoration: none;
-  padding: 7px 14px;
-  background: #000;
-  color: #fff;
-  text-transform: uppercase;
-  -webkit-box-shadow: 0 0 1px #000;
-  -moz-box-shadow: 0 0 1px #000;
-  box-shadow: 0 0 1px #000;
-}
-.view a.info:hover {
-  -webkit-box-shadow: 0 0 5px #000;
-  -moz-box-shadow: 0 0 5px #000;
-  box-shadow: 0 0 5px #000;
 }
 /*********** transition ************/
 .view-fifth img {
@@ -568,11 +533,11 @@ a.subscribe {
   transition: all 0.3s ease-in-out;
 }
 .view-fifth h2 {
-  background: rgba(255,255,255,0.5);
+/*background rgba(255, 255, 255, 0.5)*/
   color: #000;
-  -webkit-box-shadow: 0px 1px 3px rgba(159,141,140,0.5);
-  -moz-box-shadow: 0px 1px 3px rgba(159,141,140,0.5);
-  box-shadow: 0px 1px 3px rgba(159,141,140,0.5);
+/*-webkit-box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)
+		-moz-box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)
+		box-shadow 0px 1px 3px rgba(159, 141, 140, 0.5)*/
 }
 .view-fifth h2:hover {
   -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";

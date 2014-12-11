@@ -55,7 +55,7 @@ class CartController extends Controller
         $params = $cartitem->gestion($params, "sorting");
         
 
-        return $this->render("cart/sort_cart.html.twig", $params);
+        return new Response();
     }
 
 

@@ -30,11 +30,15 @@
 		protected $requestStack;
 		protected $doctrine;
 		protected $formfactory;
+		protected $encoder_factory;
+		protected $security_context;
 
-		public function __construct(RequestStack $requestStack, $doctrine, $formfactory) {
+		public function __construct(RequestStack $requestStack, $doctrine, $formfactory, $encoder_factory, $security_context) {
 			$this->requestStack = $requestStack;
 			$this->doctrine = $doctrine;
 			$this->formfactory = $formfactory;
+			$this->encoder_factory = $encoder_factory;
+			$this->security_context = $security_context;
 		}
 
 
@@ -72,10 +76,12 @@
 	            $user->setSalt( $stringHelper->randomString() );
 	            $user->setToken( $stringHelper->randomString(30) );
 
-	            $factory = $this->get('security.encoder_factory');
-	            $encoder = $factory->getEncoder($user);
+	            
+
+	            $encoder = $this->encoder_factory->getEncoder($user);
 	            $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
 	            $user->setPassword($password);
+
 
 
 	            //sauvegarde en bdd avec l'entity manager
@@ -89,7 +95,7 @@
 	            //CONNEXION AUTOMATIQUE : src : http://stackoverflow.com/questions/9550079/how-to-programmatically-login-authenticate-a-user
 	            //secured_area est le nom du firewall défini dans security.yml
 	            $token = new UsernamePasswordToken($user, $user->getPassword(), "secured_area", $user->getRoles());
-	            $this->get("security.context")->setToken($token);
+	            $this->security_context->setToken($token);
 
 
 	            //redirige vers l'accueil
