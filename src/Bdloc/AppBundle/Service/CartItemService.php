@@ -78,17 +78,28 @@
 		
 		public function sortCartItem($cart, $book, $repoCartItem)
 		{
+			$cartitems = $repoCartItem->selectAllCartItem($cart);
 			$cartitem = $repoCartItem->selectCartItem($cart, $book);
-			dump($cartitem);
-			die();
-
-			$this->changeStock($book, "off stock");
 
 
-			$em = $this->doctrine->getManager();
-			$em->remove($cartitem);
-			$em->persist($cartitem);
-			$em->flush();
+			$params = "";
+
+			if ( !empty($cartitem) )
+			{
+				$em = $this->doctrine->getManager();
+				$em->remove($cartitem);
+				$em->flush();
+
+				$this->changeStock($book, "off stock");
+
+
+				$params = array(
+						"stock_book" => $book->getStock(),
+						"count_cart" => count($cartitems)-1,
+					);
+			}
+
+			return $params;
 		}
 
 
@@ -98,6 +109,8 @@
 		{
 			$cartitems = $repoCartItem->selectAllCartItem($cart);
 
+
+			$params = "";
 
 			if ($this->isValid($cartitems, $book)) 
 			{
@@ -114,9 +127,17 @@
 
 
 				$this->changeStock($book, "on stock");
-			
+				
+
+				// parametres retour pour js
+				$params = array(
+						"stock_book" => $book->getStock(),
+						"count_cart" => count($cartitems)+1,
+					);
 			}
 			
+
+			return $params;
 		}
 
 
@@ -174,12 +195,12 @@
 		        }
 
 
-	 	       $this->addCartItem($cart, $book, $repoCartItem);
+				$response = $this->addCartItem($cart, $book, $repoCartItem);
 
 
 				$params = array();
-				$params["id"] = $id;
 				$params["isbn"] = $isbn;
+				$params["response"] = $response;
 			}
 
 
@@ -189,11 +210,12 @@
 	        	$book = $repoBook->selectBookByIsbn($isbn);
 
 
-	        	$this->sortCartItem($cart, $book, $repoCartItem);
+	        	$response = $this->sortCartItem($cart, $book, $repoCartItem);
 
 
 	        	$params = array();
 	        	$params["isbn"] = $isbn;
+	        	$params["response"] = $response;
 			}
 
 

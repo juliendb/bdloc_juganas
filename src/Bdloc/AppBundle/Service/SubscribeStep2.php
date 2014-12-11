@@ -197,7 +197,7 @@
 
 
 	
-		public function gestion($id, $mapService)
+		public function gestion($user, $mapService)
 		{
 
 			//recuperer les coordonnées dans la bdd
@@ -205,7 +205,6 @@
 	        $repoDelivery = $this->doctrine->getRepository("BdlocAppBundle:DeliveryPoints");
 
 
-			$user = $repoUser->find($id);
 			$map = $this->getMap($user, $mapService);
 			$map = $this->getMarkers($map, $user);
 			

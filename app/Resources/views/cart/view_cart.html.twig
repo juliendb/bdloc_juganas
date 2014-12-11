@@ -7,13 +7,18 @@
 
 {% if cartitems is defined %}
 	{% for cartitem in cartitems %}
-		<div>
+		<div id="{{ cartitem.book.isbn }}">
 			<img src=" {{ asset('img/Couvertures_thumbs/' ~ cartitem.book.cover) }} " alt="{{ cartitem.book.title }}" />
 			<p>titre : {{ cartitem.book.title }} </p>
 
-			<a href="{{ path('bdloc_app_cart_sortcartitem', { 'isbn': cartitem.book.isbn }) }}" title="Retirer du panier le livre {{ cartitem.book.title }}">retirer du panier</a>
+			<a class="link_cart_book" href="{{ path('bdloc_app_cart_sortcartitem', { 'isbn': cartitem.book.isbn }) }}" title="Retirer du panier le livre {{ cartitem.book.title }}">retirer du panier</a>
 		</div>
 	{% endfor %}
 {% endif %}
 
+{% endblock %}
+
+
+{% block javascripts %}
+	 <script type="text/javascript" src="{{ asset('js/catalogue.js') }}"></script>
 {% endblock %}

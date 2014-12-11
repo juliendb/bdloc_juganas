@@ -18,9 +18,6 @@
 	<div class="clearfix"></div>
 
 
-	<input type="hidden" value="{{ idUser }}">
-
-
 	<div id="map">
 		{{ google_map_container(map) }}
 		{{ google_map_css(map) }}
@@ -34,7 +31,7 @@
 			<p>{{ mydelivery.address }}</p>
 			<p>{{ mydelivery.city ~ " " ~ mydelivery.postalCode }}</p>
 
-			<a href="{{ path("bdloc_app_subscribe_registerstep3", {'id': idUser}) }}" id="stepbilling" class="btn btn-primary">Suivant</a>
+			<a href="{{ path("bdloc_app_subscribe_registerstep3") }}" id="stepbilling" class="btn btn-primary">Suivant</a>
 
 		{% endif %}
 	</div>

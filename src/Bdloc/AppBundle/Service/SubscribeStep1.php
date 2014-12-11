@@ -94,12 +94,7 @@
 
 	            //redirige vers l'accueil
 	            $params = array();
-	            $params["redirection"] = array(
-	            		"url" => "bdloc_app_subscribe_registerstep2",
-	            		"parameters" => array(
-	            			"id" => $user->getId()
-	            		)
-	            	);
+	            $params["redirection"] = "bdloc_app_subscribe_registerstep2";
 
 	            return $params;
 	        }

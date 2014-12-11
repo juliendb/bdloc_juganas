@@ -13,13 +13,15 @@ use Bdloc\AppBundle\Form\RegisterType;
 class ProfilController extends Controller
 {
     /**
-     * @Route("/account/{id}")
+     * @Route("/account")
      */
-    public function accountAction($id)
+    public function accountAction()
     {
-              
-        $profilInfo = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
-        $user = $profilInfo->find($id);
+
+        //$profilInfo = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
+        
+        // si tu es connecté tu utilise cette méthode (voir guillaume formateur)
+        $user = $this->getUser();
 
         $params = array(
             "user" => $user
@@ -30,14 +32,18 @@ class ProfilController extends Controller
     }
 
     /**
-     * @Route("/account/{id}/edit")
+     * @Route("/account/edit")
      */
-    public function editProfilAction($id)
+    public function editProfilAction()
     {
             
         //recupere la bdd user et l'id à stocker dans l'url  
-        $editProfil = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
-        $user = $editProfil->find($id);
+        //$editProfil = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
+        
+        // si tu es connecté tu utilise cette méthode (voir guillaume formateur)
+        // a voir pour plus de sécurité
+        $user = $this->getUser();
+
         $params = array(
             "user" => $user
         );

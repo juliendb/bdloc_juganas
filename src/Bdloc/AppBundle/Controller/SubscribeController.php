@@ -47,12 +47,9 @@ class SubscribeController extends Controller
         $params = $subscribe->registerUser();
 
 
-        $params['registerForm'] = $registerForm->createView();
-
         if ( !empty($params["redirection"]) ) 
         {
-            return $this->redirect( $this->generateUrl($params["redirection"]["url"], 
-                $params["redirection"]["parameters"]) );
+            return $this->redirect( $this->generateUrl($params["redirection"]) );
         }
         
         
@@ -64,32 +61,33 @@ class SubscribeController extends Controller
 
 
     /**
-     * @Route("/step-2/{id}")
+     * @Route("/step-2")
      */
-    public function registerStep2Action($id)
+    public function registerStep2Action()
     {
         
         $params = array();
 
         //AFFICHER LA GOOGLE MAP
+        $user = $this->getUser();
         $map = $this->get('ivory_google_map.map');
         
         $subscribe = $this->get("bd.subscribestep2");
-        $params = $subscribe->gestion($id, $map);
-
-        //recup l'id du user 
-        $params['idUser'] = $id;
+        $params = $subscribe->gestion($user, $map);
 
 
         return $this->render("subscription/step_2.html.twig", $params);
     }
 
     /**
-     * @Route("/step-3/{id}")
+     * @Route("/step-3")
      */
-    public function registerStep3Action($id)
+    public function registerStep3Action()
     {
         $params = array();
+
+        $user = $this->getUser();
+
 
         /*//recuperer les coordonnées dans la bdd
         $repoIdUser = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
@@ -97,7 +95,6 @@ class SubscribeController extends Controller
 
 
        // $params['delivery_id'] = $delivery_id;
-        $params['idUser'] = $id;
         return $this->render("subscription/step_3.html.twig", $params);
     }
 
