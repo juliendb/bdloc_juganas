@@ -123,7 +123,10 @@
 		
 </nav>
 
-<div id="popup"></div>
+<div id="popup">
+	<div id="detail_popup"></div>
+	<div class="clearfix"></div>
+</div>
 
 
 <div id="catalogue">
@@ -131,20 +134,22 @@
 		
 		<div id="{{ book.id }}" class="view view-fifth">
 
-			<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 
-			<div class="mask">
-				<h2 class="title">{{ book.title }} </h2>
-				<p class="serie">{{ book.serie.title }} </p>
-				</br>
-				<p class="tome">- Tome {{ book.num }} -</p>
+		<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
+
+		<div class="mask">
+			<h2 class="title">{{ book.title }} </h2>
+			<p class="serie">{{ book.serie.title }} </p>
+			</br>
+			<p class="tome">- Tome {{ book.num }} -</p>
+
+
 
 				<div id="btnAjouter">
 					<a id="triangle" class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'id': book.id }) }}">
 					<div ></div>
 					</a>
 
-				
 					{% if app.user %}
 						{% set url = path('bdloc_app_cart_addcartitem', {'id': book.id }) %}
 					{% else %}
@@ -153,16 +158,17 @@
 					
 					<p class="stock">{{ book.stock }} en stock</p>
 
-					<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
+
+				<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
 
 
 
-					
-				</div>
+				
 			</div>
-
-			
 		</div>
+
+		
+	</div>
 {% endfor %}
 </div>
 
