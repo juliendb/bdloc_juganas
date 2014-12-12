@@ -10,11 +10,12 @@
 
 <div class="clearfix"></div>
 
-<div class="container ">
+<div class="container editProfil">
     <h1>Modifier mon profil</h1>
 
 
 
+<<<<<<< HEAD
 {{ form_start(editForm) }}
 <div id="formRegister">
     <div class="champs">
@@ -34,11 +35,35 @@
     <div class="champs">
         {{ form_row(editForm.tel,  { 'attr': {'placeholder': 'Votre téléphone', 'class': 'champ_class'}}) }} 
     </div>
+=======
+ {{ form_start(editProfilForm) }}
+    <div id="formRegister">
+        <div class="champs">
+       
+            {{ form_row(editProfilForm.firstname,  { 'attr':{'placeholder': 'Votre nom', 'class': 'champ_class'}}) }}
+        </div>
+
+       
+        <div class="champs">
+            {{ form_row(editProfilForm.tel,  { 'attr': {'placeholder': 'Votre téléphone', 'class': 'champ_class'}}) }} 
+        </div>
+
+        <div class="champs">
+            {{ form_row(editProfilForm.adress,  { 'attr': {'placeholder': 'Votre adresse', 'class': 'champ_class'}}) }}
+        </div>
+
+        <div class="champs">
+            {{ form_row(editProfilForm.postalCode,  { 'attr': {'placeholder': 'Votre code postal', 'class': 'champ_class'}}) }}
+        </div>
+
+        {{ form_row(editProfilForm.submit,  { 'attr': {'name': 'Modifier', 'class': 'valider'}}) }}
+>>>>>>> 663d8d707292eba387f2e4c15d68c39bcda9af43
 
     <div class="champs">
         {{ form_row(editForm.name,  { 'attr': {'placeholder': 'Votre prénom', 'class': 'champ_class'}}) }} 
     </div>
 
+<<<<<<< HEAD
     <div class="champs">
         {{ form_row(editForm.adress,  { 'attr': {'placeholder': 'Votre adresse', 'class': 'champ_class'}}) }}
     </div>
@@ -53,6 +78,9 @@
 {{ form_end(editForm) }}
 
 
+=======
+ {{ form_end(editProfilForm) }}
+>>>>>>> 663d8d707292eba387f2e4c15d68c39bcda9af43
 
 
 </div>

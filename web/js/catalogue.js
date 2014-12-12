@@ -214,25 +214,15 @@ catalogue =
 	{
 		var _this = catalogue
 
-		var overlay = $("<div>", {id:"overlay"})
-		overlay.fadeOut(0).appendTo("#popup")
 
-		var close = $("<div>", {id:"close"})
-		close.css
-		({
-			display:"block",
-			width:"40px",
-			height:"40px"
-		
-		}).appendTo("#popup")
-
-
-
-		close.off().on("click", function()
+		$("#overlay").fadeOut(0)
+		$('#close').off().on("click", function()
 		{
-			overlay.fadeOut(800, function()
+			console.log('coucou')
+			$("#popup").fadeOut(800, function()
 			{
-				overlay.empty()
+
+				$("#detail_popup").empty()
 
 				return false
 			})
@@ -242,11 +232,8 @@ catalogue =
 
 	affiche: function(content)
 	{
-		var _this = popup;
-
-
-		$("#overlay").empty().append(content)
-			.fadeOut(0).fadeIn(800)
+		$("#popup").fadeOut(0).fadeIn(800)
+		$("#detail_popup").replaceWith(content)
 	}
 
 }

@@ -1,5 +1,6 @@
 /*font-family 'Open Sans', sans-serif;*/
 body {
+  postion: relative;
   font: 300 2em/2em Oswald;
   margin: 0 auto;
   padding: 0;
@@ -16,41 +17,77 @@ body {
   position: relative;
   height: 81px;
   background-color: #222;
+  font: 300 1em Oswald;
+  color: #fff;
+  line-height: 81px;
+}
+#header a {
+  text-transform: none;
+  color: #fff;
+}
+#header a:hover {
+  text-decoration: none;
+  color: #e90000;
 }
 #header #logo {
   position: absolute;
 }
-header nav {
-  line-height: 81px;
+#header .nav-login a {
+  margin-right: 25px;
 }
-header nav a {
+#header nav a {
   font: 300 1em/1em Oswald;
   color: #fff;
   text-transform: uppercase;
   margin-right: 20px;
 }
-#connexion::before {
+#header nav .cat::before {
   font: 0.9em Glyphicons Halflings;
-  content: "\e008";
+  content: "\e043";
   margin-right: 10px;
 }
+#header nav .cat:hover {
+  text-decoration: none;
+  color: #e90000;
+}
+#header nav .panier::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e116";
+  margin-right: 10px;
+}
+#header nav .panier:hover {
+  text-decoration: none;
+  color: #e90000;
+}
+#header .nav-login,
 #header a#connexion {
   display: block;
-  font: 300 1em Oswald;
-  color: #fff;
   text-transform: uppercase;
   line-height: 81px;
   text-align: right;
   text-decoration: none;
 }
+#header .nav-login:hover,
 #header a#connexion:hover {
   color: #e90000;
   transition-duration: 0.2s;
 }
-#header #deconnexion::before {
+#header .nav-login::before,
+#header a#connexion::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e008";
+  margin-right: 10px;
+}
+#header a#deconnexion::before {
   font: 300 1em Oswald;
   color: #fff;
   line-height: 81px;
+}
+#header a#deconnexion::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e090";
+  margin-right: 10px;
+  color: #e90000;
 }
 /****************************************
 *****************************************
@@ -119,43 +156,20 @@ a.subscribe {
 *****************************************
 ****************************************/
 #footer {
-  bottom: 0;
-  position: absolute;
+/*bottom 0
+	position absolute*/
   margin-top: 50px;
   margin-bottom: 15px;
   width: 100%;
 }
+#footer a {
+  text-transform: none;
+  color: #fff;
+  margin-left: 10px;
+}
 #nav {
   float: left;
   margin-left: 15px;
-}
-.cat {
-  font: 300 1em Oswald;
-  color: #fff;
-  margin-right: 45px;
-}
-.cat::before {
-  font: 0.9em Glyphicons Halflings;
-  content: "\e043";
-  margin-right: 10px;
-}
-.cat:hover {
-  text-decoration: none;
-  color: #e90000;
-}
-.panier {
-  font: 300 1em Oswald;
-  color: #fff;
-  margin-right: 45px;
-}
-.panier::before {
-  font: 0.9em Glyphicons Halflings;
-  content: "\e116";
-  margin-right: 10px;
-}
-.panier:hover {
-  text-decoration: none;
-  color: #e90000;
 }
 #petitlogo {
   position: absolute;
@@ -170,6 +184,51 @@ a.subscribe {
 #copyright p {
   font: 300 0.8em Oswald;
   color: #999;
+}
+/****************************************
+*****************************************
+************** LOGIN  *******************
+*****************************************
+****************************************/
+.login {
+  margin-top: 150px;
+  width: 335px;
+}
+.login .forgotPwd {
+  text-align: center;
+  display: block;
+}
+/****************************************
+*****************************************
+************** PROFIL *******************
+*****************************************
+****************************************/
+.profil {
+  background-color: rgba(0,0,0,0.8);
+  margin-top: 60px;
+  padding: 20px;
+}
+.profil .boutons {
+  float: right;
+}
+.profil .boutons a {
+  margin-left: 10px;
+}
+.profil h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+.profil h2 {
+  border-bottom: 1px dotted #fff;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+.editProfil {
+  margin-top: 50px;
+}
+.editProfil h1 {
+  text-align: center;
+  margin: 30px 0;
 }
 /****************************************
 *****************************************
@@ -312,7 +371,8 @@ a.subscribe {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
-  margin-left: 42%;
+  margin: 0 auto;
+  display: block;
 }
 .valider:hover {
   cursor: pointer;
@@ -605,5 +665,91 @@ a.subscribe {
   transform: translateX(300px);
 }
 /****************************************
-************ Mobile Media Queries  ******
+**************** POP UP *****************
 ****************************************/
+#popup {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.8);
+}
+#popup #detail_book {
+  position: relative;
+  width: 800px;
+  background-color: #f4eeeb;
+  margin: 50px auto;
+  color: #000;
+  border: 10px solid #fff;
+}
+#popup #detail_book #close {
+  position: absolute;
+  z-index: 10;
+}
+#popup #detail_book #close:after {
+  content: "\2b";
+  position: absolute;
+  top: 6px;
+  right: -775px;
+  font: 0.9em Glyphicons Halflings;
+  color: #222;
+  transform: rotate(45deg);
+}
+#popup #detail_book img {
+  float: left;
+  width: 50%;
+}
+#popup #detail_book #texteBd {
+  display: block;
+  float: left;
+  width: 50%;
+  margin-top: 50px;
+  line-height: 4.1em;
+  margin-bottom: 20px;
+}
+#popup #detail_book #texteBd .stock {
+  float: right;
+  font: 300 0.9em Oswald;
+  color: #e9b33d;
+  background-color: #fff;
+  padding: 6px 13px;
+  margin-top: 25px;
+}
+#popup #detail_book #texteBd h1 {
+  font: 700 1em Oswald;
+  color: #222;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+#popup #detail_book #texteBd p {
+  font: 300 0.9em Open Sans;
+  margin-left: 30px;
+  color: #222;
+  line-height: 1.5em;
+}
+#popup #detail_book #texteBd a.cart_book {
+  text-align: center;
+  background-color: #142725;
+  font: 300 0.8em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #f4eeeb;
+  line-height: 53px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 30px;
+}
+#popup #detail_book #texteBd a.cart_book::before {
+  font: 0.9em Glyphicons Halflings;
+  color: #f4eeeb;
+  content: "\e116";
+  margin-right: 10px;
+}
+#popup #detail_book #texteBd a.cart_book:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #e9b33d;
+  transition-duration: 0.2s;
+}

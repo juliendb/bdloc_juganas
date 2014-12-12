@@ -7,11 +7,13 @@
 {# contenu du body #}
 
 {% block main_content %}
-<div class="container">
+<div class="container profil">
     <h1>Mon compte</h1>
 
-    <a href="{{ path('bdloc_app_profil_editprofil') }}" class="btn btn-primary">Editer</a>
-
+    <div class="boutons">
+        <a href="{{ path('bdloc_app_profil_editprofil') }}" class="btn btn-primary">Editer</a>
+        <a href="" class="btn btn-danger">Me désabonner</a>
+    </div>
 
 <h2>Infos personelles</h2>
     <h3>{{ user.firstname }} {{ user.name }}</h3>
@@ -19,9 +21,9 @@
     <p><strong>Mail :</strong> {{ user.email }}</p>
     <p><strong>Adress :</strong> {{ user.adress }} - {{ user.postalCode }} {{ user.city }}</p>
     <p><strong>Telephone :</strong>{{ user.tel }}</p>
+    <a href="" class="btn btn-warning pull-left">Changer mon mot de passe</a>
 
-    <a href="" class="btn btn-primary">Changer mon mot de passe</a>
-
+<div class="clearfix"></div>
 
 <h2>Mon point relais</h2>
 
@@ -36,14 +38,13 @@
         <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btn btn-primary">Ajouter mon point relais</a>
     {% endif %}
     
-
-
+<div class="clearfix"></div>
 
 <h2>Paiement</h2>
 
-<a href="" class="btn btn-primary">Modifier mes informations de paiement</a>
+<a href="" class="btn btn-warning pull-right">Modifier mes informations de paiement</a>
 
-
+<div class="clearfix"></div>
 <h2>Mon historique de location</h2>
 
 <table class="" border='1' width="100%" cellpadding="1">
@@ -69,7 +70,7 @@
 
 </table>
 
-
+<div class="clearfix"></div>
 
 <h2>Mes amendes</h2>
 
@@ -78,7 +79,7 @@
 
 
 
-    <a href="" class="btn btn-danger">Me désabonner</a>
+
 
 </div>
 
