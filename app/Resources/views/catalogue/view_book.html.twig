@@ -5,31 +5,45 @@
 {% block main_content %}
 	
 	<div id="detail_book">
-		<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" />
 
-		<p>série : {{ book.serie.title }} </p>
-		<p>genre : {{ book.serie.style }}</p>
+		<a id="close"></a>
 
-		<p>titre : {{ book.title }} </p>
-		<p>tome : {{ book.num }} </p>
+		<img src=" {{ asset('img/Couvertures/' ~ book.cover) }} " alt="{{ book.title }}" width="50%" />
+
 		
-		{# vérifie si il y a auteur a chaque fois #}
-		{% if book.scenarist %}
-			<p>scénario : {{ book.scenarist.lastName }} </p>
-		{% endif %}
 
-		{% if book.illustrator %}
-			<p>dessin : {{ book.illustrator.lastName }} </p>
-		{% endif %}
+		<div id="texteBd"> 
+			<h1>Titre : {{ book.title }} </h1>
+			<p>Série : {{ book.serie.title }} </p>
+			<p>Genre : {{ book.serie.style }}</p>
+			<p>Tome : {{ book.num }} </p>
+			
+			{# vérifie si il y a auteur a chaque fois #}
+			{% if book.scenarist %}
+				<p>scénario : {{ book.scenarist.lastName }} </p>
+			{% endif %}
 
-		{% if book.colorist %}
-			<p>couleurs : {{ book.colorist.lastName }} </p>
-		{% endif %}
+			{% if book.illustrator %}
+				<p>Dessin : {{ book.illustrator.lastName }} </p>
+			{% endif %}
 
-		<p>editeur : {{ book.publisher }}</p>
-		<p>isbn : {{ book.isbn }}</p>
-		<p>planches : {{ book.pages }}</p>
-		
+			{% if book.colorist %}
+				<p>Couleurs : {{ book.colorist.lastName }} </p>
+			{% endif %}
+
+			<p>Editeur : {{ book.publisher }}</p>
+			<p>isbn : {{ book.isbn }}</p>
+			<p>Planches : {{ book.pages }}</p>
+
+			<a class="cart_book" href="" title="">ajouter au panier</a>
+
+			<p class="stock">{{ book.stock }} en stock</p>
+
+		</div>
+
+
+
+		<div class="clearfix"></div>
 	</div>
 
 {% endblock %}
