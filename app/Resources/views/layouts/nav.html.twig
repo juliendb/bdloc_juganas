@@ -1,6 +1,8 @@
+{% if app.user %}
 <nav>
 	<a class="cat" href="{{ path('bdloc_app_catalogue_catalogueall') }}" title="Catalogue">Catalogue</a>
 
 	<a class="panier" href="{{ path('bdloc_app_cart_cartview') }}" title="Mon panier">Panier</a>
 </nav>
 
+{% endif %}

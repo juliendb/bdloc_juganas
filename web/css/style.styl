@@ -34,40 +34,53 @@ body
 	position relative
 	height 81px
 	background-color #222222
-
-	
-	
-#header
+	font 300 1em Oswald
+	color #fff
+	line-height 81px
+	a
+		text-transform none
+		color white	
+		&:hover
+			text-decoration none
+			color coloron		
 	#logo
 		position absolute
-
-
-header
-	nav
-		line-height 81px
+	.nav-login
+		a
+			margin-right 25px
 						
-header
-	nav
+	nav			
 		a
 			font 300 1em/1em Oswald
 			color #fff
 			text-transform uppercase
-			margin-right 20px
+			margin-right 20px	
 			
+		.cat
+			&::before
+				font 0.9em Glyphicons Halflings
+				content "\e043"
+				margin-right 10px
+			&:hover
+				text-decoration none
+				color coloron	
+				
+		.panier
+			&::before
+					font 0.9em Glyphicons Halflings
+					content "\e116"
+					margin-right 10px
+			&:hover
+				text-decoration none
+				color coloron	
+				
 
-
-#connexion
-	&::before
-		font 0.9em Glyphicons Halflings
-		content "\e008"
-		margin-right 10px
-			
 
 #header
+	.nav-login
+		
 	a#connexion
 		display block
-		font 300 1em Oswald
-		color #fff
 		text-transform uppercase
 		line-height 81px
 		text-align right
@@ -75,16 +88,23 @@ header
 		&:hover
 			color coloron
 			transition-duration 0.2s
-			
-
-
-		
-#header
-	#deconnexion
+		&::before
+			font 0.9em Glyphicons Halflings
+			content "\e008"
+			margin-right 10px
+	a#deconnexion
 		&::before
 			font 300 1em Oswald
 			color #fff
-			line-height 81px
+			line-height 81px	
+		&::before
+			font 0.9em Glyphicons Halflings
+			content "\e090"
+			margin-right 10px
+			color red
+
+	
+	
 
 
 
@@ -160,43 +180,21 @@ a.subscribe
 ****************************************/
 
 #footer
-	bottom 0
-	position absolute
+	/*bottom 0
+	position absolute*/
 	margin-top 50px
 	margin-bottom 15px
 	width 100%
+	a
+		text-transform none
+		color white
+		margin-left 10px		
 	
 #nav
 	float left
 	margin-left 15px
 
-			
-	
-.cat
-	font 300 1em Oswald
-	color white
-	margin-right 45px
-	&::before
-			font 0.9em Glyphicons Halflings
-			content "\e043"
-			margin-right 10px
-	&:hover
-		text-decoration none
-		color coloron	
-		
-.panier
-	font 300 1em Oswald
-	color white
-	margin-right 45px
-	&::before
-			font 0.9em Glyphicons Halflings
-			content "\e116"
-			margin-right 10px
-	&:hover
-		text-decoration none
-		color coloron	
 				
-
 #petitlogo
 	position absolute
 	margin 0 auto
@@ -244,10 +242,17 @@ a.subscribe
 		text-align center
 		margin 20px 0
 	h2
+<<<<<<< HEAD
 		border-bottom 1px dotted #F4DFB0
 		padding-bottom 20px
 		margin-top 30px
 
+=======
+		border-bottom 1px dotted white
+		padding-bottom 10px
+		margin-top 20px
+	
+>>>>>>> 330d7163b6ece5bfcbc06fcfc149bb273661ed46
 
 
 .editProfil
@@ -435,11 +440,27 @@ a.subscribe
 *****************************************
 ****************************************/
 
-
-#map
+#step2
+	background-color rgba(0,0,0,0.8)
+	color white
+	font 300 0.9em Open Sans
 	position relative
+	border 1px solid white
 
 
+	#map
+		position relative
+		border 10px solid #fff
+
+	#adresseRelais
+		padding 20px
+		
+		h1
+			color white
+		#stepbilling
+			position absolute
+			right 20px
+			bottom 20px
 
 
 
