@@ -705,6 +705,9 @@ a.subscribe {
 #popup #detail_book #close {
   position: absolute;
   z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: block;
 }
 #popup #detail_book #close:after {
   content: "\2b";

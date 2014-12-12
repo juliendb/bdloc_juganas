@@ -7,7 +7,7 @@ cart =
 		var _this = cart
 
 
-		$(".link_cart_book").off().on("click", _this.getCartItem)
+		$(".link_cart_book").on("click", _this.getCartItem)
 	},
 
 
@@ -216,9 +216,8 @@ catalogue =
 
 
 		$("#overlay").fadeOut(0)
-		$('#close').off().on("click", function()
+		$('#popup #close').off().on("click", function()
 		{
-			console.log('coucou')
 			$("#popup").fadeOut(800, function()
 			{
 
