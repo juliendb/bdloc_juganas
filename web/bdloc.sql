@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 11 Décembre 2014 à 14:58
+-- Généré le :  Ven 12 Décembre 2014 à 15:33
 -- Version du serveur :  5.6.16
 -- Version de PHP :  5.5.11
 
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `bdloc`
+-- Base de données :  `bdloc_juganas`
 --
+CREATE DATABASE IF NOT EXISTS `bdloc_juganas` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `bdloc_juganas`;
 
 -- --------------------------------------------------------
 
@@ -45,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `author` (
 -- Contenu de la table `author`
 --
 
-REPLACE INTO `author` (`id`, `firstName`, `lastName`, `aka`, `birthDate`, `deathDate`, `country`, `picture`, `idbel`, `dateCreated`, `dateModified`) VALUES
+INSERT INTO `author` (`id`, `firstName`, `lastName`, `aka`, `birthDate`, `deathDate`, `country`, `picture`, `idbel`, `dateCreated`, `dateModified`) VALUES
 (2, 'Alexandro', 'Jodorowsky', NULL, '1929-02-07', NULL, 'Chili', NULL, 89, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (3, 'Jean', 'Giraud', 'Moebius', '1938-05-08', NULL, 'France', NULL, 70, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (4, 'Isabelle', 'Beaumenay-Joannet', NULL, '1957-01-01', NULL, 'France', NULL, 2167, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -391,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `book` (
 -- Contenu de la table `book`
 --
 
-REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
+INSERT INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
 (2, 3, 2, 4, 1, 'Ce qui est en bas', 3, 'Les Humanoïdes Associés', '2-7316-0241-4', 'johndifoolt3cequiestenbas1983.jpg', 'johndifool03v_520.jpg', 60, NULL, 520, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (3, 3, 2, 5, 1, '5ème essence : galaxie qui songe', 5, 'Les Humanoïdes Associés', '2-7316-0531-6', 'johndifoolt5la5essence1galaxiequisonge1988.jpg', 'johndifool05v_522.jpg', 45, NULL, 522, 4, '2014-12-01 10:39:03', '2014-12-09 17:20:57'),
 (4, 3, 2, 5, 1, '5ème essence : La planète Difool', 6, 'Les Humanoïdes Associés', '2-7316-0532-4', 'johndifoolt6la5essence2laplanetedifool1988.jpg', 'johndifool06v_523.jpg', 46, NULL, 523, 7, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -643,7 +645,7 @@ REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `
 (274, 151, 151, 151, 102, 'Les années ventoline', 4, 'Futuropolis', '978-2-7548-0026-6', 'PetitPolio3_11112007_125910.jpg', NULL, 59, NULL, 68456, 3, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (275, 152, 130, 152, 103, 'Le bar du vieux français 1', 1, 'Dupuis', '2-8001-1910-1', 'barduvieuxfrancaiscouv01.jpg', 'barfrancais14p.jpg', 54, 'barduvieuxfrancais01p.jpg', 6789, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (277, 153, 153, 24, 104, 'La belette', 1, 'Casterman', '2-203-33417-7', 'Comes_Belette_01.jpg', 'Comes_Belette_01v.jpg', 140, 'Belette_p_22883.jpg', 22883, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03');
-REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
+INSERT INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `title`, `num`, `publisher`, `isbn`, `cover`, `exlibris`, `pages`, `board`, `idbel`, `stock`, `dateCreated`, `dateModified`) VALUES
 (278, 153, 153, 24, 105, 'L''arbre-coeur', 1, 'Casterman', '2-203-33442-8', 'arbrecoeur_19012003.jpg', 'arbrecoeurverso.jpg', 84, NULL, 22884, 5, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (279, 153, 153, 153, 106, 'Le Maître des Ténèbres', 2, 'Casterman', '2-203-33502-5', 'ergunlerrant02a.jpg', 'ergunlerrant02av.jpg', 44, 'ergunlerrant02p.jpg', 32218, 6, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (280, 154, 154, 154, 107, 'Dracula, Dracul, Vlad?, bah...', 1, 'Les Humanoïdes Associés', '2-73161-105-7', 'dracula_30082002.jpg', NULL, 80, NULL, 18093, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -655,7 +657,7 @@ REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `
 (286, 79, 79, 79, 109, 'http://www.xxeciel.com/mémoires99', 2, 'Les Humanoïdes Associés', '2-7316-1416-1', 'xxcielcouv02.JPG', 'xxemesiecle02v.jpg', 62, 'XXeciel02p_6554.jpg', 6554, 5, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (287, 79, 79, 79, 109, 'http://www.xxeciel.com/mémoires<19>00', 3, 'Les Humanoïdes Associés', '2-7316-1554-0', 'xxemeciel031900.jpg', 'xxemecielcom1900v.jpg', 72, 'XXeciel031p_40890.jpg', 40890, 1, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (288, 79, 79, 79, 110, '[avant]...', 1, 'Futuropolis', '2-7548-0005-0', 'cielaudessusdebruxelles01.jpg', 'cielaudessusdebruxelles01v.jpg', 68, NULL, 54306, 2, '2014-12-01 10:39:03', '2014-12-09 17:08:05'),
-(289, 79, 79, 79, 110, '...[après]', 2, 'Futuropolis', '978-2-75480-084-6', 'cielaudessusdebruxelles02.jpg', 'cielaudessusdebruxelles02v.jpg', 94, 'cielaudessusdebruxelles02p.jpg', 62194, 3, '2014-12-01 10:39:03', '2014-12-11 13:59:08'),
+(289, 79, 79, 79, 110, '...[après]', 2, 'Futuropolis', '978-2-75480-084-6', 'cielaudessusdebruxelles02.jpg', 'cielaudessusdebruxelles02v.jpg', 94, 'cielaudessusdebruxelles02p.jpg', 62194, 3, '2014-12-01 10:39:03', '2014-12-12 14:33:40'),
 (290, 92, 91, 92, 58, 'Le secret du Janissaire', 1, 'Delcourt', '2-84055-059-8', 'DeCapeEtDeCrocs1a_13032006.jpg', 'DeCapeEtDeCrocs01.jpg', 46, 'decapeetdecrocs01p_1063.jpg', 1063, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (291, 92, 91, 92, 58, 'Pavillon noir !', 2, 'Delcourt', '2-84055-143-8', 'DeCapeEtDeCrocs2a_13032006.jpg', 'DeCapeEtDeCrocs02.jpg', 46, 'decapeetdecrocs02p_1064.jpg', 1064, 3, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (292, 92, 91, 92, 58, 'L''archipel du danger', 3, 'Delcourt', '2-84055-236-1', 'DeCapeEtDeCrocs3a_13032006.jpg', 'DeCapeEtDeCrocs03.jpg', 47, 'decapeetdecrocs03p_1354.jpg', 1354, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -678,8 +680,8 @@ REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `
 (329, 112, 114, 112, 72, 'Le bouclier de Thor', 31, 'Le Lombard', '978-2-8036-2486-7', 'thorgal31couv_80551.jpg', 'thorgal31v_80551.jpg', 46, 'Albthorgal31_26112008_132602.jpg', 80551, 7, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (330, 59, 59, 60, 37, 'Vincent Van Gogh - La ligne de front', 2, 'Dargaud', '2-205-05466-X', 'UneAventureRocambolesqueDe02_34422.jpg', 'UneAventureRocambolesqueDe02V_34422.jpg', 46, NULL, 34422, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (334, 177, 101, 177, 62, 'Zoo 1', 1, 'Dupuis', '2-8001-2132-7', 'Zoo01.jpg', 'Zoo01ver.jpg', 70, 'zoo01ap.jpg', 22784, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
-(335, 177, 101, 177, 62, 'Zoo 2', 2, 'Dupuis', '2-8001-2324-9', 'Zoo02.jpg', 'zoo02ver.jpg', 62, 'zoo02ap.jpg', 22785, 5, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
-(336, 177, 101, 177, 62, 'Zoo 3', 3, 'Dupuis', '978-2-8001-4004-9', 'zoo03.jpg', 'zoo03v.jpg', 72, 'zoo03p.jpg', 68055, 6, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
+(335, 177, 101, 177, 62, 'Zoo 2', 2, 'Dupuis', '2-8001-2324-9', 'Zoo02.jpg', 'zoo02ver.jpg', 62, 'zoo02ap.jpg', 22785, 4, '2014-12-01 10:39:03', '2014-12-12 15:30:39'),
+(336, 177, 101, 177, 62, 'Zoo 3', 3, 'Dupuis', '978-2-8001-4004-9', 'zoo03.jpg', 'zoo03v.jpg', 72, 'zoo03p.jpg', 68055, 5, '2014-12-01 10:39:03', '2014-12-12 15:30:27'),
 (337, 178, 2, 7, 118, 'Le nouveau rêve', 1, 'Les Humanoïdes Associés', '2-7316-1425-0', 'apreslincalcouv01.jpg', 'apresincal01v.jpg', 56, NULL, 2101, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (338, 134, 134, 24, 119, 'Monsieur Fruit - T1', 1, 'Seuil', '2-0202-3701-6', 'monsieurfruit01couv.jpg', NULL, 153, NULL, 15788, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (341, 134, 134, 24, 119, 'Monsieur Fruit - T2', 2, 'Seuil', '2-02-029670-5', 'MonsieurFruit02a.jpg', NULL, 149, NULL, 51362, 3, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -763,7 +765,7 @@ REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `
 (444, 241, 241, 241, 145, 'Tome 2', 2, 'Dupuis', '2-8001-3839-4', 'bouddhadazurle_02.JPG', 'bouddhadazur02v.jpg', 75, 'Bouddhadazurle02p_59069.jpg', 59069, 1, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (446, 67, 242, 136, 146, 'Un peu avant la fortune', 1, 'Dupuis', '978-2-8001-3854-1', 'UnPeuAvantLaFortune_27012008_111203.jpg', 'UnPeuAvantLaFortune_27012008_111203.jpg', 78, 'UPALF02_71106.jpg', 71106, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (447, 243, 243, 24, 147, 'Retour au collège', 1, 'Hachette', '2-01-235861-6', 'retouraucollegecouv.jpg', NULL, 90, NULL, 49882, 2, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
-(448, 244, 244, 244, 148, '(Livre premier)', 1, 'Futuropolis', '978-2-7548-0239-0', 'Canarrive-couv_109573.jpg', 'Verso_109573.jpg', 60, 'Canarrive-planc_109573.jpg', 109573, 7, '2014-12-01 10:39:03', '2014-12-11 10:08:51'),
+(448, 244, 244, 244, 148, '(Livre premier)', 1, 'Futuropolis', '978-2-7548-0239-0', 'Canarrive-couv_109573.jpg', 'Verso_109573.jpg', 60, 'Canarrive-planc_109573.jpg', 109573, 7, '2014-12-01 10:39:03', '2014-12-12 14:33:38'),
 (449, 246, 245, 247, 149, 'Page Noire', 1, 'Futuropolis', '978-2-7548-0147-8', 'Couv_113972.jpg', 'PageNoire-verso_113972.jpg', 98, 'PageNoire-planc_113972.jpg', 113972, 4, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (450, 164, 163, 164, 115, 'Là où brûlent les regards', 4, 'Delcourt', '978-2-7560-1264-3', 'Alim4-couv_98261.jpg', 'Alim4-verso_98261.jpg', 64, '98261_pla.jpg', 98261, 6, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (451, 27, 26, 27, 12, 'L''Enfer, le silence', 4, 'Dargaud', '978-2-205-06313-4', 'Couv_113281.jpg', 'Verso_113281.jpg', 54, 'PlancheA_113281.jpg', 113281, 7, '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -873,6 +875,55 @@ REPLACE INTO `book` (`id`, `illustrator`, `scenarist`, `colorist`, `serie_id`, `
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `cart`
+--
+
+CREATE TABLE IF NOT EXISTS `cart` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dateCreated` datetime NOT NULL,
+  `dateModified` datetime NOT NULL,
+  `status` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_AB912789A76ED395` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cartitem`
+--
+
+CREATE TABLE IF NOT EXISTS `cartitem` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateModified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3B24E2CF16A2B381` (`book_id`),
+  KEY `IDX_3B24E2CF1AD5CDBF` (`cart_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `creditcard`
+--
+
+CREATE TABLE IF NOT EXISTS `creditcard` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `paypalId` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateModified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_1B6B09C3A76ED395` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `deliverypoints`
 --
 
@@ -893,7 +944,7 @@ CREATE TABLE IF NOT EXISTS `deliverypoints` (
 -- Contenu de la table `deliverypoints`
 --
 
-REPLACE INTO `deliverypoints` (`id`, `name`, `address`, `postalCode`, `city`, `dateCreated`, `dateModified`, `latitude`, `longitude`) VALUES
+INSERT INTO `deliverypoints` (`id`, `name`, `address`, `postalCode`, `city`, `dateCreated`, `dateModified`, `latitude`, `longitude`) VALUES
 (1, 'Libria ', ' 82 Passage Choiseul ', '75002', 'Paris', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.3356084', '48.8685692'),
 (2, 'Telecom Star ', ' 15 Bd de Bonne Nouvelle ', '75002', 'Paris', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.3502658', '48.8698981'),
 (3, 'Hypso Reprographie ', ' 53 rue de Montmorency ', '75003', 'Paris', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2.3527359', '48.8636854'),
@@ -966,7 +1017,7 @@ CREATE TABLE IF NOT EXISTS `serie` (
 -- Contenu de la table `serie`
 --
 
-REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
+INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
 (1, 'Incal (L'')', 'Science-fiction', NULL, 'IncalP.jpg', 15, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (2, 'Incal (Avant l'')', 'Science-fiction', 'Une remarquable série de SF (peut être la meilleur). Commencé superbement, elle s''enlise un peut dans les cristaux mystiques (mais c''est Jodorowski ...)', 'AvantIncal.jpg', 16, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (3, 'Juan Solo', 'Roman graphique', 'Juan Solo est une jeune frappe haineuse, un fils de flingue que son inextinguible ambition va mener au meurtre, à la richesse, puis à la rédemption. Un thriller moderne situé dans une cité fictive en Amérique du Sud. \r\n', 'juansolo.jpg', 584, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -1075,7 +1126,7 @@ REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `lang
 (106, 'Ergün l''errant', 'Science-fiction', NULL, 'ergunlerrant_19012003.jpg', 5575, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (107, 'Dracula, dracul, vlad?, bah...', 'Divers', NULL, 'draculabrecciap.JPG', 4113, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (108, 'Magasin général', 'Quotidien', 'L’histoire de Magasin général se déroule dans un village du Québec rural à partir du début des années 40. Elle gravite autour d’un personnage féminin, Marie, veuve avant l’heure et héritière du principal commerce local (le « Magasin général » qui donne son titre au récit), que l’irruption d’un étranger dans la petite communauté va progressivement réconcilier avec le bonheur ; bonheur d’aimer, bonheur d’être aimé(e), mais pas exactement de la manière que l’on pourrait imaginer…', 'MagasinGeneral_14032006.jpg', 13259, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03');
-REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
+INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
 (109, 'XXe ciel.com', 'Roman graphique', 'Psychanalyse d''un ange.\r\nEva Stern le raconte dans son journal : une nuit, à San Francisco, l''écran de son ordinateur s''est allumé pour lui livrer une succession d''images pour le moins troublantes, ''''sans lien apparent, si ce n''est ces représentations d''anges récurrentes..''''\r\nDepuis cette nuit de février 97, chaque mois, la psychanalyste reçoit un e-mail composé exclusivement d''images et de photos.\r\nQuel sens donner aux messages de l''Ange ? Autoportrait, autobiographie ou effet de miroir ? Miroir d''un siècle ou d''un Ange qui se meurt ? L''Ange du XXe siècle existe-t-il ? Qui est cet Ange, messager virtuel ressuscitant la mémoire du XXe Ciel ? Pourquoi avoir choisi précisément Eva Stern ? Est-ce la femme ou la psychanalyste qui est visée ? Quelle histoire (Histoire) cherche-t-il à lui livrer ?\r\nC''est cette histoire que raconte Bernard Yslaire, ces questions auxquelles son album et ceux qui le suivront s''efforcent de répondre.\r\nUne histoire de vie et de mort, d''anges virtuels ou d''un siècle qui s''achève comme il avait commencé : dans le sang et les larmes.\r\n\r\n(c) Humanoïdes associés', 'xxecielpl.jpg', 1523, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (110, 'Ciel au-dessus de Bruxelles (Le)', 'Drame', '17 mars 2003.\r\nSoixante ans après la shoah, trois jours avant le début de la guerre en Irak, Jules Engell Stern rencontre Fadya.\r\nIl est juif Khazar, elle est beur, musulmane. Lui est de passage à Bruxelles, cherche son frère. Elle prépare un attentat terroriste au milieu d''une manifestation pacifiste...', 'CielAudessusDeBruxellesLe_14032006.jpg', 13262, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (111, 'Canoë Bay', 'Historique', 'CANOË BAY est un récit d’aventures, sur fond historique, qui raconte la vie de Jack, un jeune orphelin à la recherche de son destin. Un ouvrage grand public dont Tiburce, son scénariste dira  ''''C’est ce type de livres qui m’a fait rêver quand j’étais enfant et qui m’a donné envie d’écrire et de créer''''.', NULL, 20164, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
@@ -1143,13 +1194,41 @@ REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `lang
 (173, 'Shenzhen', 'Biographie', 'Les tribulations de Delisle en Chine, très remarquées dans Lapin, retrouvent ici, avec près de deux tiers de pages inédites, la force du journal intime augmentée de l''exotisme du récit de voyage. Voyageur immobile, Delisle y raconte ses rencontres, ses remarques anodines qui font mouche à chaque fois, des chinoiseries existentielles et quotidiennes qui touchent à l''universel.\r\n\r\nImages: © ASSOCIATION (L'') - Delisle / Delisle', 'Shenzhen_09032002.jpg', 2956, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (174, 'Logicomix', 'Roman graphique', 'Sur le mode d’un psycho-thriller mathématique, Logicomix est un roman graphique ambitieux, qui explore les grandes recherches en mathématiques fondamentales et en philosophie du XXe siècle. Dans cette quête acharnée de la vérité, on croise Wittgenstein, Poincaré, Russell, Hilbert, Frege, Cantor, mathématiciens, logiciens et philosophes de renom, tous plus vrais que nature. Ce livre retrace brillamment et avec beaucoup d’humour le débat passionné qui anima cette période, sans rien cacher des conflits intérieurs des personnages, dont certains vacillent au bord de la folie.', 'PlancheS_24949.jpg', 24949, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (175, 'Grand Mort (Le)', 'Heroic Fantasy', 'Tout avait été prévu pour que ce soit une semaine studieuse ! Pauvre Pauline ! Elle comptait se mettre au vert pour préparer sa maîtrise de sciences éco... La nuit recouvre la forêt bretonne et la « deuch » vient de tomber en panne d’essence juste devant chez Erwan, à 20 kilomètres de tout village. Erwan est un métis du genre placide. Solitaire, il vit simplement, entouré d’objets étranges. Il propose à Pauline de partager sa soupe et de l’héberger pour la nuit... Contrainte par les circonstances, elle finit par accepter... Tandis qu’elle mange, il parcourt un vieux grimoire traitant du « petit peuple »... Elle ricane de ces sornettes. Elle ignore, alors, que cette rencontre sera pour elle le point de départ vers un autre univers, un autre espace-temps, où toute sa vie et ses principes vont basculer... Les conséquences de cette aventure seront des plus surprenantes pour elle, pour son entourage, voire pour l’humanité...', 'GrandMortLe_14112007_210500.jpg', 16623, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03');
-REPLACE INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
+INSERT INTO `serie` (`id`, `title`, `style`, `comment`, `board`, `idbel`, `language`, `dateModified`, `dateCreated`) VALUES
 (176, 'Car l''enfer est ici', 'Policier-Thriller-Polar', 'Le Pouvoir des innocents se passait en 1997 et évoquait l’accession à la tête de la ville de New York, de Jessica Ruppert, grande humaniste. Car l''Enfer est ici prend place six mois après (et se terminera au 11 septembre 2001). Joshua Logan, accusé à tort d''avoir assassiné 508 personnes, s''apprête à se rendre à la police pour essayer de clamer son innocence, alors qu''on assiste à New York à la montée de forces d''opposition très actives et très dures contre la politique de Jessica Ruppert. Des opposants, qui vont prendre Joshua comme symbole de leur combat…', 'PlancheS_28937.jpg', 28937, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (177, 'Homme qui n''aimait pas les armes à feu (L'')', 'Humour', 'Début du XXe siècle, Arizona... Maître Byron Peck, citoyen britannique et avocat d''affaires, escorté de son acolyte, l''effrayant Monsieur Hoggaard, parcourt le désert en quête d''un mystérieux papier qui pourrait changer à jamais le cours de l''histoire des États-Unis d''Amérique. Dans le même but, la dangereuse Margot de Garine s''associe à une bande de Mexicains sans foi ni loi... Et ils seront sans pitié !											', 'PlancheS_27331.jpg', 27331, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (178, 'Quai d''Orsay', 'Policier-Thriller-Polar', 'Le jeune Arthur Vlaminck est embauché en tant que chargé du ''''langage'''' par le ministre des Affaires étrangères Alexandre Taillard de Worms. En clair, il doit écrire les discours du ministre ! Mais encore faut-il se faire une place entre le directeur du cabinet et les conseillers qui gravitent dans un Quai d''Orsay où le stress, l''ambition et les coups fourrés ne sont pas rares... Inspiré de l''expérience d''Abel Lanzac qui fut conseiller dans un ministère, cet album restitue une vision de la politique à la fois pleine d''acuité et d''humour. Un pur régal !\r\n', '24260_pl.jpg', 24260, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (179, 'Frenchman', 'Historique', 'Un Normand en Louisiane\r\nOctobre 1803... Dans un paisible village de Normandie, des sergents recruteurs arrivent tambour battant. À l’appel de leurs noms, les jeunes hommes de la région partent grossir les rangs de l’armée du premier consul Bonaparte. À l’autre bout du monde, la Louisiane vient d’être cédée par la France à la jeune nation américaine. Enrôlé comme tant d’autres pour assurer la “pacification” de ces contrées sauvages, Alban, un jeune paysan, doit bientôt embarquer pour la Nouvelle-Orléans. Ce garçon plein de fougue, encore imprégné des idéaux de la Révolution, fait parler la poudre pour défendre un jeune esclave. Arrêté, emprisonné, il risque l’échafaud. Un trappeur français, Toussaint Charbonneau, lui sauve la vie et l’entraîne avec lui dans une expédition qui changera le cours de leurs existences.\r\nAprès Canoë Bay, Patrick Prugne nous rappelle que la France a possédé un immense empire en Amérique du Nord, dont la Nouvelle-Orléans, fondée en 1712, était la capitale. Du Canada au golfe du Mexique, de la chaîne des Appalaches aux montagnes Rocheuses, la Louisiane française représentait l’équivalent de vingt et un états composant les actuels États-Unis ! L’histoire de ce pays, auquel le Roi de France avait donné son nom, est peuplée de coureurs des bois, de missionnaires et d’officiers perdus dans les immensités du Nouveau-Monde.', 'PlancheS_29340.jpg', 29340, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (180, 'Urban', 'Science-fiction', 'Zacchary Buzz quitte sa famille de fermiers pour se rendre à Monplaisir, une immense cité dédiée aux loisirs, aux jeux, aux plaisirs... Avec pour modèle Overtime, le plus grand justicier de tous les temps, il rêve d''intégrer la meilleure police du monde : les Urban Interceptor.\r\n\r\nMonplaisir est une société hyper contrôlée, dirigée par l''omniprésent Springy Fool. A grands renforts de caméras et d''écrans géants, toute la ville peut suivre en direct les moindres faits et gestes de ses habitants. Monplaisir est également sous le contrôle d A.L.I.C.E., un système automatisé composé de robots nettoyeurs qui font la chasse aux voleurs, avec des méthodes plutôt musclées... Ce système permet aux policiers de s''occuper des vrais crimes, car derrière la fête et l''amusement, on retrouve les corps mutilés de plusieurs jeunes filles. Devenant trop gênant, l''enquêteur principal est lui même assassiné par Antiochus Ebrahimi. On met alors sur le coup le meilleur Urban Interceptor : Isham El Ghellab. Cette traque est mise en scène en direct sous forme de jeu télévisé, où les spectateurs peuvent parier sur la mise à mort d''un des deux protagonistes. Zach, qui rêvait de justice, découvre que tout n''est que violence et cynisme et que le monde magique de Monplaisir est bien cruel...', 'PlancheS_29156.jpg', 29156, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03'),
 (181, 'Actu en patates (L'')', 'Humour', 'Martin Vidberg et ses bonshommes patates sont de retour... Nicolas, Carla, Roselyne, Rachida, Dominique, Barack, DSK, Laure Manaudou, Raymond Domenech, Steve Jobs, toutes les célébrités qui ont fait l''actualité de ces cinq dernières années sont réunies dans ce best of de L''Actu en patates pour une rétrospective hilarante du dernier quinquennat. L''album idéal à l''approche des élections de 2012.', NULL, 30158, 'fr', '2014-12-01 10:39:03', '2014-12-01 10:39:03');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `salt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `adress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `postalCode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `idPaypal` smallint(6) DEFAULT NULL,
+  `dateCreated` datetime NOT NULL,
+  `dateModified` datetime NOT NULL,
+  `longitude` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `latitude` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mydelivery_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_1483A5E986DC9F0A` (`mydelivery_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Contraintes pour les tables exportées
@@ -1163,6 +1242,31 @@ ALTER TABLE `book`
   ADD CONSTRAINT `FK_6BD70C0FD94388BD` FOREIGN KEY (`serie_id`) REFERENCES `serie` (`id`),
   ADD CONSTRAINT `FK_6BD70C0FEB2B18DB` FOREIGN KEY (`scenarist`) REFERENCES `author` (`id`),
   ADD CONSTRAINT `FK_6BD70C0FF7A66C28` FOREIGN KEY (`colorist`) REFERENCES `author` (`id`);
+
+--
+-- Contraintes pour la table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `FK_AB912789A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `cartitem`
+--
+ALTER TABLE `cartitem`
+  ADD CONSTRAINT `FK_3B24E2CF1AD5CDBF` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`),
+  ADD CONSTRAINT `FK_3B24E2CF16A2B381` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`);
+
+--
+-- Contraintes pour la table `creditcard`
+--
+ALTER TABLE `creditcard`
+  ADD CONSTRAINT `FK_1B6B09C3A76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `FK_1483A5E986DC9F0A` FOREIGN KEY (`mydelivery_id`) REFERENCES `deliverypoints` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

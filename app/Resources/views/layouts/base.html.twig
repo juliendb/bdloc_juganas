@@ -38,13 +38,14 @@
                 </div>   
 
 
-				<div class="col-md-3 col-sm-4 nav-login">
+				<div class="col-md-3 col-sm-4 ">
 
 					{% if app.user %}
+                    <div class="nav-login">
                         <a href="{{ path('bdloc_app_profil_account') }}">Bonjour  <strong>{{ app.user.username }}</strong></a>
 
 						<a id="deconnexion" href="{{ path('logout') }}" title="Déconnexion">Logout</a>
-
+                    </div>
 					{% else %}
 						<a id="connexion" href="{{ path('bdloc_app_user_login')}}" title="Connexion">Se connecter</a>
 					{% endif %}
@@ -55,15 +56,15 @@
 
 
         <main>
-        {% block main_content %}
-            
+            {% block main_content %}
+                
 
 
-           
-        {% endblock %}
 
+
+            {% endblock %}
+            <div class="clearfix"></div>
         </main>
-    <div class="clearfix"></div>
 
         <footer id="footer">
             <div id="nav">
