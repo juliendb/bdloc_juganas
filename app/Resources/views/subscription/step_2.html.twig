@@ -18,24 +18,32 @@
 	<div class="clearfix"></div>
 
 
-	<div id="map">
-		{{ google_map_container(map) }}
-		{{ google_map_css(map) }}
-		{{ google_map_js(map) }}
+	<div id="step2">	
+		<div id="map" class="pull-left">
+			{{ google_map_container(map) }}
+			{{ google_map_css(map) }}
+			{{ google_map_js(map) }}
+		</div>
+
+		<div id="adresseRelais" class="pull-left ">
+			<h1>Point relais choisi</h1>
+			{% if mydelivery is defined %}
+				
+				<p>{{ mydelivery.name }}</p>
+				<p>{{ mydelivery.address }}</p>
+				<p>{{ mydelivery.city ~ " " ~ mydelivery.postalCode }}</p>
+				<br>
+
+				<p>Horaires d'ouvertures :</p>
+				<p>Ouvert du lundi au samedi</p>
+				<p><strong>10:00 am - 19:30 pm</strong></p>
+				<a href="{{ path("bdloc_app_subscribe_registerstep3") }}" id="stepbilling" class="btn btn-primary">Suivant</a>
+
+			{% endif %}
+
+		</div>
+		<div class="clearfix"></div>
 	</div>
-
-	<div>
-		{% if mydelivery is defined %}
-			
-			<p>{{ mydelivery.name }}</p>
-			<p>{{ mydelivery.address }}</p>
-			<p>{{ mydelivery.city ~ " " ~ mydelivery.postalCode }}</p>
-
-			<a href="{{ path("bdloc_app_subscribe_registerstep3") }}" id="stepbilling" class="btn btn-primary">Suivant</a>
-
-		{% endif %}
-	</div>
-
 </div>
 {% endblock %}
 
