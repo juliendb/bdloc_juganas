@@ -398,8 +398,27 @@ a.subscribe {
 ********** Step points relais  **********
 *****************************************
 ****************************************/
-#map {
+#step2 {
+  background-color: rgba(0,0,0,0.8);
+  color: #fff;
+  font: 300 0.9em Open Sans;
   position: relative;
+  border: 1px solid #fff;
+}
+#step2 #map {
+  position: relative;
+  border: 10px solid #fff;
+}
+#step2 #adresseRelais {
+  padding: 20px;
+}
+#step2 #adresseRelais h1 {
+  color: #fff;
+}
+#step2 #adresseRelais #stepbilling {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
 /****************************************
 *****************************************
