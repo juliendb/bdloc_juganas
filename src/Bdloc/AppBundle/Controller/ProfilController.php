@@ -35,7 +35,7 @@ class ProfilController extends Controller
 
 
         $history_carts = $repoCart->selectCartHistoryUser($user);
-        dump($history_carts);
+        //dump($history_carts);
         $params["carts"] = $history_carts;
 
 
