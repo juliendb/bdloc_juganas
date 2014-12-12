@@ -367,7 +367,7 @@ a.subscribe {
 .valider {
   background-color: #e90000;
   height: 39px;
-  font: 700 0.9em Oswald;
+  font: 300 0.9em Oswald;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
@@ -377,7 +377,7 @@ a.subscribe {
 .valider:hover {
   cursor: pointer;
   color: #fff;
-  opacity: 0.6;
+  background-color: #e9b33d;
   transition-duration: 0.2s;
 }
 #abonnement {
@@ -399,7 +399,7 @@ a.subscribe {
 *****************************************
 ****************************************/
 #step2 {
-  background-color: rgba(0,0,0,0.8);
+  background-color: #f4eeeb;
   color: #fff;
   font: 300 0.9em Open Sans;
   position: relative;
@@ -413,12 +413,35 @@ a.subscribe {
   padding: 20px;
 }
 #step2 #adresseRelais h1 {
-  color: #fff;
+  color: #222;
+}
+#step2 #adresseRelais p {
+  font: 300 1em Open Sans;
+  color: #222;
 }
 #step2 #adresseRelais #stepbilling {
   position: absolute;
   right: 20px;
   bottom: 20px;
+}
+#step2 #adresseRelais a.valider {
+  background-color: #e90000;
+  font: 300 0.9em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+  border-radius: 3px;
+  line-height: 1.2em;
+}
+#step2 #adresseRelais a.valider:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #e9b33d;
+  transition-duration: 0.2s;
+  text-decoration: none;
 }
 /****************************************
 *****************************************
@@ -705,12 +728,14 @@ a.subscribe {
 #popup #detail_book #close {
   position: absolute;
   z-index: 10;
+  top: 10px;
 }
+#popup #detail_book #close right,
 #popup #detail_book #close:after {
   content: "\2b";
   position: absolute;
-  top: 6px;
-  right: -775px;
+  top: 0;
+  right: 0;
   font: 0.9em Glyphicons Halflings;
   color: #222;
   transform: rotate(45deg);
@@ -891,4 +916,20 @@ a.subscribe {
   color: #fff;
   background-color: #65c6bb;
   transition-duration: 0.2s;
+}
+/***************************************
+************** PAIEMENT  ***************
+***************************************/
+#steps {
+  margin: 0 auto;
+  width: 500px;
+}
+#paypal {
+  margin: 0 auto;
+  width: 500px;
+  padding-left: 20px;
+}
+#paypal h1 {
+  font: 300 1.8em Oswald;
+  color: #e9b33d;
 }

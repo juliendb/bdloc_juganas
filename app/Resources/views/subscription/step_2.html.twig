@@ -7,7 +7,7 @@
 {# contenu du body #}
 
 {% block main_content %}
-<div class="container">
+<div class="container paiement">
 	<div class="steps">
 	    <ul class="stepsRegister">
 	    	<li class="tab ok tab1"><a href="{{ path("bdloc_app_subscribe_registerstep1")}}">1. Infos personnelles</a></li>
@@ -37,7 +37,7 @@
 				<p>Horaires d'ouvertures :</p>
 				<p>Ouvert du lundi au samedi</p>
 				<p><strong>10:00 am - 19:30 pm</strong></p>
-				<a href="{{ path("bdloc_app_subscribe_registerstep3") }}" id="stepbilling" class="btn btn-primary">Suivant</a>
+				<a href="{{ path("bdloc_app_subscribe_registerstep3") }}" id="stepbilling" class="valider">Suivant</a>
 
 			{% endif %}
 

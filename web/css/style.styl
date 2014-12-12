@@ -393,7 +393,7 @@ a.subscribe
 .valider
 	background-color red
 	height 39px
-	font 700 0.9em Oswald
+	font 300 0.9em Oswald
 	letter-spacing 0.07em
 	text-transform uppercase
 	color white
@@ -402,7 +402,7 @@ a.subscribe
 	&:hover
 		cursor pointer
 		color white
-		opacity 0.6
+		background-color jaune
 		transition-duration 0.2s
 		
 
@@ -433,7 +433,7 @@ a.subscribe
 ****************************************/
 
 #step2
-	background-color rgba(0,0,0,0.8)
+	background-color text
 	color white
 	font 300 0.9em Open Sans
 	position relative
@@ -448,12 +448,31 @@ a.subscribe
 		padding 20px
 		
 		h1
-			color white
+			color dark
+		p
+			font 300 1em Open Sans
+			color dark
 		#stepbilling
 			position absolute
 			right 20px
 			bottom 20px
-
+		a.valider
+			background-color red
+			font 300 0.9em Oswald
+			letter-spacing 0.07em
+			text-transform uppercase
+			color white
+			margin 0 auto
+			display block
+			padding 10px
+			border-radius 3px
+			line-height 1.2em
+			&:hover
+				cursor pointer
+				color white
+				background-color jaune
+				transition-duration 0.2s
+				text-decoration none
 
 
 
@@ -766,11 +785,13 @@ a.subscribe
 		#close
 			position absolute
 			z-index 10
+			top 10px
+			right
 			&:after
 				content "\2b"
 				position absolute
-				top 6px
-				right -775px
+				top 0
+				right 0
 				font 0.9em Glyphicons Halflings
 				color dark
 				transform rotate(45deg)
@@ -953,4 +974,19 @@ a.subscribe
 			background-color  #65c6bb
 			transition-duration 0.2s	
 	
+
+/***************************************
+************** PAIEMENT  ***************
+***************************************/
+#steps
+	margin 0 auto
+	width 500px
+#paypal
+	margin 0 auto
+	width 500px
+	padding-left 20px
+	
+	h1
+		font 300 1.8em Oswald
+		color jaune
 
