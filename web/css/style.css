@@ -619,8 +619,8 @@ a.subscribe {
 .view #triangle {
   z-index: 90;
   position: absolute;
-  left: 254px;
-  top: 339px;
+  left: 255px;
+  top: 86px;
   width: 0;
   height: 0;
   border-top: 30px solid transparent;
@@ -708,7 +708,7 @@ a.subscribe {
   position: relative;
   width: 800px;
   background-color: #f4eeeb;
-  margin: 50px auto;
+  margin: 15% auto;
   color: #000;
   border: 10px solid #fff;
 }
@@ -716,11 +716,22 @@ a.subscribe {
   position: absolute;
   z-index: 10;
   top: 1px;
-  left: 1px;
+  left: 760px;
   height: 20px;
   width: 20px;
-  border: 1px solid #e90000;
-  z-index: 100;
+  cursor: pointer;
+}
+#popup #detail_book #close:after {
+  content: "\2b";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  font: 0.9em Glyphicons Halflings;
+  color: #222;
+  transform: rotate(45deg);
+}
+#popup #detail_book #close:hover {
+  transform: rotate(87deg);
 }
 #popup #detail_book img {
   float: left;
@@ -780,7 +791,6 @@ a.subscribe {
   transition-duration: 0.2s;
 }
 /****************************************
-<<<<<<< HEAD
 *****************************************
 ************** CATALOGUE  ***************
 *****************************************
@@ -821,7 +831,23 @@ a.subscribe {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
-=======
+  line-height: 53px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.monPanier .book .link_cart_book::before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e116";
+  margin-right: 10px;
+}
+.monPanier .book .link_cart_book:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #e9b33d;
+  transition-duration: 0.2s;
+}
+/*******************************************
 **************** MON COMPTE *****************
 ****************************************/
 .profil h1 {
@@ -923,23 +949,10 @@ a.subscribe {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #f4eeeb;
->>>>>>> 003ca2e079a561be58853e99a637d4ca4cd1e3b4
   line-height: 53px;
   padding: 10px;
   border-radius: 5px;
   text-decoration: none;
-<<<<<<< HEAD
-}
-.monPanier .book .link_cart_book::before {
-  font: 0.9em Glyphicons Halflings;
-  content: "\e116";
-  margin-right: 10px;
-}
-.monPanier .book .link_cart_book:hover {
-  cursor: pointer;
-  color: #fff;
-  background-color: #e9b33d;
-=======
   margin-left: 30px;
 }
 .profil .btnDesabonner::before {
@@ -952,6 +965,5 @@ a.subscribe {
   cursor: pointer;
   color: #fff;
   background-color: #65c6bb;
->>>>>>> 003ca2e079a561be58853e99a637d4ca4cd1e3b4
   transition-duration: 0.2s;
 }

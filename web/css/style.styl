@@ -670,8 +670,8 @@ a.subscribe
 	#triangle
 		z-index 90
 		position absolute
-		left 254px
-		top 339px
+		left 255px
+		top 86px
 		width 0
 		height 0 
 		border-top 30px solid transparent
@@ -768,7 +768,7 @@ a.subscribe
 		position relative
 		width 800px
 		background-color text
-		margin 50px auto
+		margin 15% auto
 		color #000
 		border 10px solid #fff
 
@@ -776,12 +776,21 @@ a.subscribe
 			position absolute
 			z-index 10
 			top 1px
-			left 1px
+			left 760px
 			height 20px
 			width 20px
-			border 1px solid red
-			z-index 100
-
+			cursor pointer
+			
+			&:after
+				content "\2b"
+				position absolute
+				top -1px
+				right -1px
+				font 0.9em Glyphicons Halflings
+				color dark
+				transform rotate(45deg)
+			&:hover
+				transform rotate(87deg)	
 		img
 			float left
 			width 50%
@@ -845,7 +854,6 @@ a.subscribe
 
 
 /****************************************
-<<<<<<< HEAD
 *****************************************
 ************** CATALOGUE  ***************
 *****************************************
@@ -897,7 +905,9 @@ a.subscribe
 				color white
 				background-color jaune
 				transition-duration 0.2s
-=======
+				
+
+/*******************************************
 **************** MON COMPTE *****************
 ****************************************/
 
@@ -1013,5 +1023,3 @@ a.subscribe
 			background-color  #65c6bb
 			transition-duration 0.2s	
 	
-
->>>>>>> 003ca2e079a561be58853e99a637d4ca4cd1e3b4
