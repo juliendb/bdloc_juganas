@@ -233,7 +233,7 @@ a.subscribe
 ****************************************/
 
 .profil
-	background-color rgba(0,0,0,0.8)
+	background-color rgba(0,0,0,0.5)
 	margin-top 60px
 	padding 20px 
 	.boutons
@@ -244,10 +244,10 @@ a.subscribe
 		text-align center
 		margin 20px 0
 	h2
-		border-bottom 1px dotted white
-		padding-bottom 10px
+		border-bottom 1px dotted #F4DFB0
+		padding-bottom 20px
 		margin-top 30px
-	
+
 
 
 .editProfil
@@ -824,5 +824,119 @@ a.subscribe
 
 
 
+/****************************************
+**************** MON COMPTE *****************
+****************************************/
 
+.profil
+	h1
+		display: inline;
+		font 300 1.8em Oswald
+		color jaune
+		
+	h2.titreCompte
+		font 300 1.1em Oswald
+		color text
+		&:before
+			font 0.9em Glyphicons Halflings
+			content "\e008"
+			margin-right 10px
+			color jaune
+			
+	h2.titreRelais
+		font 300 1.1em Oswald
+		color text
+		&:before
+			font 0.9em Glyphicons Halflings
+			content "\e062"
+			margin-right 10px
+			color jaune
+			
+	h2.titrePaiement
+		font 300 1.1em Oswald
+		color text
+		&:before
+			font 0.9em Glyphicons Halflings
+			content "\e177"
+			margin-right 10px
+			color jaune
+			
+	h2.titreLocation
+		font 300 1.1em Oswald
+		color text
+		&:before
+			font 0.9em Glyphicons Halflings
+			content "\e056"
+			margin-right 10px
+			color jaune
+			
+	h2.titreAmendes
+		font 300 1.1em Oswald
+		color text
+		&:before
+			font 0.9em Glyphicons Halflings
+			content "\e107"
+			margin-right 10px
+			color jaune
+			
+	h3
+		font 300 1em Open Sans
+		color text
+	
+	p 
+		font 300 0.8em Open Sans
+		line-height 2em
+
+	.btnCompte
+		300 1.8em/2em Oswald;
+		color #FF9304 
+		
+			
+	.btnEditer
+		text-align center
+		background-color jaune
+		font 300 0.7em Oswald
+		letter-spacing 0.07em
+		text-transform uppercase
+		color text
+		line-height 53px
+		padding 10px	
+		border-radius 5px
+		text-decoration none
+		margin-left 30px
+		&::before
+			font 0.9em Glyphicons Halflings
+			color text
+			content "\e136"
+			margin-right 10px
+		&:hover
+			cursor pointer
+			color white
+			background-color #65c6bb
+			transition-duration 0.2s
+			
+
+	.btnDesabonner
+		text-align center
+		background-color coloron
+		font 300 0.7em Oswald
+		letter-spacing 0.07em
+		text-transform uppercase
+		color text
+		line-height 53px
+		padding 10px	
+		border-radius 5px
+		text-decoration none
+		margin-left 30px
+		&::before
+			font 0.9em Glyphicons Halflings
+			color text
+			content "\e136"
+			margin-right 10px
+		&:hover
+			cursor pointer
+			color white
+			background-color  #65c6bb
+			transition-duration 0.2s	
+	
 

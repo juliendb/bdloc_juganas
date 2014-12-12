@@ -191,7 +191,7 @@ a.subscribe {
 *****************************************
 ****************************************/
 .profil {
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,0.5);
   margin-top: 60px;
   padding: 20px;
 }
@@ -206,8 +206,8 @@ a.subscribe {
   margin: 20px 0;
 }
 .profil h2 {
-  border-bottom: 1px dotted #fff;
-  padding-bottom: 10px;
+  border-bottom: 1px dotted #f4dfb0;
+  padding-bottom: 20px;
   margin-top: 30px;
 }
 .editProfil {
@@ -738,5 +738,124 @@ a.subscribe {
   cursor: pointer;
   color: #fff;
   background-color: #e9b33d;
+  transition-duration: 0.2s;
+}
+/****************************************
+**************** MON COMPTE *****************
+****************************************/
+.profil h1 {
+  display: inline;
+  font: 300 1.8em Oswald;
+  color: #e9b33d;
+}
+.profil h2.titreCompte {
+  font: 300 1.1em Oswald;
+  color: #f4eeeb;
+}
+.profil h2.titreCompte:before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e008";
+  margin-right: 10px;
+  color: #e9b33d;
+}
+.profil h2.titreRelais {
+  font: 300 1.1em Oswald;
+  color: #f4eeeb;
+}
+.profil h2.titreRelais:before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e062";
+  margin-right: 10px;
+  color: #e9b33d;
+}
+.profil h2.titrePaiement {
+  font: 300 1.1em Oswald;
+  color: #f4eeeb;
+}
+.profil h2.titrePaiement:before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e177";
+  margin-right: 10px;
+  color: #e9b33d;
+}
+.profil h2.titreLocation {
+  font: 300 1.1em Oswald;
+  color: #f4eeeb;
+}
+.profil h2.titreLocation:before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e056";
+  margin-right: 10px;
+  color: #e9b33d;
+}
+.profil h2.titreAmendes {
+  font: 300 1.1em Oswald;
+  color: #f4eeeb;
+}
+.profil h2.titreAmendes:before {
+  font: 0.9em Glyphicons Halflings;
+  content: "\e107";
+  margin-right: 10px;
+  color: #e9b33d;
+}
+.profil h3 {
+  font: 300 1em Open Sans;
+  color: #f4eeeb;
+}
+.profil p {
+  font: 300 0.8em Open Sans;
+  line-height: 2em;
+}
+.profil .btnCompte {
+  color: #ff9304;
+}
+.profil .btnEditer {
+  text-align: center;
+  background-color: #e9b33d;
+  font: 300 0.7em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #f4eeeb;
+  line-height: 53px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 30px;
+}
+.profil .btnEditer::before {
+  font: 0.9em Glyphicons Halflings;
+  color: #f4eeeb;
+  content: "\e136";
+  margin-right: 10px;
+}
+.profil .btnEditer:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #65c6bb;
+  transition-duration: 0.2s;
+}
+.profil .btnDesabonner {
+  text-align: center;
+  background-color: #e90000;
+  font: 300 0.7em Oswald;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #f4eeeb;
+  line-height: 53px;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 30px;
+}
+.profil .btnDesabonner::before {
+  font: 0.9em Glyphicons Halflings;
+  color: #f4eeeb;
+  content: "\e136";
+  margin-right: 10px;
+}
+.profil .btnDesabonner:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #65c6bb;
   transition-duration: 0.2s;
 }
