@@ -730,8 +730,8 @@ a.subscribe {
   color: #222;
   transform: rotate(45deg);
 }
-#popup #detail_book #close:hover {
-  transform: rotate(87deg);
+#popup #detail_book #close:after:hover {
+  color: #e90000;
 }
 #popup #detail_book img {
   float: left;
