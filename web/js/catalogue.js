@@ -20,40 +20,35 @@ cart =
 		$.ajax
 		({
 			url: url,
-			dataType: "html",
-			success: function(html)
+			dataType: "json",
+			success: function(json)
 			{
-				var response = $(html).find("#response")
+				var response = json.response
+				var id = json.id
+				var action = json.action
 
-				if (response) 
-				{
+				var stock_book = response.stock_book
+				var count_cart = response.count_cart
+
 				
-					var action = response.attr("action")
-					var isbn = response.attr("isbn")
-
-					var stock_book = response.children("#stock_book").val()
-					var count_cart = response.children("#count_cart").val()
-
+				if (response != "")
+				{
 
 					// adding
 					if (action == "adding")
 					{
-						console.log(stock_book, count_cart)
+						// affiche le nouveau stock bd
+						$("#"+id+" .stock").text(stock_book+" en stock")
 					}
 
 
 					// sorting
 					if (action == "sorting")
 					{
-						console.log(stock_book, count_cart)
-
-						$("#"+isbn).fadeOut(600)
+						$("#"+id).fadeOut(600)
 					}
 
 				}
-
-
-				//console.log(response.children("#stock_book").val())
 			}
 		})
 

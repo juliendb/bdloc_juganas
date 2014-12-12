@@ -9,14 +9,14 @@ class BookRepository extends EntityRepository
 {
 
 
-	// select un livre par isbn
-	public function selectBookByIsbn($isbn)
+	// select un livre par id
+	public function selectBookById($id)
 	{
 		$query = $this
 			->createQueryBuilder("b")
 			->addSelect('b')
-			->where('b.isbn = :isbn')
-			->setParameter('isbn', $isbn)
+			->where('b.id = :id')
+			->setParameter('id', $id)
 			->getQuery();
 
 		$book = $query->getSingleResult();
