@@ -11,6 +11,10 @@ use Bdloc\AppBundle\Entity\User;
 use Bdloc\AppBundle\Util\StringHelper;
 use Bdloc\AppBundle\Form\RegisterType;
 
+use Bdloc\AppBundle\Entity\CartItem;
+use Bdloc\AppBundle\Entity\Cart;
+
+
 class ProfilController extends Controller
 {
     /**
@@ -19,8 +23,9 @@ class ProfilController extends Controller
     public function accountAction()
     {
 
-        //$profilInfo = $this->getDoctrine()->getRepository("BdlocAppBundle:User");
-        
+        $repoCart = $this->getDoctrine()->getRepository("BdlocAppBundle:Cart");
+        $repoCartItem = $this->getDoctrine()->getRepository("BdlocAppBundle:CartItem");
+
         // si tu es connecté tu utilise cette méthode (voir guillaume formateur)
         $user = $this->getUser();
 
@@ -28,9 +33,11 @@ class ProfilController extends Controller
             "user" => $user
         );
 
-/*
-        dump($user);
-        die();*/
+
+        $history_carts = $repoCart->selectCartHistoryUser($user);
+        dump($history_carts);
+        $params["carts"] = $history_carts;
+
 
         return $this->render("profil/compte.html.twig", $params);
 
@@ -59,14 +66,14 @@ class ProfilController extends Controller
         //prerempli le formulaire avec les données user
         $user = $this->getUser();
 
-        dump($user);
         //gère la soumission du form
         $request = $this->getRequest();
         $editForm->handleRequest($request);
 
 
 
-        if ($editForm->isValid()){
+        if ($editForm->isValid())
+        {
 
             //sauvegarde le user en base
             $em = $this->getDoctrine()->getManager();
@@ -75,7 +82,7 @@ class ProfilController extends Controller
 
 
             //redirige vers l'accueil
-            return $this->redirect( $this->generateUrl( "bdloc_app_default_home" ) );
+            //return $this->redirect( $this->generateUrl( "bdloc_app_default_home" ) );
         }
 
 
@@ -85,6 +92,16 @@ class ProfilController extends Controller
 
     }
 
+
+
+
+    /**
+     * @Route("/account/desabonnement")
+     */
+    public function unsubsribeAction()
+    {
+
+    }
 
 
 }

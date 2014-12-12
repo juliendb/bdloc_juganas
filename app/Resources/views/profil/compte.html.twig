@@ -25,11 +25,17 @@
 
 <h2>Mon point relais</h2>
 
-    <h3>{{ user.mydelivery.name }}</h3>
-    <p><strong>Adress :</strong> {{ user.mydelivery.address }} - {{ user.mydelivery.postalCode }} {{ user.mydelivery.city }}</p>
-    
+    {% if user.mydelivery %}
+        <h3>{{ user.mydelivery.name }}</h3>
+        <p><strong>Adress :</strong> {{ user.mydelivery.address }} - {{ user.mydelivery.postalCode }} {{ user.mydelivery.city }}</p>
 
-    <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btn btn-primary">Modifier mon point relais</a>
+        <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btn btn-primary">Modifier mon point relais</a>
+    {% else %}
+        <p>Vous n'avez pas encore choisi de point relais.</p>
+
+        <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btn btn-primary">Ajouter mon point relais</a>
+    {% endif %}
+    
 
 
 
@@ -48,13 +54,18 @@
     <th class="">Tome</th>
     <th class="">Date location</th>
   </tr>
-  <tr>
-    <td class=""><img src=" " alt="" width="50" height='50' /></td>
-    <td class=""></td>
-    <td class=""></td>
-    <td class=""></td>
-    <td class=""></td>
-  </tr>
+    {% for cart in carts %}
+    {% for cartitem in cart.cartitem %}
+    <tr>
+        <td class=""><img src=" {{ asset('img/Couvertures_cart_thumbs/' ~ cartitem.book.cover) }} " alt="{{ cartitem.book.title }}" /></td>
+        <td class=""><p>{{ cartitem.book.title }}</p></td>
+        <td class=""><p>{{ cartitem.book.serie.title }}</p></td>
+        <td class=""><p>{{ cartitem.book.num }}</p></td>
+        <td class=""><p>{{ cartitem.dateCreated.date }}</p></td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+
 
 </table>
 
