@@ -65,4 +65,31 @@ class CartItemRepository extends EntityRepository
 	}
 
 
+
+	// select cart utilisateur
+	public function selectAllCartItemHistory($cart, $user)
+	{
+		$params = array(
+			"id_user" => $user->getId(),
+			"id_cart" => $cart->getId(),
+		);
+
+
+		$query = $this
+			->createQueryBuilder("ci")
+			->join("ci.cart", "c")
+			->join("ci.book", "b")
+			->join("c.user", "u")
+			->addSelect("ci, c, b, u")
+			->andWhere("c.id = :id_cart")
+			->andWhere("u.id = :id_user")
+			->setParameters($params)
+			->groupBy("c.dateCreated")
+			->getQuery();
+
+		$cart = $query->getResult();
+
+		return $cart;
+	}
+
 }

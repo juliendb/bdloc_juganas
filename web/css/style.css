@@ -219,15 +219,9 @@ a.subscribe {
   margin: 20px 0;
 }
 .profil h2 {
-<<<<<<< HEAD
   border-bottom: 1px dotted #f4dfb0;
   padding-bottom: 20px;
   margin-top: 30px;
-=======
-  border-bottom: 1px dotted #fff;
-  padding-bottom: 10px;
-  margin-top: 20px;
->>>>>>> 330d7163b6ece5bfcbc06fcfc149bb273661ed46
 }
 .editProfil {
   margin-top: 50px;
@@ -842,6 +836,7 @@ a.subscribe {
 }
 .profil p {
   font: 300 0.8em Open Sans;
+  color: #f4eeeb;
   line-height: 2em;
 }
 .profil .btnCompte {
