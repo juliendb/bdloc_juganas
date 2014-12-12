@@ -10,17 +10,16 @@
 
 	<div class="clearfix"></div>
 
-	<div class="container">
+	<div class="container login">
 		<form action="{{ path('login_check') }}" method="post">
 
 		    <div class="form-group">
-		    	<label class="control-label" for="username">Login :</label>
-		    	<input  class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+		    	<input  class="form-control" type="text" id="username" placeholder="Login" name="_username" value="{{ last_username }}" />
 			</div>
+       
 
 			<div class="form-group">
-			    <label class="control-label" for="password">Mot de passe :</label>
-			    <input  class="form-control" type="password" id="password" name="_password" />
+			    <input  class="form-control" type="password" id="password" placeholder="Mot de passe" name="_password" />
 			</div>
 
 			<div class="form-group">
@@ -28,11 +27,11 @@
 			</div>	   
 
 			<div class="">
-		    <button class="btn" type="submit">login</button>
+		    <button class="btn valider" type="submit">login</button>
 			</div>
 
 			<div class="form-group">
-		    	<a href="{#{ path('bdloc_app_security_login') }#}" title="Mot de passe oublié">Mot de passe oublié</a>
+		    	<a href="{#{ path('bdloc_app_security_login') }#}" title="Mot de passe oublié" class="forgotPwd">Mot de passe oublié</a>
 			</div>
 			{% if error %}
 		    {{ error.message }}

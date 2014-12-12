@@ -10,48 +10,36 @@
 
 <div class="clearfix"></div>
 
-<div class="container ">
+<div class="container editProfil">
     <h1>Modifier mon profil</h1>
 
 
 
- {{ form_start(editForm) }}
+ {{ form_start(editProfilForm) }}
     <div id="formRegister">
         <div class="champs">
        
-            {{ form_row(editForm.firstname,  { 'attr':{'placeholder': 'Votre nom', 'class': 'champ_class'}}) }}
+            {{ form_row(editProfilForm.firstname,  { 'attr':{'placeholder': 'Votre nom', 'class': 'champ_class'}}) }}
+        </div>
+
+       
+        <div class="champs">
+            {{ form_row(editProfilForm.tel,  { 'attr': {'placeholder': 'Votre téléphone', 'class': 'champ_class'}}) }} 
         </div>
 
         <div class="champs">
-        
-            {{ form_row(editForm.name,  { 'attr': {'placeholder': 'Votre prénom', 'class': 'champ_class'}}) }}
+            {{ form_row(editProfilForm.adress,  { 'attr': {'placeholder': 'Votre adresse', 'class': 'champ_class'}}) }}
         </div>
 
         <div class="champs">
-            {{ form_row(editForm.email,  { 'attr': {'placeholder': 'Votre email', 'class': 'champ_class'}}) }} 
-        </div> 
-        
-        <div class="champs">
-            {{ form_row(editForm.tel,  { 'attr': {'placeholder': 'Votre téléphone', 'class': 'champ_class'}}) }} 
+            {{ form_row(editProfilForm.postalCode,  { 'attr': {'placeholder': 'Votre code postal', 'class': 'champ_class'}}) }}
         </div>
 
-        <div class="champs">
-            {{ form_row(editForm.name,  { 'attr': {'placeholder': 'Votre prénom', 'class': 'champ_class'}}) }} 
-        </div>
-
-        <div class="champs">
-            {{ form_row(editForm.adress,  { 'attr': {'placeholder': 'Votre adresse', 'class': 'champ_class'}}) }}
-        </div>
-
-        <div class="champs">
-            {{ form_row(editForm.postalCode,  { 'attr': {'placeholder': 'Votre code postal', 'class': 'champ_class'}}) }}
-        </div>
-
-        {{ form_row(editForm.submit,  { 'attr': {'name': 'Modifier', 'class': 'valider'}}) }}
+        {{ form_row(editProfilForm.submit,  { 'attr': {'name': 'Modifier', 'class': 'valider'}}) }}
 
     </div>
 
-
+ {{ form_end(editProfilForm) }}
 
 
 </div>

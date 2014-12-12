@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Bdloc\AppBundle\Entity\User;
 use Bdloc\AppBundle\Util\StringHelper;
-use Bdloc\AppBundle\Form\RegisterType;
+use Bdloc\AppBundle\Form\EditProfilType;
 
 class ProfilController extends Controller
 {
@@ -54,7 +54,7 @@ class ProfilController extends Controller
         );
 
         //créer le formulaire
-        $editForm = $this->createForm(new RegisterType(), $user);
+        $editProfilForm = $this->createForm(new EditProfilType(), $user);
 
         //prerempli le formulaire avec les données user
         $user = $this->getUser();
@@ -62,11 +62,11 @@ class ProfilController extends Controller
         dump($user);
         //gère la soumission du form
         $request = $this->getRequest();
-        $editForm->handleRequest($request);
+        $editProfilForm->handleRequest($request);
 
 
 
-        if ($editForm->isValid()){
+        if ($editProfilForm->isValid()){
 
             //sauvegarde le user en base
             $em = $this->getDoctrine()->getManager();
@@ -80,7 +80,7 @@ class ProfilController extends Controller
 
 
         //afficher le formulaire
-        $params['editForm'] = $editForm->createView();              
+        $params['editProfilForm'] = $editProfilForm->createView();              
         return $this->render("profil/edit.html.twig", $params);
 
     }
