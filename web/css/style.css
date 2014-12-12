@@ -174,6 +174,51 @@ a.subscribe {
 }
 /****************************************
 *****************************************
+************** LOGIN  *******************
+*****************************************
+****************************************/
+.login {
+  margin-top: 150px;
+  width: 335px;
+}
+.login .forgotPwd {
+  text-align: center;
+  display: block;
+}
+/****************************************
+*****************************************
+************** PROFIL *******************
+*****************************************
+****************************************/
+.profil {
+  background-color: rgba(0,0,0,0.8);
+  margin-top: 60px;
+  padding: 20px;
+}
+.profil .boutons {
+  float: right;
+}
+.profil .boutons a {
+  margin-left: 10px;
+}
+.profil h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+.profil h2 {
+  border-bottom: 1px dotted #fff;
+  padding-bottom: 10px;
+  margin-top: 30px;
+}
+.editProfil {
+  margin-top: 50px;
+}
+.editProfil h1 {
+  text-align: center;
+  margin: 30px 0;
+}
+/****************************************
+*****************************************
 ************** SUBSCRIBE  ****************
 *****************************************
 ****************************************/
@@ -212,21 +257,27 @@ a.subscribe {
 }
 .tab1::before {
   left: -10px;
+  top: 0;
 }
 .tab1::after {
   right: -10px;
+  top: 0;
 }
 .tab2::before {
   left: -10px;
+  top: 0;
 }
 .tab2::after {
   right: -10px;
+  top: 0;
 }
 .tab3::before {
   left: -10px;
+  top: 0;
 }
 .tab3::after {
   right: -10px;
+  top: 0;
 }
 .steps .on {
   text-shadow: 1px 1px 1px #c01616;
@@ -307,7 +358,8 @@ a.subscribe {
   letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #fff;
-  margin-left: 42%;
+  margin: 0 auto;
+  display: block;
 }
 .valider:hover {
   cursor: pointer;
@@ -630,9 +682,6 @@ a.subscribe {
   font: 0.9em Glyphicons Halflings;
   color: #222;
   transform: rotate(45deg);
-}
-#popup #detail_book #close:after:hover {
-  color: #e9b33d;
 }
 #popup #detail_book img {
   float: left;

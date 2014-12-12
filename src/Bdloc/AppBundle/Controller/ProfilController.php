@@ -5,10 +5,11 @@ namespace Bdloc\AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 
 use Bdloc\AppBundle\Entity\User;
 use Bdloc\AppBundle\Util\StringHelper;
-use Bdloc\AppBundle\Form\RegisterType;
+use Bdloc\AppBundle\Form\EditProfilType;
 
 class ProfilController extends Controller
 {
@@ -26,6 +27,10 @@ class ProfilController extends Controller
         $params = array(
             "user" => $user
         );
+
+/*
+        dump($user);
+        die();*/
 
         return $this->render("profil/compte.html.twig", $params);
 
@@ -49,18 +54,33 @@ class ProfilController extends Controller
         );
 
         //créer le formulaire
-        $editForm = $this->createForm(new RegisterType(), $user);
+        $editProfilForm = $this->createForm(new EditProfilType(), $user);
+
         //prerempli le formulaire avec les données user
         $user = $this->getUser();
 
+        dump($user);
+        //gère la soumission du form
+        $request = $this->getRequest();
+        $editProfilForm->handleRequest($request);
 
-        if ($editForm->isValid()){
-        	
-        	
+
+
+        if ($editProfilForm->isValid()){
+
+            //sauvegarde le user en base
+            $em = $this->getDoctrine()->getManager();
+            $em->persist( $user );
+            $em->flush();
+
+
+            //redirige vers l'accueil
+            return $this->redirect( $this->generateUrl( "bdloc_app_default_home" ) );
         }
 
+
         //afficher le formulaire
-        $params['editForm'] = $editForm->createView();              
+        $params['editProfilForm'] = $editProfilForm->createView();              
         return $this->render("profil/edit.html.twig", $params);
 
     }

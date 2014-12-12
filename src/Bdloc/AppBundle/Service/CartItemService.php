@@ -5,6 +5,7 @@
 
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\RequestStack;
+	use Symfony\Component\HttpFoundation\JsonResponse;
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -76,10 +77,10 @@
 
 
 		
-		public function sortCartItem($cart, $book, $repoCartItem)
+		public function sortCartItem($user, $cart, $book, $repoCartItem)
 		{
-			$cartitems = $repoCartItem->selectAllCartItem($cart);
-			$cartitem = $repoCartItem->selectCartItem($cart, $book);
+			$cartitems = $repoCartItem->selectAllCartItem($user, $cart);
+			$cartitem = $repoCartItem->selectCartItem($user, $cart, $book);
 
 
 			$params = "";
@@ -105,10 +106,10 @@
 
 
 		// ajoute un livre au panier
-		public function addCartItem($cart, $book, $repoCartItem)
+		public function addCartItem($user, $cart, $book, $repoCartItem)
 		{
-			$cartitems = $repoCartItem->selectAllCartItem($cart);
-
+			$cartitems = $repoCartItem->selectAllCartItem($user, $cart);
+			
 
 			$params = "";
 
@@ -142,9 +143,8 @@
 
 
 
-		public function gestion($params, $action)
+		public function gestion($action, $user, $id = "")
 		{
-			$user = $params["user"];
 
 			$repoBook = $this->doctrine->getRepository("BdlocAppBundle:Book");
 	        $repoUser = $this->doctrine->getRepository("BdlocAppBundle:User");
@@ -161,7 +161,7 @@
 				if ( !empty($cart) )
 		        {
 
-		        	$cartitems = $repoCartItem->selectAllCartItem($cart);
+		        	$cartitems = $repoCartItem->selectAllCartItem($user, $cart);
 
 
 		        	$params = array();
@@ -175,8 +175,7 @@
 
 	        if ($action == "adding")
 	        {
-	        	$isbn = $params["isbn"];
-	        	$book = $repoBook->selectBookByIsbn($isbn);
+	        	$book = $repoBook->selectBookById($id);
 
 
 				if (empty($cart))
@@ -195,26 +194,27 @@
 		        }
 
 
-				$response = $this->addCartItem($cart, $book, $repoCartItem);
+				$response = $this->addCartItem($user, $cart, $book, $repoCartItem);
 
 
 				$params = array();
-				$params["isbn"] = $isbn;
+				$params["action"] = "adding";
+				$params["id"] = $id;
 				$params["response"] = $response;
 			}
 
 
 			if ($action == "sorting")
 			{
-				$isbn = $params["isbn"];
-	        	$book = $repoBook->selectBookByIsbn($isbn);
+	        	$book = $repoBook->selectBookById($id);
 
 
-	        	$response = $this->sortCartItem($cart, $book, $repoCartItem);
+	        	$response = $this->sortCartItem($user, $cart, $book, $repoCartItem);
 
 
 	        	$params = array();
-	        	$params["isbn"] = $isbn;
+	        	$params["action"] = "sorting";
+	        	$params["id"] = $id;
 	        	$params["response"] = $response;
 			}
 

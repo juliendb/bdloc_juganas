@@ -4,6 +4,7 @@ namespace Bdloc\AppBundle\Controller;
 
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,11 +31,11 @@ class CartController extends Controller
     public function cartViewAction()
     {
     	$params = array();
-        $params["user"] = $this->getUser();
+        $user = $this->getUser();
 
 
         $cartitem = $this->get("bd.cartitemservice");
-        $params = $cartitem->gestion($params, "display");
+        $params = $cartitem->gestion("display", $user);
 
 
         return $this->render("cart/view_cart.html.twig", $params);
@@ -43,36 +44,40 @@ class CartController extends Controller
 
     
     /**
-     * @Route("/panier/retirer/{isbn}")
+     * @Route("/panier/retirer/{id}")
      */
-    public function sortCartItemAction($isbn)
+    public function sortCartItemAction($id)
     {
         $params = array();
-        $params["user"] = $this->getUser();
-        $params["isbn"] = $isbn;
+        $user = $this->getUser();
 
         $cartitem = $this->get("bd.cartitemservice");
-        $params = $cartitem->gestion($params, "sorting");
+        $params = $cartitem->gestion("sorting", $user, $id);
         
 
-        return new Response();
+		$response = new JsonResponse();
+		$response->setData($params);
+
+		return $response;
     }
 
 
 
     /**
-     * @Route("/panier/ajouter/{isbn}")
+     * @Route("/panier/ajouter/{id}")
      */
-    public function addCartItemAction($isbn)
+    public function addCartItemAction($id)
     {
         $params = array();
-        $params["user"] = $this->getUser();
-        $params["isbn"] = $isbn;
+        $user = $this->getUser();
 
         $cartitem = $this->get("bd.cartitemservice");
-        $params = $cartitem->gestion($params, "adding");
+        $params = $cartitem->gestion("adding", $user, $id);
         
 
-        return $this->render("cart/add_cart.html.twig", $params);
+        $response = new JsonResponse();
+		$response->setData($params);
+
+		return $response;
     }
 }

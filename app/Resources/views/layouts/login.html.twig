@@ -1,27 +1,43 @@
-	<form action="{{ path('login_check') }}" method="post">
+{% extends "layouts/base.html.twig" %}
 
-	    <div class="form-group">
-	    	<label class="control-label" for="username">Login :</label>
-	    	<input  class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
-		</div>
+{# titre de la page dans head #}
+{% block title %} Editer mon profil | Bdloc {% endblock %}   
 
-		<div class="form-group">
-		    <label class="control-label" for="password">Mot de passe :</label>
-		    <input  class="form-control" type="password" id="password" name="_password" />
-		</div>
 
-		<div class="form-group">
-	    	<input  class="form-control" type="hidden" name="_target_path" value="/catalogue" />
-		</div>	   
+{# contenu du body #}
 
-		<div class="">
-	    <button class="btn" type="submit">login</button>
-		</div>
+{% block main_content %}
 
-		<div class="form-group">
-	    	<a href="{#{ path('bdloc_app_security_login') }#}" title="Mot de passe oublié">Mot de passe oublié</a>
-		</div>
-		{% if error %}
-	    {{ error.message }}
-		{% endif %}
-	</form>
+	<div class="clearfix"></div>
+
+	<div class="container login">
+		<form action="{{ path('login_check') }}" method="post">
+
+		    <div class="form-group">
+		    	<input  class="form-control" type="text" id="username" placeholder="Login" name="_username" value="{{ last_username }}" />
+			</div>
+       
+
+			<div class="form-group">
+			    <input  class="form-control" type="password" id="password" placeholder="Mot de passe" name="_password" />
+			</div>
+
+			<div class="form-group">
+		    	<input  class="form-control" type="hidden" name="_target_path" value="/catalogue" />
+			</div>	   
+
+			<div class="">
+		    <button class="btn valider" type="submit">login</button>
+			</div>
+
+			<div class="form-group">
+		    	<a href="{#{ path('bdloc_app_security_login') }#}" title="Mot de passe oublié" class="forgotPwd">Mot de passe oublié</a>
+			</div>
+			{% if error %}
+		    {{ error.message }}
+			{% endif %}
+		</form>
+
+	</div>
+
+{% endblock %}

@@ -98,6 +98,7 @@
 			{% if pagination.pages > 1 %}
 				{% set url = { 'page': 1 }|merge(params) %}
 				<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page 1">page 1</a>
+				
 				{% set url = { 'page': pagination.pages }|merge(params) %}
 				<a href="{{ path('bdloc_app_catalogue_catalogueall', url) }}" title="Page {{ pagination.pages }}">page {{ pagination.pages }}</a>
 			{% endif %}
@@ -131,7 +132,8 @@
 <div id="catalogue">
 {% for book in books %}
 		
-	<div class="view view-fifth">
+		<div id="{{ book.id }}" class="view view-fifth">
+
 
 		<img src=" {{ asset('img/Couvertures_thumbs/' ~ book.cover) }} " alt="{{ book.title }}" />
 
@@ -141,19 +143,21 @@
 			</br>
 			<p class="tome">- Tome {{ book.num }} -</p>
 
-			<div id="btnAjouter">
-				<a id="triangle" class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'isbn': book.isbn }) }}">
-				<div ></div>
-				</a>
 
-			
-				{% if app.user %}
-					{% set url = path('bdloc_app_cart_addcartitem', {'isbn': book.isbn }) %}
-				{% else %}
-					{% set url = "" %}
-				{% endif %}	
-				
-				<p class="stock">{{ book.stock }} en stock</p>
+
+				<div id="btnAjouter">
+					<a id="triangle" class="link_detail_book" title="Détail du livre {{ book.title }}" href=" {{ path('bdloc_app_catalogue_viewbook', { 'id': book.id }) }}">
+					<div ></div>
+					</a>
+
+					{% if app.user %}
+						{% set url = path('bdloc_app_cart_addcartitem', {'id': book.id }) %}
+					{% else %}
+						{% set url = "" %}
+					{% endif %}	
+					
+					<p class="stock">{{ book.stock }} en stock</p>
+
 
 				<a class="link_cart_book" href="{{ url }}" title="Ajouter au panier le livre {{ book.title }}">ajouter au panier</a>
 
