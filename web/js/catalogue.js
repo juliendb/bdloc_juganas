@@ -71,6 +71,8 @@ catalogue =
 	init:function()
 	{
 		var _this = catalogue
+
+		$("#overlay").fadeOut(0)
 		
 		_this.initElement()
 		_this.popup()
@@ -214,11 +216,10 @@ catalogue =
 	{
 		var _this = catalogue
 
-
-		$("#overlay").fadeOut(0)
-		$('#close').off().on("click", function()
+			//console.log('coucou')
+		
+		$('#close').on("click", function()
 		{
-			console.log('coucou')
 			$("#popup").fadeOut(800, function()
 			{
 
@@ -232,7 +233,9 @@ catalogue =
 
 	affiche: function(content)
 	{
-		$("#popup").fadeOut(0).fadeIn(800)
+		var _this = catalogue
+
+		$("#popup").fadeOut(0).fadeIn(800, function() { _this.popup() })
 		$("#detail_popup").replaceWith(content)
 	}
 
