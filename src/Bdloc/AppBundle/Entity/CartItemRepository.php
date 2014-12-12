@@ -11,16 +11,23 @@ class CartItemRepository extends EntityRepository
 
 
 	// select cart utilisateur
-	public function selectAllCartItem($cart)
+	public function selectAllCartItem($user, $cart)
 	{
+		$params = array(
+			"id_cart" => $cart->getId(),
+			"id_user" => $user->getId(),
+		);
+
 		$query = $this
 			->createQueryBuilder("ci")
 			->join("ci.cart", "c")
 			->join("ci.book", "b")
-			->addSelect("ci, c, b")
+			->join("c.user", "u")
+			->addSelect("ci, c, b, u")
 			->andWhere("c.id = :id_cart")
+			->andWhere("u.id = :id_user")
 			->andWhere("c.status = 'active'")
-			->setParameter("id_cart", $cart->getId())
+			->setParameters($params)
 			->getQuery();
 
 		$cart = $query->getResult();
@@ -30,11 +37,12 @@ class CartItemRepository extends EntityRepository
 
 	// a voir plus tard triple sécurité
 	// select cart utilisateur
-	public function selectCartItem($cart, $book)
+	public function selectCartItem($user, $cart, $book)
 	{
 		$params = array(
+			"user" => $user->getId(),
 			"id_cart" => $cart->getId(),
-			"isbn_book" => $book->getIsbn(),
+			"id_book" => $book->getId(),
 		);
 
 
@@ -42,9 +50,11 @@ class CartItemRepository extends EntityRepository
 			->createQueryBuilder("ci")
 			->join("ci.cart", "c")
 			->join("ci.book", "b")
-			->addSelect("ci, c, b")
+			->join("c.user", "u")
+			->addSelect("ci, c, b, u")
 			->andWhere("c.id = :id_cart")
-			->andWhere("b.isbn = :isbn_book")
+			->andWhere("b.id = :id_book")
+			->andWhere("u.id = :user")
 			->andWhere("c.status = 'active'")
 			->setParameters($params)
 			->getQuery();

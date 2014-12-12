@@ -56,15 +56,15 @@ class CatalogueController extends Controller
 
 
     /**
-     * @Route("/livre/detail/{isbn}")
+     * @Route("/livre/detail/{id}")
      */
-    public function viewBookAction($isbn)
+    public function viewBookAction($id)
     {
         $params = array();
 
         
         $repoBook = $this->getDoctrine()->getRepository("BdlocAppBundle:Book");
-        $book = $repoBook->selectBookByIsbn($isbn);
+        $book = $repoBook->selectBookById($id);
 
 
         $params["book"] = $book;
