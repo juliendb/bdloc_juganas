@@ -8,36 +8,49 @@
 
 {% block main_content %}
 <div class="container profil">
-    <h1>Mon compte</h1>
 
     <div class="boutons">
-        <a href="{{ path('bdloc_app_profil_editprofil') }}" class="btn btn-primary">Editer</a>
-        <a href="" class="btn btn-danger">Me désabonner</a>
+        <a href="{{ path('bdloc_app_profil_editprofil') }}" class="btnEditer">Editer</a>
+        <a href="" class="btnDesabonner">Me désabonner</a>
     </div>
+    <h1>Mon compte</h1>
 
-<h2>Infos personelles</h2>
+    
+
+<h2 class="titreCompte">Mes infos personnelles</h2>
     <h3>{{ user.firstname }} {{ user.name }}</h3>
     
-    <p><strong>Mail :</strong> {{ user.email }}</p>
-    <p><strong>Adress :</strong> {{ user.adress }} - {{ user.postalCode }} {{ user.city }}</p>
-    <p><strong>Telephone :</strong>{{ user.tel }}</p>
-    <a href="" class="btn btn-warning pull-left">Changer mon mot de passe</a>
+    <p><strong>E-Mail :</strong> {{ user.email }}</p>
+    <p><strong>Adresse :</strong> {{ user.adress }} - {{ user.postalCode }} {{ user.city }}</p>
+    <p><strong>Téléphone :</strong>{{ user.tel }}</p>
+    <a href="" class="btnCompte">Changer mon mot de passe</a>
 
 <div class="clearfix"></div>
 
-<h2>Mon point relais</h2>
-    <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btn btn-warning pull-right">Modifier mon point relais</a>
-    <h3>{{ user.mydelivery.name }}</h3>
-    <p><strong>Adress :</strong> {{ user.mydelivery.address }} - {{ user.mydelivery.postalCode }} {{ user.mydelivery.city }}</p>
+
+
+<h2 class="titreRelais">Mon point relais</h2>
+
+    {% if user.mydelivery %}
+        <h3>{{ user.mydelivery.name }}</h3>
+        <p><strong>Adress :</strong> {{ user.mydelivery.address }} - {{ user.mydelivery.postalCode }} {{ user.mydelivery.city }}</p>
+
+        <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btnCompte">Modifier mon point relais</a>
+    {% else %}
+        <p>Vous n'avez pas encore choisi de point relais.</p>
+
+        <a href="{{ path('bdloc_app_subscribe_registerstep2') }}" class="btnCompte">Ajouter mon point relais</a>
+    {% endif %}
+
     
 <div class="clearfix"></div>
 
-<h2>Paiement</h2>
+<h2 class="titrePaiement">Paiement</h2>
 
-<a href="" class="btn btn-warning pull-right">Modifier mes informations de paiement</a>
+<a href="" class="btnCompte">Modifier mes informations de paiement</a>
 
 <div class="clearfix"></div>
-<h2>Mon historique de location</h2>
+<h2 class="titreLocation">Mon historique de location</h2>
 
 <table class="" border='1' width="100%" cellpadding="1">
   <tr>
@@ -47,19 +60,24 @@
     <th class="">Tome</th>
     <th class="">Date location</th>
   </tr>
-  <tr>
-    <td class=""><img src=" " alt="" width="50" height='50' /></td>
-    <td class=""></td>
-    <td class=""></td>
-    <td class=""></td>
-    <td class=""></td>
-  </tr>
+    {% for cart in carts %}
+    {% for cartitem in cart.cartitem %}
+    <tr>
+        <td class=""><img src=" {{ asset('img/Couvertures_cart_thumbs/' ~ cartitem.book.cover) }} " alt="{{ cartitem.book.title }}" /></td>
+        <td class=""><p>{{ cartitem.book.title }}</p></td>
+        <td class=""><p>{{ cartitem.book.serie.title }}</p></td>
+        <td class=""><p>{{ cartitem.book.num }}</p></td>
+        <td class=""><p>{{ cartitem.dateCreated.date }}</p></td>
+    </tr>
+    {% endfor %}
+    {% endfor %}
+
 
 </table>
 
 <div class="clearfix"></div>
 
-<h2>Mes amendes</h2>
+<h2 class="titreAmendes">Mes amendes</h2>
 
 
 
